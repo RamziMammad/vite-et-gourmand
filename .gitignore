@@ -1,0 +1,11 @@
+# Fichiers sensibles
+.env
+.env.*
+!.env.example
+
+# Dépendances
+/vendor/
+/node_modules/
+
+# Journaux d'erreurs
+*.log

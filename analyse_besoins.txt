@@ -1,0 +1,716 @@
+ANALYSE DES BESOINS — VITE & GOURMAND
+
+1. Objectif du projet
+
+L'entreprise souhaite créer un site internet
+permettant aux visiteurs de consulter les
+menus proposés et de passer des commandes.
+
+
+2. Besoins de la page d'accueil
+
+- Présenter l'entreprise Vite & Gourmand.
+- Mettre en avant le professionnalisme de l'équipe.
+- Afficher uniquement les avis clients validés.
+
+
+3. Menu de navigation
+
+Le site doit proposer un menu de navigation contenant :
+
+- Un lien vers la page d'accueil.
+- Un lien vers tous les menus proposés.
+- Un lien vers la page de connexion.
+- Un lien vers la page de contact.
+
+
+4. Pied de page
+
+Le site doit afficher en bas de chaque page :
+
+- Les horaires de l'entreprise du lundi au dimanche.
+- Un lien vers les mentions légales.
+- Un lien vers les conditions générales de vente (CGV).
+
+
+5. Vue globale des menus
+
+Le site doit permettre aux visiteurs de consulter
+tous les menus proposés par Vite & Gourmand.
+
+Chaque menu doit posséder des informations comme
+son titre, ses photos, sa description, ses plats,
+son prix et ses conditions de commande.
+
+Les employés et l'administrateur doivent pouvoir
+gérer les menus.
+
+Affichage des menus :
+
+- Afficher le titre de chaque menu.
+- Afficher une description du menu.
+- Afficher le nombre minimum de personnes.
+- Afficher le prix correspondant.
+- Proposer un bouton pour voir le détail du menu.
+- Permettre à tous les visiteurs de consulter
+les menus, même sans être connectés.
+
+
+Filtres de recherche des menus :
+
+Le site doit permettre aux visiteurs de
+filtrer les menus selon :
+
+- Un prix maximum.
+- Une fourchette de prix.
+- Le thème du menu.
+- Le régime alimentaire.
+- Le nombre minimum de personnes.
+
+Règle fonctionnelle :
+Les résultats des filtres doivent se mettre
+à jour de manière dynamique, sans recharger
+toute la page.
+
+
+6. Informations d'un menu
+
+Chaque menu doit contenir :
+
+- Un titre pour identifier le menu.
+- Une galerie d'images pour présenter les plats.
+- Une description du menu.
+- Un thème : Noël, Pâques, classique ou événement.
+- Une liste des entrées, plats et desserts proposés.
+- Un nombre minimum de personnes pour chaque menu.
+
+-Règle métier :
+Le client doit commander pour un nombre de personnes
+supérieur ou égal au minimum fixé pour le menu.
+
+Si le minimum est de 10 personnes :
+- 5 personnes : commande refusée.
+- 10 personnes : commande autorisée.
+- 15 personnes : commande autorisée.
+
+- Un prix correspondant au nombre minimum de personnes.
+- Une liste des allergènes pour chaque plat, si nécessaire.
+- Les conditions du menu : délai de commande
+et précautions de stockage éventuelles.
+
+- Le régime alimentaire du menu :
+classique, végétarien, végan ou autre.
+
+- Le stock disponible pour chaque menu,
+indiquant le nombre de commandes
+encore possibles.
+
+- Un même plat (entrée, plat principal
+ou dessert) peut être proposé dans
+plusieurs menus différents.
+
+
+
+
+
+7. Création d'un compte utilisateur
+
+Le site doit permettre aux visiteurs
+de créer un compte.
+
+Le formulaire d'inscription doit demander :
+
+- Le nom du client.
+- Le prénom du client.
+- Le numéro de téléphone portable (GSM).
+- L'adresse e-mail.
+- L'adresse postale.
+- Un mot de passe sécurisé.
+
+Règles de création de compte :
+
+- Le mot de passe doit contenir au moins 10 caractères.
+- Il doit contenir au moins une majuscule.
+- Il doit contenir au moins une minuscule.
+- Il doit contenir au moins un chiffre.
+- Il doit contenir au moins un caractère spécial.
+
+- Lors de son inscription, le client reçoit automatiquement le rôle "utilisateur".
+- Après son inscription, un e-mail de bienvenue lui est envoyé automatiquement.
+
+
+
+
+8. Connexion et réinitialisation du mot de passe
+
+Le site doit permettre aux utilisateurs
+de se connecter à leur compte.
+
+Pour se connecter, ils doivent renseigner :
+- Leur adresse e-mail (identifiant).
+- Leur mot de passe.
+
+Règle fonctionnelle :
+
+Si un utilisateur oublie son mot de passe,
+il doit pouvoir :
+- Cliquer sur « Mot de passe oublié ».
+- Saisir son adresse e-mail.
+- Recevoir par e-mail un lien permettant
+de réinitialiser son mot de passe.
+
+
+
+
+
+9. Vue détaillée d'un menu
+
+Lorsqu'un visiteur clique sur « Voir le détail »,
+le site doit afficher toutes les informations du menu :
+
+- Le titre, les photos et la description.
+- Le thème et le régime alimentaire.
+- Les entrées, plats et desserts.
+- Les allergènes des plats.
+- Le nombre minimum de personnes et le prix.
+- Les conditions de commande et de stockage.
+- Le stock disponible.
+
+Règles fonctionnelles :
+
+- Les conditions du menu doivent être bien visibles.
+- Un bouton « Commander » doit être présent.
+- Si le client est connecté, il accède à la page
+de commande avec le menu déjà sélectionné.
+- Si le visiteur n'est pas connecté, il doit
+se connecter ou créer un compte avant de commander.
+
+
+
+
+
+10. Commande d'un menu
+
+Le site doit permettre à un utilisateur
+connecté de commander un menu.
+
+Le formulaire de commande doit contenir :
+
+- Le nom et le prénom du client
+  (remplis automatiquement).
+- L'adresse e-mail du client
+  (remplie automatiquement).
+- Le numéro de téléphone du client
+  (rempli automatiquement).
+- L'adresse et le lieu de la prestation
+  ou livraison.
+- La date de la prestation et de la livraison.
+- L'heure souhaitée de livraison.
+- Le menu sélectionné.
+
+Règle fonctionnelle :
+Si le client clique sur « Commander » depuis
+la page détaillée d'un menu, celui-ci doit
+être automatiquement sélectionné dans
+le formulaire de commande.
+
+Nombre de personnes et calcul du prix :
+
+- Le client doit choisir le nombre de personnes.
+- Le nombre choisi doit respecter le minimum du menu.
+- Le prix doit être mis à jour selon le nombre de personnes.
+- Une réduction de 10 % est appliquée si le nombre
+  de personnes est supérieur ou égal au minimum
+  du menu + 5.
+
+Exemple pour un menu de 10 personnes minimum :
+- 8 personnes : commande refusée.
+- 10 personnes : commande autorisée sans réduction.
+- 15 personnes : commande autorisée avec 10 % de réduction.
+
+
+
+Frais de livraison :
+
+- Le site doit calculer les frais de livraison.
+- Pour une livraison en dehors de Bordeaux,
+  les frais sont de 5 € fixes, auxquels
+  s'ajoutent 0,59 € par kilomètre parcouru.
+
+Règle métier :
+Frais de livraison hors Bordeaux =
+5 € + (0,59 € x nombre de kilomètres).
+
+Exemple :
+Pour une livraison hors Bordeaux de 10 km :
+5 € + (0,59 € x 10) = 10,90 €.
+
+Le montant applicable dans Bordeaux et la méthode
+exacte de calcul des kilomètres ne sont pas
+précisés dans l'énoncé.
+
+
+
+Validation et confirmation de commande :
+
+- Avant la validation, le site doit afficher
+  un récapitulatif détaillé du prix.
+
+- Ce récapitulatif doit présenter le prix du
+  menu et les frais de livraison.
+
+- La réduction de 10 % doit être prise en
+  compte lorsqu'elle est applicable.
+
+- Le montant total doit être présenté
+  clairement au client.
+
+- Après validation de la commande, un e-mail
+  de confirmation doit être envoyé
+  automatiquement au client.
+
+
+
+
+
+  11. Espace utilisateur
+
+Après connexion, un utilisateur doit pouvoir
+accéder à son espace personnel.
+
+Depuis cet espace, il doit pouvoir :
+
+- Consulter toutes les commandes qu'il a effectuées.
+- Voir les informations détaillées de chaque commande.
+- Modifier ses informations personnelles.
+
+
+Modification et annulation des commandes :
+
+- L'utilisateur peut modifier ou annuler
+  une commande tant qu'elle n'a pas été
+  acceptée par un employé.
+
+- Lors d'une modification, toutes les
+  informations peuvent être changées,
+  sauf le menu sélectionné.
+
+- Une fois la commande acceptée par un
+  employé, l'utilisateur ne peut plus
+  la modifier ni l'annuler.
+
+
+  Suivi des commandes :
+
+- Une fois la commande acceptée par un employé,
+  l'utilisateur doit pouvoir consulter son suivi.
+
+- Le suivi doit afficher les différents
+  états de la commande.
+
+- Chaque changement d'état doit être
+  enregistré avec sa date et son heure.
+
+- L'utilisateur doit pouvoir consulter
+  l'historique de ces changements.
+
+
+
+
+Avis clients après une commande :
+
+- Lorsque la commande passe au statut
+  « terminée », le client doit recevoir
+  automatiquement un e-mail l'invitant
+  à donner son avis depuis son compte.
+
+- Le client doit pouvoir attribuer
+  une note comprise entre 1 et 5.
+
+- Le client doit pouvoir ajouter
+  un commentaire à son avis.
+
+- Seuls les avis validés par un employé
+  doivent être visibles sur la page d'accueil.
+
+
+
+
+
+
+
+  12. Espace employé
+
+Après connexion, un employé doit pouvoir
+accéder à un espace réservé au personnel
+de l'entreprise.
+
+Depuis cet espace, il doit pouvoir :
+
+- Modifier ou supprimer les menus proposés.
+- Modifier ou supprimer les plats.
+- Modifier ou supprimer les horaires
+  de l'entreprise.
+
+  Modification et annulation des commandes :
+
+- Un employé doit contacter le client avant
+  de modifier ou d'annuler sa commande.
+
+- Le contact doit être effectué par téléphone
+  (GSM) ou par e-mail.
+
+- En cas d'annulation, l'employé doit
+  renseigner le moyen de contact utilisé
+  et le motif de l'annulation.
+
+
+  Filtres de recherche des commandes :
+
+- L'espace employé doit permettre de rechercher
+  et de filtrer les commandes.
+
+- Un filtre doit permettre de retrouver
+  les commandes selon leur statut.
+
+- Un autre filtre doit permettre de retrouver
+  les commandes d'un client en particulier.
+
+  
+  
+  
+  
+  
+  Gestion des statuts des commandes :
+
+Un employé doit pouvoir modifier le
+statut d'une commande.
+
+Les statuts possibles sont :
+
+- Accepté : la commande est validée
+  par l'équipe.
+
+- En préparation : la commande est
+  en cours de préparation.
+
+- En cours de livraison : la commande
+  est en route vers le client.
+
+- Livré : le client a reçu sa commande.
+
+- En attente du retour de matériel :
+  le client doit restituer le matériel prêté.
+
+- Terminée : la commande est livrée sans
+  prêt de matériel ou le matériel
+  a été restitué.
+
+
+
+
+
+
+  Gestion du retour de matériel :
+
+- Si du matériel est prêté au client,
+  la commande peut passer au statut
+  « En attente du retour de matériel ».
+
+- Dès que ce statut est atteint, un e-mail
+  doit être envoyé automatiquement au client.
+
+- Le client dispose de 10 jours ouvrés
+  pour restituer le matériel.
+
+- Pour organiser la restitution, il doit
+  prendre contact avec l'entreprise.
+
+- Si le matériel n'est pas restitué dans
+  ce délai, le client devra payer
+  600 € de frais.
+
+- Cette pénalité doit être mentionnée
+  dans les conditions générales de vente
+  (CGV).
+
+- Une fois le matériel restitué, la
+  commande peut passer au statut
+  « Terminée ».
+
+
+
+
+
+
+  Gestion des avis clients :
+
+- Un employé doit pouvoir consulter
+  les avis laissés par les clients.
+
+- Il doit pouvoir valider ou refuser
+  un avis.
+
+- Les avis validés doivent être visibles
+  sur la page d'accueil.
+
+- Les avis refusés ne doivent pas être
+  affichés sur la page d'accueil.
+
+
+
+
+
+  13. Espace administrateur
+
+Après connexion, un administrateur doit
+pouvoir accéder à un espace réservé à
+l'administration du site.
+
+Création des comptes employés :
+
+- L'administrateur doit pouvoir créer
+  des comptes employés.
+
+- Pour créer un compte employé, il doit
+  renseigner une adresse e-mail
+  et un mot de passe.
+
+- L'adresse e-mail servira d'identifiant
+  de connexion.
+
+- Après la création du compte, un e-mail
+  doit être envoyé automatiquement à
+  l'employé.
+
+- Le mot de passe ne doit pas être
+  communiqué dans cet e-mail.
+
+- L'employé devra contacter l'administrateur
+  pour obtenir son mot de passe.
+
+
+
+
+
+
+  Gestion et sécurité des comptes :
+
+- L'administrateur doit pouvoir désactiver
+  un compte employé, notamment lorsqu'un
+  employé quitte l'entreprise.
+
+- Un compte employé désactivé ne doit
+  plus pouvoir être utilisé pour se connecter.
+
+- Un compte administrateur doit être
+  créé pour José.
+
+- Il ne doit pas être possible de créer
+  un compte administrateur depuis
+  l'application.
+
+
+
+
+
+
+
+  Droits de l'administrateur :
+
+- L'administrateur doit posséder toutes
+  les fonctionnalités disponibles dans
+  l'espace employé.
+
+- Il doit notamment pouvoir gérer les
+  menus, les plats, les horaires
+  et les commandes.
+
+- Il doit également pouvoir valider
+  ou refuser les avis clients.
+
+
+
+
+
+
+
+
+  Statistiques des commandes :
+
+- L'administrateur doit pouvoir consulter
+  le nombre de commandes effectuées
+  pour chaque menu.
+
+- Ces informations doivent être présentées
+  sous forme de graphique afin de
+  comparer les menus.
+
+- Les données utilisées pour ce graphique
+  doivent provenir d'une base de données
+  non relationnelle (NoSQL).
+
+- MongoDB pourra être utilisé pour
+  stocker ces données statistiques.
+
+
+
+
+
+
+
+
+
+
+
+  Calcul du chiffre d'affaires :
+
+- L'administrateur doit pouvoir consulter
+  le chiffre d'affaires généré par les commandes.
+
+- Le chiffre d'affaires doit pouvoir être
+  calculé pour chaque menu.
+
+- Un filtre doit permettre de sélectionner
+  un menu en particulier.
+
+- Un autre filtre doit permettre de
+  sélectionner une période.
+
+- Les résultats doivent être mis à jour
+  selon les filtres sélectionnés.
+
+
+
+
+
+
+
+  14. Formulaire de contact
+
+Le site doit permettre aux visiteurs
+de contacter l'entreprise Vite & Gourmand
+depuis la page de contact.
+
+Le formulaire doit contenir :
+
+- Un titre pour indiquer le sujet du message.
+- Une description pour écrire le message.
+- L'adresse e-mail du visiteur
+  pour pouvoir lui répondre.
+
+Règle fonctionnelle :
+
+- Après l'envoi du formulaire, le message
+  doit être transmis par e-mail
+  à l'entreprise.
+
+
+
+
+
+
+
+
+
+
+
+  15. Accessibilité et déploiement
+
+Accessibilité :
+
+- Le site doit respecter les exigences
+  d'accessibilité du RGAA.
+
+- Les interfaces doivent être utilisables
+  par les personnes en situation de handicap.
+
+- La navigation, les images, les textes
+  et les formulaires doivent être conçus
+  en tenant compte de l'accessibilité.
+
+
+Déploiement :
+
+- L'application doit être déployée
+  sur Internet.
+
+- Le site doit être accessible en ligne
+  et fonctionnel au moment de la livraison.
+
+- Le fonctionnement du site ne doit pas
+  être limité à l'environnement local XAMPP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  16. Contraintes techniques et livrables
+
+Contraintes techniques :
+
+- L'application doit utiliser une base
+  de données relationnelle (ex : MySQL).
+
+- Elle doit également utiliser une base
+  non relationnelle (ex : MongoDB).
+
+- Les technologies choisies doivent
+  être justifiées.
+
+- La sécurité et la protection des
+  données personnelles doivent être
+  prises en compte.
+
+
+Livrables obligatoires :
+
+- Un dépôt GitHub public contenant le code.
+- Un lien vers l'application déployée.
+- Un lien vers l'outil de gestion de projet.
+
+- Un fichier README.md expliquant
+  l'installation locale.
+
+- Une organisation Git avec une branche
+  principale, une branche de développement
+  et des branches de fonctionnalités.
+
+- Après avoir développé et testé une
+  fonctionnalité, sa branche doit être
+  fusionnée dans la branche de développement.
+
+- Lorsque la branche de développement
+  est correctement testée, elle doit
+  être fusionnée dans la branche principale.
+
+
+- Des fichiers SQL pour créer la base
+  relationnelle et insérer des données.
+
+- Un manuel d'utilisation en PDF avec
+  des identifiants de démonstration.
+
+- Une charte graphique PDF avec
+  les couleurs, les polices et les maquettes.
+
+- Trois maquettes pour ordinateur et
+  trois pour mobile, avec les wireframes
+  et mockups attendus.
+
+- Une documentation de gestion de projet.
+
+- Une documentation technique présentant
+  les choix technologiques, la configuration
+  de l'environnement, le modèle de données,
+  les diagrammes d'utilisation et de séquence,
+  et les étapes du déploiement.
