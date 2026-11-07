@@ -1,0 +1,476 @@
+
+/* Organisation de la page des menus */
+
+body.page-menus {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Largeur et espaces du contenu */
+
+.page-menus main {
+    width: 92%;
+    margin: 0 auto;
+    padding: 55px 0 45px;
+}
+
+
+/* Titre et phrase de présentation */
+
+.introduction-menus {
+    margin-bottom: 38px;
+}
+
+.introduction-menus h1 {
+    color: #202938;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.introduction-menus p {
+    color: #71665E;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+
+/* Filtres à gauche et cartes à droite */
+
+.contenu-menus {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+
+/* Panneau des filtres */
+
+.filtres-menus {
+    width: 29%;
+    background-color: #FFF8ED;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.filtres-menus h2 {
+    color: #202938;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.champ-filtre {
+    margin-bottom: 24px;
+}
+
+.champ-filtre label {
+    display: block;
+    color: #2B1B0F;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+
+/* Champs et listes déroulantes */
+
+.champ-filtre input,
+.champ-filtre select {
+    display: block;
+    width: 90%;
+    height: 45px;
+    padding: 8px 14px;
+    border: 1px solid #888888;
+    background-color: #FFFFFF;
+    color: #202938;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+/* Prix minimum et maximum sur une ligne */
+
+.fourchette-prix {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    width: 90%;
+}
+
+.fourchette-prix input {
+    width: 47%;
+}
+
+
+/* Partie des résultats */
+
+.resultats-menus {
+    width: 69%;
+}
+
+.resultats-menus h2 {
+    color: #202938;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 25px 0 30px;
+}
+
+
+/* Les deux cartes sur ordinateur */
+
+.cartes-menus {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 6%;
+}
+
+.carte-menu {
+    width: 47%;
+    border: 1px solid #E9D9C9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Photos des menus */
+
+.photo-menu {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+
+/* Titre et description des cartes */
+
+.carte-menu h3 {
+    color: #202938;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin: 18px 0 14px;
+}
+
+.description-menu {
+    color: #71665E;
+    font-size: 24px;
+    padding: 0 12px;
+    min-height: 90px;
+}
+
+
+/* Informations sur les personnes et le prix */
+
+.informations-menu {
+    border-top: 1px solid #E9D9C9;
+    margin-top: 8px;
+    padding-top: 14px;
+}
+
+.informations-menu p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #71665E;
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+
+.informations-menu img {
+    width: 40px;
+    height: auto;
+}
+
+.informations-menu strong {
+    color: #000000;
+}
+
+
+/* Boutons Voir le menu */
+
+.bouton-menu {
+    display: block;
+    width: 80%;
+    background-color: #F4B400;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 12px;
+    margin: 16px auto 0;
+}
+
+
+/* Le pied de page reste en bas */
+
+.page-menus footer {
+    margin-top: auto;
+}
+
+
+/* Sur ordinateur on cache le menu mobile et les horaires courts */
+
+.page-menus header .menu-mobile,
+.page-menus .horaires-mobile {
+    display: none;
+}
+
+
+
+/* VERSION MOBILE : jusqu'à 768 pixels */
+
+@media screen and (max-width: 768px) {
+
+    /* En-tête du téléphone */
+
+    .page-menus header {
+        width: 94%;
+        margin: 14px auto 0;
+        padding: 20px 12px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-menus header > a {
+        font-size: 20px;
+    }
+
+    .page-menus header .navigation-pc {
+        display: none;
+    }
+
+    .page-menus header .menu-mobile {
+        display: block;
+        color: #FFFFFF;
+    }
+
+    .page-menus .menu-mobile summary {
+        font-size: 17px;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-menus .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+        z-index: 10;
+    }
+
+    .page-menus .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+
+    /* Titres et largeur du contenu */
+
+    .page-menus main {
+        width: 94%;
+        padding: 26px 0;
+    }
+
+    .page-menus .introduction-menus {
+        margin: 0 12px 28px;
+    }
+
+    .page-menus .introduction-menus h1 {
+        color: #2B1B0F;
+        font-size: 28px;
+        margin-bottom: 4px;
+    }
+
+    .page-menus .introduction-menus p {
+        color: #2B1B0F;
+        font-size: 17px;
+    }
+
+
+    /* Les filtres au-dessus des cartes */
+
+    .page-menus .contenu-menus {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .page-menus .filtres-menus,
+    .page-menus .resultats-menus {
+        width: 100%;
+    }
+
+    .page-menus .filtres-menus {
+        padding: 24px 22px;
+        border-radius: 16px;
+    }
+
+    .page-menus .filtres-menus h2 {
+        color: #000000;
+        font-size: 28px;
+        margin-bottom: 22px;
+    }
+
+    .page-menus .champ-filtre {
+        margin-bottom: 20px;
+    }
+
+    .page-menus .champ-filtre label {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .page-menus .champ-filtre input,
+    .page-menus .champ-filtre select {
+        width: 100%;
+        height: 38px;
+        padding: 7px 10px;
+        border: none;
+        font-size: 14px;
+    }
+
+    .page-menus .fourchette-prix {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .page-menus .fourchette-prix input {
+        width: 47%;
+    }
+
+
+    /* Les cartes passent l'une sous l'autre */
+
+    .page-menus .resultats-menus h2 {
+        color: #000000;
+        font-size: 24px;
+        margin: 0 12px 12px;
+    }
+
+    .page-menus .cartes-menus {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .page-menus .carte-menu {
+        width: 100%;
+        background-color: #FFF8ED;
+        border: none;
+        border-radius: 16px;
+        padding: 20px 16px 16px;
+    }
+
+    .page-menus .photo-menu {
+        width: 100%;
+        height: 180px;
+    }
+
+    .page-menus .carte-menu h3 {
+        color: #2B1B0F;
+        text-align: left;
+        font-size: 24px;
+        margin: 16px 0 4px;
+    }
+
+    .page-menus .description-menu {
+        font-size: 16px;
+        padding: 0;
+        min-height: 0;
+    }
+
+    .page-menus .informations-menu {
+        border-top: none;
+        margin-top: 8px;
+        padding-top: 0;
+    }
+
+    .page-menus .informations-menu p {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .page-menus .informations-menu img,
+    .page-menus .prix-libelle {
+        display: none;
+    }
+
+    .page-menus .ligne-prix strong {
+        color: #2B1B0F;
+        font-size: 21px;
+    }
+
+    .page-menus .bouton-menu {
+        width: 100%;
+        border-radius: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 12px;
+        margin-top: 14px;
+    }
+
+
+    /* Pied de page sur téléphone */
+
+    .page-menus footer {
+        padding: 28px 0 22px;
+    }
+
+    .page-menus .footer-contenu {
+        width: 90%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-menus .footer-contenu section {
+        width: 100%;
+        padding-bottom: 26px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    .page-menus footer h2 {
+        font-size: 21px;
+        margin-bottom: 22px;
+    }
+
+    .page-menus .horaires-pc {
+        display: none;
+    }
+
+    .page-menus .horaires-mobile {
+        display: block;
+        font-size: 17px;
+        line-height: 1.45;
+    }
+
+    .page-menus .informations-legales p {
+        font-size: 17px;
+        margin-bottom: 22px;
+    }
+
+    .page-menus .informations-legales a {
+        font-weight: 400;
+    }
+}
+
+
+/* Sur les téléphones étroits, on réduit légèrement le header */
+
+@media screen and (max-width: 360px) {
+
+    .page-menus header > a {
+        font-size: 18px;
+    }
+
+    .page-menus .menu-mobile summary {
+        font-size: 15px;
+    }
+}

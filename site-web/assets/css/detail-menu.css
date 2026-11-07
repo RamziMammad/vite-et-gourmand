@@ -1,0 +1,538 @@
+
+/* Page détail du Menu Classique */
+
+body.page-detail-menu {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Largeur du contenu */
+
+.page-detail-menu main {
+    width: 94%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 45px 0 12px;
+}
+
+/* Titre et petite description */
+
+.introduction-detail {
+    margin-bottom: 36px;
+}
+
+.introduction-detail h1 {
+    color: #202938;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.introduction-detail p {
+    color: #2B1B0F;
+    font-size: 20px;
+}
+
+/* La photo à gauche, les informations à droite */
+
+.presentation-detail {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.photo-principale {
+    width: 65%;
+}
+
+.photo-principale img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Cadre du prix et de la commande */
+
+.informations-detail {
+    width: 33%;
+    border: 1px solid #F4B400;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.theme-menu,
+.regime-menu,
+.minimum-personnes,
+.stock-menu {
+    font-size: 20px;
+    margin-bottom: 22px;
+}
+
+.minimum-personnes,
+.stock-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Sur PC, Minimum et Stock restent en écriture normale */
+
+.minimum-personnes strong,
+.stock-menu strong {
+    font-weight: 400;
+}
+
+.minimum-personnes img,
+.stock-menu img {
+    width: 36px;
+    height: auto;
+}
+
+.montant-menu {
+    font-size: 34px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.precision-prix {
+    font-size: 16px;
+    color: #71665E;
+    margin: 4px 0 10px;
+}
+
+/* Bouton Commander */
+
+.bouton-commander {
+    display: block;
+    background-color: #F4B400;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 14px 12px;
+}
+
+/* Les deux blocs sous la photo */
+
+.composition-et-conditions {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 16px;
+}
+
+.composition-menu,
+.conditions-menu {
+    background-color: #FFF8ED;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.composition-menu {
+    width: 46%;
+}
+
+.conditions-menu {
+    width: 52%;
+}
+
+.composition-menu h2,
+.conditions-menu h2 {
+    color: #000000;
+    font-size: 28px;
+    margin-bottom: 22px;
+}
+
+/* Entrée, plat et dessert */
+
+.plat-menu {
+    padding: 0 0 13px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.dernier-plat {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.plat-menu h3 {
+    color: #F4B400;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.plat-menu p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Conditions et leurs icônes */
+
+.liste-conditions {
+    list-style: none;
+}
+
+.liste-conditions li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-size: 20px;
+}
+
+.liste-conditions img {
+    width: 40px;
+    height: auto;
+}
+
+/* Galerie des trois photos */
+
+.autres-photos h2 {
+    color: #000000;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.galerie-photos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.galerie-photos img {
+    display: block;
+    width: 31%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Le footer reste en bas quand la page est courte */
+
+.page-detail-menu footer {
+    margin-top: auto;
+}
+
+/* Éléments réservés à la version mobile */
+
+.page-detail-menu header .menu-mobile,
+.page-detail-menu .horaires-mobile {
+    display: none;
+}
+
+
+/* VERSION MOBILE : jusqu'à 768 pixels */
+
+@media screen and (max-width: 768px) {
+
+    /* Header mobile */
+
+    .page-detail-menu header {
+        width: 94%;
+        margin: 12px auto 0;
+        padding: 27px 14px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-detail-menu header > a {
+        font-size: 22px;
+    }
+
+    .page-detail-menu header .navigation-pc {
+        display: none;
+    }
+
+    .page-detail-menu header .menu-mobile {
+        display: block;
+        color: #FFFFFF;
+    }
+
+    .page-detail-menu .menu-mobile summary {
+        font-size: 17px;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-detail-menu .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+        z-index: 10;
+    }
+
+    .page-detail-menu .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+
+    /* Titre et description */
+
+    .page-detail-menu main {
+        width: 94%;
+        max-width: none;
+        padding: 26px 0 22px;
+    }
+
+    .page-detail-menu .introduction-detail {
+        margin: 0 14px 30px;
+    }
+
+    .page-detail-menu .introduction-detail h1 {
+        color: #000000;
+        font-size: 28px;
+        margin-bottom: 4px;
+    }
+
+    .page-detail-menu .introduction-detail p {
+        color: #2B1B0F;
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+
+    /* Photo principale sur mobile */
+
+    .page-detail-menu .presentation-detail {
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+
+    .page-detail-menu .photo-principale {
+        width: 100%;
+    }
+
+    .page-detail-menu .photo-principale img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+
+    /* Carte des informations */
+
+    .page-detail-menu .informations-detail {
+        width: 100%;
+        background-color: #FFF8ED;
+        border: none;
+        border-radius: 16px;
+        padding: 32px 32px 28px;
+    }
+
+    .page-detail-menu .theme-menu,
+    .page-detail-menu .regime-menu,
+    .page-detail-menu .minimum-personnes,
+    .page-detail-menu .stock-menu {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .page-detail-menu .minimum-personnes img,
+    .page-detail-menu .stock-menu img {
+        display: none;
+    }
+
+    .page-detail-menu .minimum-personnes strong,
+    .page-detail-menu .stock-menu strong {
+        font-weight: 700;
+    }
+
+
+    /* Prix : 250 € pour 10 personnes */
+
+    .page-detail-menu .mot-prix {
+        display: none;
+    }
+
+    .page-detail-menu .prix-detail {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 18px;
+        margin-bottom: 8px;
+    }
+
+    .page-detail-menu .montant-menu,
+    .page-detail-menu .precision-prix {
+        color: #000000;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+
+    /* Bouton Commander */
+
+    .page-detail-menu .bouton-commander {
+        width: 100%;
+        padding: 12px 8px;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+
+    /* Composition et conditions verticales */
+
+    .page-detail-menu .composition-et-conditions {
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 30px;
+    }
+
+    .page-detail-menu .composition-menu,
+    .page-detail-menu .conditions-menu {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+
+    /* Composition du menu */
+
+    .page-detail-menu .composition-menu {
+        padding: 16px 16px 25px;
+    }
+
+    .page-detail-menu .composition-menu h2,
+    .page-detail-menu .conditions-menu h2 {
+        font-size: 18px;
+        margin-bottom: 26px;
+    }
+
+    .page-detail-menu .plat-menu {
+        padding-bottom: 15px;
+        margin-bottom: 22px;
+        border-bottom: 1px solid #2B1B0F;
+    }
+
+    .page-detail-menu .plat-menu h3 {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    .page-detail-menu .plat-menu p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .page-detail-menu .dernier-plat {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+
+    /* Conditions du menu */
+
+    .page-detail-menu .conditions-menu {
+        padding: 22px;
+    }
+
+    .page-detail-menu .conditions-menu h2 {
+        margin-bottom: 28px;
+    }
+
+    .page-detail-menu .liste-conditions li {
+        display: block;
+        font-size: 16px;
+        line-height: 1.4;
+        margin-bottom: 22px;
+    }
+
+    .page-detail-menu .liste-conditions img {
+        display: none;
+    }
+
+    /* La quatrième condition reste visible seulement sur PC */
+
+    .page-detail-menu .liste-conditions .condition-complementaire {
+        display: none;
+    }
+
+
+    /* Trois photos côte à côte */
+
+    .page-detail-menu .autres-photos h2 {
+        font-size: 24px;
+        margin: 0 4px 12px;
+    }
+
+    .page-detail-menu .galerie-photos {
+        gap: 12px;
+    }
+
+    .page-detail-menu .galerie-photos img {
+        width: 31.5%;
+        height: 154px;
+        object-fit: cover;
+        border-radius: 14px;
+    }
+
+
+    /* Pied de page mobile */
+
+    .page-detail-menu footer {
+        padding: 28px 0 14px;
+    }
+
+    .page-detail-menu .footer-contenu {
+        width: 88%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-detail-menu .footer-contenu section {
+        width: 100%;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    .page-detail-menu footer h2 {
+        font-size: 21px;
+        margin-bottom: 18px;
+    }
+
+    .page-detail-menu .horaires-pc {
+        display: none;
+    }
+
+    .page-detail-menu .horaires-mobile {
+        display: block;
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
+    .page-detail-menu .informations-legales p {
+        font-size: 17px;
+        margin-bottom: 22px;
+    }
+
+    .page-detail-menu .informations-legales a {
+        font-weight: 400;
+    }
+}
+
+
+/* Petits téléphones */
+
+@media screen and (max-width: 360px) {
+
+    .page-detail-menu header > a {
+        font-size: 18px;
+    }
+
+    .page-detail-menu .menu-mobile summary {
+        font-size: 15px;
+    }
+}

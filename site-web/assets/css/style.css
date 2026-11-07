@@ -1,0 +1,480 @@
+
+/* Réglages de base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    color: #2B1B0F;
+}
+
+
+/* En-tête et navigation */
+
+header {
+    background-color: #2B1B0F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 20px;
+}
+
+header a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+header > a {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+}
+
+header nav a {
+    font-size: 18px;
+}
+
+
+/* Largeur du contenu de l'accueil */
+
+main {
+    width: 97%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
+/* Couleur dorée utilisée dans les titres */
+
+.texte-dore {
+    color: #F4B400;
+}
+
+
+/* Présentation de l'entreprise */
+
+.presentation {
+    background-color: #2B1B0F;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0 20px;
+    padding: 30px 50px;
+}
+
+.presentation-texte {
+    width: 47%;
+}
+
+.presentation-texte h1 {
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.presentation-texte p {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.presentation-texte .sous-titre {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.presentation-texte .description {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.presentation-texte a {
+    display: inline-block;
+    background-color: #F4B400;
+    color: #2B1B0F;
+    text-decoration: none;
+    padding: 14px 20px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.presentation img {
+    width: 40%;
+    max-width: 520px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+
+/* Les trois points forts */
+
+.savoir-faire {
+    background-color: #FFF8ED;
+    margin: 0 0 20px;
+    padding: 20px 30px 60px;
+}
+
+.savoir-faire h2 {
+    color: #2B1B0F;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.savoir-faire-liste {
+    display: flex;
+    list-style: none;
+}
+
+.savoir-faire-liste li {
+    width: 33.33%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 10px;
+}
+
+.savoir-faire-liste img {
+    width: 55px;
+    height: auto;
+}
+
+.savoir-faire-liste .separateur {
+    border-left: 1px solid #E0E0E0;
+}
+
+
+/* Avis des clients */
+
+.avis-clients {
+    margin: 20px 0 50px;
+}
+
+.avis-clients h2 {
+    color: #2B1B0F;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.liste-avis {
+    display: flex;
+    justify-content: space-between;
+}
+
+.avis {
+    background-color: #FFF8ED;
+    width: 43%;
+    padding: 35px 45px;
+}
+
+.avis p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.avis blockquote {
+    margin-top: 12px;
+}
+
+
+/* Pied de page */
+
+footer {
+    background-color: #2B1B0F;
+    color: #FFFFFF;
+    padding: 35px 0;
+}
+
+.footer-contenu {
+    width: 97%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+footer h2 {
+    color: #F4B400;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    margin-bottom: 4px;
+}
+
+footer a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.informations-legales p {
+    margin-bottom: 25px;
+}
+
+
+/* Éléments mobiles cachés sur ordinateur */
+
+.page-accueil header .menu-mobile {
+    display: none;
+}
+
+.page-accueil .presentation img.fond-presentation-mobile {
+    display: none;
+}
+
+.page-accueil .photo-buffet-mobile {
+    display: none;
+}
+
+
+/* Version mobile de la page d'accueil */
+
+@media screen and (max-width: 768px) {
+
+    /* Header mobile */
+
+    .page-accueil header {
+        width: 94%;
+        margin: 14px auto 0;
+        padding: 22px 14px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-accueil header > a {
+        font-size: 22px;
+    }
+
+    .page-accueil header .navigation-pc {
+        display: none;
+    }
+
+    .page-accueil header .menu-mobile {
+        display: block;
+        color: #FFFFFF;
+    }
+
+    .page-accueil .menu-mobile summary {
+        font-size: 17px;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-accueil .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .page-accueil .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+
+    /* Largeur du contenu mobile */
+
+    .page-accueil main {
+        width: 100%;
+        max-width: none;
+    }
+
+
+    /* Présentation avec la photo en fond */
+
+    .page-accueil .presentation {
+        display: block;
+        width: 94%;
+        margin: 24px auto 20px;
+        padding: 24px 16px;
+        border-radius: 16px;
+        background-color: #2B1B0F;
+        background-image: url("../images/buffet-fond.png");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .page-accueil .presentation-texte {
+        width: 100%;
+        padding: 8px;
+        background-color: rgba(43, 27, 15, 0.35);
+        border-radius: 8px;
+    }
+
+    .page-accueil .presentation-texte h1 {
+        font-size: 28px;
+        margin-bottom: 14px;
+    }
+
+    .page-accueil .presentation-texte .sous-titre {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 18px;
+    }
+
+    .page-accueil .presentation-texte .description {
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .page-accueil .presentation-texte a {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+        padding: 14px 8px;
+        border-radius: 14px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .page-accueil .presentation img.photo-accueil-pc {
+        display: none;
+    }
+
+
+    /* Grande photo du buffet */
+
+    .page-accueil .photo-buffet-mobile {
+        display: block;
+        width: 94%;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 20px;
+        border-radius: 16px;
+    }
+
+
+    /* Notre savoir-faire sur mobile */
+
+    .page-accueil .savoir-faire {
+        margin: 0;
+        padding: 20px 3% 30px;
+    }
+
+    .page-accueil .savoir-faire h2 {
+        color: #000000;
+        font-size: 32px;
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    .page-accueil .savoir-faire-liste {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .page-accueil .savoir-faire-liste li {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 14px;
+        padding: 20px 14px;
+        background-color: #F4F4F4;
+        border-radius: 14px;
+        text-align: left;
+        font-size: 19px;
+    }
+
+    .page-accueil .savoir-faire-liste img {
+        width: 40px;
+        height: auto;
+    }
+
+    .page-accueil .savoir-faire-liste .separateur {
+        border-left: none;
+    }
+
+
+    /* Avis des clients sur mobile */
+
+    .page-accueil .avis-clients {
+        margin: 0;
+        padding: 12px 3% 30px;
+        background-color: #FFF8ED;
+    }
+
+    .page-accueil .avis-clients h2 {
+        color: #000000;
+        font-size: 27px;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    .page-accueil .liste-avis {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .page-accueil .avis {
+        width: 100%;
+        background-color: #F4F4F4;
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .page-accueil .avis p {
+        font-size: 16px;
+    }
+
+
+    /* Pied de page sur mobile */
+
+    .page-accueil footer {
+        padding: 28px 0;
+    }
+
+    .page-accueil .footer-contenu {
+        width: 86%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-accueil .footer-contenu section {
+        width: 100%;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    .page-accueil footer h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .page-accueil footer li {
+        font-size: 17px;
+        margin-bottom: 4px;
+    }
+
+    .page-accueil .informations-legales p {
+        font-size: 17px;
+        margin-bottom: 24px;
+    }
+
+    .page-accueil .informations-legales a {
+        font-weight: 400;
+    }
+
+}
