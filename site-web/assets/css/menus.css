@@ -474,3 +474,20 @@ body.page-menus {
         font-size: 15px;
     }
 }
+
+
+
+/* Cache les menus qui ne correspondent pas aux filtres */
+.carte-menu.menu-cache {
+    display: none;
+}
+
+
+
+/* Cache le message quand des menus sont disponibles */
+.page-menus #aucun-menu.menu-cache {
+    display: none;
+}
+
+
+
