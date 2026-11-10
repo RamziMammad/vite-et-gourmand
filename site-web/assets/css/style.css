@@ -232,7 +232,8 @@ footer a {
 
 /* Éléments mobiles cachés sur ordinateur */
 
-.page-accueil header .menu-mobile {
+.page-accueil header .menu-mobile,
+.page-accueil .horaires-mobile {
     display: none;
 }
 
@@ -441,6 +442,14 @@ footer a {
 
 
     /* Pied de page sur mobile */
+
+    .page-accueil .horaires-pc {
+        display: none;
+    }
+
+    .page-accueil .horaires-mobile {
+        display: block;
+    }
 
     .page-accueil footer {
         padding: 28px 0;

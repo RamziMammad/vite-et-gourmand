@@ -1,5 +1,5 @@
 
-/* Page détail du Menu Classique */
+/* Page détail des menus */
 
 body.page-detail-menu {
     min-height: 100vh;
@@ -7,7 +7,7 @@ body.page-detail-menu {
     flex-direction: column;
 }
 
-/* Largeur du contenu */
+/* Largeur du contenu principal */
 
 .page-detail-menu main {
     width: 94%;
@@ -16,7 +16,7 @@ body.page-detail-menu {
     padding: 45px 0 12px;
 }
 
-/* Titre et petite description */
+/* Titre et description */
 
 .introduction-detail {
     margin-bottom: 36px;
@@ -34,7 +34,7 @@ body.page-detail-menu {
     font-size: 20px;
 }
 
-/* La photo à gauche, les informations à droite */
+/* Grande photo et informations du menu */
 
 .presentation-detail {
     display: flex;
@@ -53,7 +53,7 @@ body.page-detail-menu {
     border-radius: 8px;
 }
 
-/* Cadre du prix et de la commande */
+/* Cadre des informations */
 
 .informations-detail {
     width: 33%;
@@ -70,14 +70,14 @@ body.page-detail-menu {
     margin-bottom: 22px;
 }
 
+/* Nombre minimum et stock */
+
 .minimum-personnes,
 .stock-menu {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
-/* Sur PC, Minimum et Stock restent en écriture normale */
 
 .minimum-personnes strong,
 .stock-menu strong {
@@ -89,6 +89,8 @@ body.page-detail-menu {
     width: 36px;
     height: auto;
 }
+
+/* Prix du menu */
 
 .montant-menu {
     font-size: 34px;
@@ -116,7 +118,7 @@ body.page-detail-menu {
     padding: 14px 12px;
 }
 
-/* Les deux blocs sous la photo */
+/* Composition et conditions du menu */
 
 .composition-et-conditions {
     display: flex;
@@ -170,7 +172,7 @@ body.page-detail-menu {
     margin-bottom: 10px;
 }
 
-/* Conditions et leurs icônes */
+/* Conditions et icônes */
 
 .liste-conditions {
     list-style: none;
@@ -189,13 +191,15 @@ body.page-detail-menu {
     height: auto;
 }
 
-/* Galerie des trois photos */
+/* Titre de la galerie */
 
 .autres-photos h2 {
     color: #000000;
     font-size: 28px;
     margin-bottom: 12px;
 }
+
+/* Galerie des photos du Menu Classique */
 
 .galerie-photos {
     display: flex;
@@ -210,19 +214,49 @@ body.page-detail-menu {
     border-radius: 8px;
 }
 
-/* Le footer reste en bas quand la page est courte */
+/* Galerie du Menu Végétarien */
+
+/* Trois cadres de dimensions identiques */
+
+.page-detail-menu .galerie-photos .vignette-vegetarienne {
+    width: 31%;
+    height: 270px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+}
+
+/* Première image : quiche aux légumes */
+
+.page-detail-menu .galerie-photos .photo-quiche {
+    background-image: url("../images/detail-menu/Menu végétarien – Quiche aux légumes.png");
+}
+
+/* Deuxième image : menu végétarien */
+
+.page-detail-menu .galerie-photos .photo-menu {
+    background-image: url("../images/detail-menu/menu.png");
+}
+
+/* Troisième image : gratin végétal */
+
+.page-detail-menu .galerie-photos .photo-gratin {
+    background-image: url("../images/detail-menu/Gratin végétal et tarte citron meringuée.png");
+}
+
+/* Positionnement du pied de page */
 
 .page-detail-menu footer {
     margin-top: auto;
 }
 
-/* Éléments réservés à la version mobile */
+/* Éléments cachés sur ordinateur */
 
 .page-detail-menu header .menu-mobile,
 .page-detail-menu .horaires-mobile {
     display: none;
 }
-
 
 /* VERSION MOBILE : jusqu'à 768 pixels */
 
@@ -273,14 +307,15 @@ body.page-detail-menu {
         gap: 14px;
     }
 
-
-    /* Titre et description */
+    /* Contenu principal */
 
     .page-detail-menu main {
         width: 94%;
         max-width: none;
         padding: 26px 0 22px;
     }
+
+    /* Titre et description */
 
     .page-detail-menu .introduction-detail {
         margin: 0 14px 30px;
@@ -298,8 +333,7 @@ body.page-detail-menu {
         line-height: 1.3;
     }
 
-
-    /* Photo principale sur mobile */
+    /* Photo principale sur téléphone */
 
     .page-detail-menu .presentation-detail {
         flex-direction: column;
@@ -313,13 +347,11 @@ body.page-detail-menu {
 
     .page-detail-menu .photo-principale img {
         width: 100%;
-        height: 220px;
-        object-fit: cover;
+        height: auto;
         border-radius: 16px;
     }
 
-
-    /* Carte des informations */
+    /* Carte d'informations */
 
     .page-detail-menu .informations-detail {
         width: 100%;
@@ -337,6 +369,8 @@ body.page-detail-menu {
         margin-bottom: 10px;
     }
 
+    /* Icônes masquées sur mobile */
+
     .page-detail-menu .minimum-personnes img,
     .page-detail-menu .stock-menu img {
         display: none;
@@ -347,8 +381,7 @@ body.page-detail-menu {
         font-weight: 700;
     }
 
-
-    /* Prix : 250 € pour 10 personnes */
+    /* Affichage du prix */
 
     .page-detail-menu .mot-prix {
         display: none;
@@ -370,7 +403,6 @@ body.page-detail-menu {
         margin: 0;
     }
 
-
     /* Bouton Commander */
 
     .page-detail-menu .bouton-commander {
@@ -380,7 +412,6 @@ body.page-detail-menu {
         font-size: 16px;
         font-weight: 400;
     }
-
 
     /* Composition et conditions verticales */
 
@@ -396,8 +427,7 @@ body.page-detail-menu {
         border-radius: 16px;
     }
 
-
-    /* Composition du menu */
+    /* Composition */
 
     .page-detail-menu .composition-menu {
         padding: 16px 16px 25px;
@@ -432,8 +462,7 @@ body.page-detail-menu {
         padding-bottom: 0;
     }
 
-
-    /* Conditions du menu */
+    /* Conditions */
 
     .page-detail-menu .conditions-menu {
         padding: 22px;
@@ -454,14 +483,13 @@ body.page-detail-menu {
         display: none;
     }
 
-    /* La quatrième condition reste visible seulement sur PC */
+    /* Quatrième condition masquée sur mobile */
 
     .page-detail-menu .liste-conditions .condition-complementaire {
         display: none;
     }
 
-
-    /* Trois photos côte à côte */
+    /* Galerie du Menu Classique */
 
     .page-detail-menu .autres-photos h2 {
         font-size: 24px;
@@ -474,11 +502,17 @@ body.page-detail-menu {
 
     .page-detail-menu .galerie-photos img {
         width: 31.5%;
-        height: 154px;
-        object-fit: cover;
+        height: auto;
         border-radius: 14px;
     }
 
+    /* Galerie du Menu Végétarien */
+
+    .page-detail-menu .galerie-photos .vignette-vegetarienne {
+        width: 31.5%;
+        height: 154px;
+        border-radius: 14px;
+    }
 
     /* Pied de page mobile */
 
@@ -522,7 +556,6 @@ body.page-detail-menu {
         font-weight: 400;
     }
 }
-
 
 /* Petits téléphones */
 
