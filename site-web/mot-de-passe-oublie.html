@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Réinitialisez votre mot de passe Vite & Gourmand.">
+
+    <title>Mot de passe oublié - Vite & Gourmand</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/connexion.css">
+</head>
+
+<body class="page-connexion">
+
+    <!-- En-tête -->
+    <header>
+
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
+        <!-- Navigation sur ordinateur -->
+        <nav class="navigation-pc" aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Navigation sur téléphone -->
+        <details class="menu-mobile">
+            <summary>☰ Menu</summary>
+
+            <nav aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </details>
+
+    </header>
+
+    <!-- Contenu principal -->
+    <main id="contenu-principal">
+
+        <section class="section-connexion">
+
+            <h1>Mot de passe oublié ?</h1>
+
+            <p class="introduction-connexion">
+                Saisissez votre adresse mail pour recevoir
+                un lien de réinitialisation de votre mot de passe.
+            </p>
+
+            <!-- Formulaire -->
+            <form class="formulaire-connexion">
+
+                <div class="champ-connexion">
+
+                    <label for="email">Adresse mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                    >
+
+                </div>
+
+                <!-- Bouton provisoire -->
+                <button type="button" class="bouton-connexion">
+                    Envoyer le lien
+                </button>
+
+            </form>
+
+            <!-- Retour à la connexion -->
+            <p class="lien-inscription">
+                <a href="connexion.html">
+                    Retour à la connexion
+                </a>
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+
+        <div class="footer-contenu">
+
+            <section>
+
+                <h2>Horaires d'ouverture</h2>
+
+                <!-- Horaires sur ordinateur -->
+                <ul class="horaires-pc">
+                    <li>Lundi : 09h00 - 18h00</li>
+                    <li>Mardi : 09h00 - 18h00</li>
+                    <li>Mercredi : 09h00 - 18h00</li>
+                    <li>Jeudi : 09h00 - 18h00</li>
+                    <li>Vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+                <!-- Horaires sur téléphone -->
+                <ul class="horaires-mobile">
+                    <li>Lundi au vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+            </section>
+
+            <div class="informations-legales">
+
+                <p>
+                    <a href="mentions-legales.html">
+                        Mentions légales
+                    </a>
+                </p>
+
+                <p>
+                    <a href="conditions-generales-de-vente.html">
+                        Conditions générales de vente
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

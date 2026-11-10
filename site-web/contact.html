@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Vite & Gourmand, traiteur à Bordeaux.">
+
+    <title>Contact - Vite & Gourmand</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/contact.css">
+</head>
+
+<body class="page-contact">
+
+    <!-- En-tête -->
+    <header>
+
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
+        <!-- Navigation sur ordinateur -->
+        <nav class="navigation-pc" aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Navigation sur téléphone -->
+        <details class="menu-mobile">
+            <summary>☰ Menu</summary>
+
+            <nav aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </details>
+
+    </header>
+
+    <!-- Contenu principal -->
+    <main id="contenu-principal">
+
+        <section class="section-contact">
+
+            <h1>Contactez-nous</h1>
+
+            <p class="introduction-contact">
+                Vous avez une question ?
+                Envoyez-nous un message.
+            </p>
+
+            <!-- Formulaire de contact -->
+            <form class="formulaire-contact">
+
+                <!-- Titre -->
+                <div class="champ-contact">
+                    <label for="titre">Titre</label>
+
+                    <input
+                        type="text"
+                        id="titre"
+                        name="titre"
+                        required
+                    >
+                </div>
+
+                <!-- Adresse mail -->
+                <div class="champ-contact">
+                    <label for="email">Adresse mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                    >
+                </div>
+
+                <!-- Description -->
+                <div class="champ-contact">
+                    <label for="description">Votre message</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="6"
+                        required
+                    ></textarea>
+                </div>
+
+                <!-- Bouton provisoire -->
+                <button type="button" class="bouton-contact">
+                    Envoyer le message
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+
+        <div class="footer-contenu">
+
+            <section>
+
+                <h2>Horaires d'ouverture</h2>
+
+                <!-- Horaires sur ordinateur -->
+                <ul class="horaires-pc">
+                    <li>Lundi : 09h00 - 18h00</li>
+                    <li>Mardi : 09h00 - 18h00</li>
+                    <li>Mercredi : 09h00 - 18h00</li>
+                    <li>Jeudi : 09h00 - 18h00</li>
+                    <li>Vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+                <!-- Horaires sur téléphone -->
+                <ul class="horaires-mobile">
+                    <li>Lundi au vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+            </section>
+
+            <div class="informations-legales">
+
+                <p>
+                    <a href="mentions-legales.html">
+                        Mentions légales
+                    </a>
+                </p>
+
+                <p>
+                    <a href="conditions-generales-de-vente.html">
+                        Conditions générales de vente
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Connectez-vous à votre compte Vite & Gourmand.">
+
+    <title>Connexion - Vite & Gourmand</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/connexion.css">
+</head>
+
+<body class="page-connexion">
+
+    <!-- En-tête du site -->
+    <header>
+
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
+        <!-- Navigation sur ordinateur -->
+        <nav class="navigation-pc" aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Navigation sur téléphone -->
+        <details class="menu-mobile">
+            <summary>☰ Menu</summary>
+
+            <nav aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </details>
+
+    </header>
+
+    <!-- Contenu principal -->
+    <main id="contenu-principal">
+
+        <section class="section-connexion">
+
+            <h1>Connexion</h1>
+
+            <p class="introduction-connexion">
+                Connectez-vous à votre compte Vite & Gourmand.
+            </p>
+
+            <!-- Formulaire de connexion -->
+            <form class="formulaire-connexion">
+
+                <!-- Adresse mail -->
+                <div class="champ-connexion">
+                    <label for="email">Adresse mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                    >
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="champ-connexion">
+                    <label for="mot-de-passe">Mot de passe</label>
+
+                    <input
+                        type="password"
+                        id="mot-de-passe"
+                        name="mot_de_passe"
+                        required
+                    >
+                </div>
+
+                <!-- Mot de passe oublié -->
+                <p class="lien-mot-de-passe">
+                    <a href="mot-de-passe-oublie.html">
+                        Mot de passe oublié ?
+                    </a>
+                </p>
+
+                <!-- Bouton provisoire -->
+                <button type="button" class="bouton-connexion">
+                    Se connecter
+                </button>
+
+            </form>
+
+            <!-- Lien vers l'inscription -->
+            <p class="lien-inscription">
+                Vous n'avez pas de compte ?
+                <a href="inscription.html">Créer un compte</a>
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+
+        <div class="footer-contenu">
+
+            <section>
+
+                <h2>Horaires d'ouverture</h2>
+
+                <!-- Horaires sur ordinateur -->
+                <ul class="horaires-pc">
+                    <li>Lundi : 09h00 - 18h00</li>
+                    <li>Mardi : 09h00 - 18h00</li>
+                    <li>Mercredi : 09h00 - 18h00</li>
+                    <li>Jeudi : 09h00 - 18h00</li>
+                    <li>Vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+                <!-- Horaires sur téléphone -->
+                <ul class="horaires-mobile">
+                    <li>Lundi au vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+            </section>
+
+            <div class="informations-legales">
+
+                <p>
+                    <a href="mentions-legales.html">
+                        Mentions légales
+                    </a>
+                </p>
+
+                <p>
+                    <a href="conditions-generales-de-vente.html">
+                        Conditions générales de vente
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
