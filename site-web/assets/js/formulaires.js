@@ -17,7 +17,6 @@ function preparerFormulaire(nom, message) {
     });
 }
 
-preparerFormulaire("inscription", "La création de compte est temporairement indisponible.");
 preparerFormulaire("connexion", "La connexion est temporairement indisponible.");
 preparerFormulaire("contact", "L’envoi de messages est temporairement indisponible.");
 preparerFormulaire("mot-de-passe-oublie", "La réinitialisation du mot de passe est temporairement indisponible.");

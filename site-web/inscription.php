@@ -1,3 +1,64 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$message = '';
+$compte_cree = false;
+$nom = '';
+$prenom = '';
+$telephone = '';
+$email = '';
+$adresse = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message = 'Le formulaire a expiré. Veuillez actualiser la page et réessayer.';
+    } else {
+        $nom = trim($_POST['nom'] ?? '');
+        $prenom = trim($_POST['prenom'] ?? '');
+        $telephone = trim($_POST['telephone'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $adresse = trim($_POST['adresse'] ?? '');
+        $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+
+        if ($nom === '' || $prenom === '' || $telephone === '' || $email === '' || $adresse === '' || $mot_de_passe === '') {
+            $message = 'Veuillez remplir tous les champs.';
+        } elseif (strlen($nom) > 100 || strlen($prenom) > 100 || strlen($telephone) > 30 || strlen($email) > 190 || strlen($adresse) > 255) {
+            $message = 'Certains champs sont trop longs.';
+        } elseif (!preg_match('/^[^@\s]+@[^@\s]+\.[^@\s]+$/', $email)) {
+            $message = 'Veuillez saisir une adresse mail valide.';
+        } elseif (strlen($mot_de_passe) < 10 ||
+            !preg_match('/[a-z]/', $mot_de_passe) ||
+            !preg_match('/[A-Z]/', $mot_de_passe) ||
+            !preg_match('/[0-9]/', $mot_de_passe) ||
+            !preg_match('/[^a-zA-Z0-9]/', $mot_de_passe)) {
+            $message = 'Le mot de passe doit avoir 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
+        } else {
+            require __DIR__ . '/php/connexion.php';
+
+            try {
+                // On vérifie si cette adresse mail possède déjà un compte.
+                $requete = $pdo->prepare('SELECT id FROM utilisateurs WHERE email = ?');
+                $requete->execute([$email]);
+
+                if ($requete->fetch()) {
+                    $message = 'Cette adresse mail est déjà utilisée.';
+                } else {
+                    $mot_de_passe_protege = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+                    $requete = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, telephone, email, adresse_postale, mot_de_passe) VALUES (?, ?, ?, ?, ?, ?)');
+                    $requete->execute([$nom, $prenom, $telephone, $email, $adresse, $mot_de_passe_protege]);
+                    $compte_cree = true;
+                }
+            } catch (PDOException $erreur) {
+                $message = 'L’inscription n’a pas pu être effectuée. Veuillez réessayer plus tard.';
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -50,37 +111,42 @@
 
         <section class="section-inscription">
 
-            <h1>Créer un compte</h1>
+            <?php if ($compte_cree) { ?>
+                <h1>Inscription réussie</h1>
+            <?php } else { ?>
+                <h1>Créer un compte</h1>
+                <p class="introduction-inscription">
+                    Inscrivez-vous pour commander nos menus.
+                </p>
+            <?php } ?>
 
-            <p class="introduction-inscription">
-                Inscrivez-vous pour commander nos menus.
-            </p>
-
-            <form class="formulaire-inscription" id="formulaire-inscription">
+            <?php if (!$compte_cree) { ?>
+            <form class="formulaire-inscription" id="formulaire-inscription" action="inscription.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
 
                 <div class="champ-inscription">
                     <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" required>
+                    <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'); ?>" required>
                 </div>
 
                 <div class="champ-inscription">
                     <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" required>
+                    <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($prenom, ENT_QUOTES, 'UTF-8'); ?>" required>
                 </div>
 
                 <div class="champ-inscription">
                     <label for="telephone">Téléphone</label>
-                    <input type="tel" id="telephone" name="telephone" required>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo htmlspecialchars($telephone, ENT_QUOTES, 'UTF-8'); ?>" required>
                 </div>
 
                 <div class="champ-inscription">
                     <label for="email">Adresse mail</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>" required>
                 </div>
 
                 <div class="champ-inscription">
                     <label for="adresse">Adresse postale</label>
-                    <input type="text" id="adresse" name="adresse" required>
+                    <input type="text" id="adresse" name="adresse" value="<?php echo htmlspecialchars($adresse, ENT_QUOTES, 'UTF-8'); ?>" required>
                 </div>
 
                 <div class="champ-inscription">
@@ -107,17 +173,24 @@
                 </button>
 
             </form>
+            <?php } ?>
 
-            <p
-                class="message-formulaire"
-                id="message-inscription"
-                aria-live="polite"
-            ></p>
-
-            <p class="lien-connexion">
-                Vous avez déjà un compte ?
-                <a href="connexion.html">Se connecter</a>
+            <p class="message-formulaire" id="message-inscription" aria-live="polite">
+                <?php if ($compte_cree) { ?>
+                    Votre compte a bien été créé. Vous pourrez bientôt vous connecter à votre espace.
+                <?php } else { echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); } ?>
             </p>
+
+            <?php if ($compte_cree) { ?>
+                <p class="lien-connexion">
+                    <a href="index.html">Retour à l’accueil</a>
+                </p>
+            <?php } else { ?>
+                <p class="lien-connexion">
+                    Vous avez déjà un compte ?
+                    <a href="connexion.html">Se connecter</a>
+                </p>
+            <?php } ?>
 
         </section>
     </main>
