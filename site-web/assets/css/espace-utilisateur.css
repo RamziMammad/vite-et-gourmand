@@ -1,0 +1,328 @@
+
+/* Espace utilisateur */
+
+body.page-espace-utilisateur {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-espace-utilisateur .menu-mobile,
+.page-espace-utilisateur .horaires-mobile {
+    display: none;
+}
+
+.page-espace-utilisateur main {
+    width: 94%;
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    flex: 1;
+}
+
+.introduction-espace {
+    margin-bottom: 30px;
+}
+
+.introduction-espace h1 {
+    font-size: 36px;
+    color: #202938;
+    margin-bottom: 12px;
+}
+
+.introduction-espace p {
+    font-size: 18px;
+    color: #71665E;
+}
+
+.organisation-espace {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.navigation-espace {
+    width: 25%;
+    background-color: #FFF8ED;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.navigation-espace h2 {
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.navigation-espace ul {
+    list-style: none;
+}
+
+.navigation-espace li {
+    margin-bottom: 18px;
+}
+
+.navigation-espace a {
+    color: #2B1B0F;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sections-espace {
+    width: 73%;
+}
+
+.bloc-espace {
+    background-color: #FFF8ED;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+}
+
+.bloc-espace h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.bloc-espace p {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.carte-commande {
+    background-color: #FFFFFF;
+    border: 1px solid #E9DDCC;
+    border-radius: 10px;
+    padding: 22px;
+}
+
+.entete-commande {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.entete-commande h3 {
+    font-size: 20px;
+}
+
+.statut-commande {
+    background-color: #F4B400;
+    color: #2B1B0F;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.actions-commande {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.bouton-action,
+.bouton-secondaire,
+.bouton-enregistrer {
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bouton-action,
+.bouton-enregistrer {
+    background-color: #F4B400;
+    color: #000000;
+    border: none;
+}
+
+.bouton-secondaire {
+    background-color: #FFFFFF;
+    color: #2B1B0F;
+    border: 1px solid #888888;
+}
+
+.champ-profil {
+    margin-bottom: 20px;
+}
+
+.champ-profil label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.champ-profil input {
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid #888888;
+    background-color: #FFFFFF;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+}
+
+.ligne-profil {
+    display: flex;
+    gap: 15px;
+}
+
+.ligne-profil .champ-profil {
+    width: 50%;
+}
+
+.bouton-enregistrer {
+    width: 100%;
+}
+
+.suivi-contenu {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #E9DDCC;
+    border-radius: 10px;
+}
+
+.suivi-contenu h3 {
+    font-size: 19px;
+    margin-bottom: 18px;
+}
+
+/* Version mobile ou tablette */
+@media screen and (max-width: 768px) {
+
+    .page-espace-utilisateur header {
+        width: 94%;
+        margin: 14px auto 0;
+        padding: 22px 14px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-espace-utilisateur header > a {
+        font-size: 22px;
+    }
+
+    .page-espace-utilisateur .navigation-pc {
+        display: none;
+    }
+
+    .page-espace-utilisateur .menu-mobile {
+        display: block;
+        color: #FFFFFF;
+    }
+
+    .page-espace-utilisateur .menu-mobile summary {
+        font-size: 17px;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-espace-utilisateur .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+        z-index: 10;
+    }
+
+    .page-espace-utilisateur .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .page-espace-utilisateur main {
+        width: 94%;
+        margin: 30px auto 45px;
+    }
+
+    .introduction-espace h1 {
+        font-size: 28px;
+    }
+
+    .introduction-espace p {
+        font-size: 16px;
+    }
+
+    .organisation-espace {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navigation-espace,
+    .sections-espace {
+        width: 100%;
+    }
+
+    .navigation-espace,
+    .bloc-espace {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .bloc-espace h2 {
+        font-size: 21px;
+    }
+
+    .entete-commande {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .actions-commande {
+        flex-direction: column;
+    }
+
+    .ligne-profil {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .ligne-profil .champ-profil {
+        width: 100%;
+    }
+
+    .page-espace-utilisateur .horaires-pc {
+        display: none;
+    }
+
+    .page-espace-utilisateur .horaires-mobile {
+        display: block;
+    }
+
+    .page-espace-utilisateur footer {
+        padding: 28px 0;
+    }
+
+    .page-espace-utilisateur .footer-contenu {
+        width: 86%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-espace-utilisateur .footer-contenu section {
+        width: 100%;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    .page-espace-utilisateur footer h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .page-espace-utilisateur footer li {
+        font-size: 17px;
+    }
+
+    .page-espace-utilisateur .informations-legales p {
+        font-size: 17px;
+        margin-bottom: 24px;
+    }
+
+    .page-espace-utilisateur .informations-legales a {
+        font-weight: 400;
+    }
+}

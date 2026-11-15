@@ -1,0 +1,39 @@
+/* Suivi et avis */
+
+.page-espace-utilisateur .commande-suivante {
+    margin-top: 20px;
+}
+
+.page-espace-utilisateur .historique-statut {
+    padding-left: 24px;
+}
+
+.page-espace-utilisateur .historique-statut li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.page-espace-utilisateur .champ-profil textarea,
+.page-espace-utilisateur .champ-profil select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #888888;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+    background-color: #FFFFFF;
+}
+
+.page-espace-utilisateur .champ-profil textarea {
+    resize: vertical;
+}
+
+.page-espace-utilisateur .commande-suivante a {
+    color: #2B1B0F;
+}
+
+/* Version mobile ou tablette */
+@media screen and (max-width: 768px) {
+    .page-espace-utilisateur .historique-statut {
+        padding-left: 20px;
+    }
+}

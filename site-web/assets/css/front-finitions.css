@@ -1,0 +1,84 @@
+
+/* Petites corrections communes */
+
+.menu-inactif {
+    display: none !important;
+}
+
+.message-formulaire {
+    margin-top: 14px;
+    font-size: 15px;
+    color: #5e3b22;
+}
+
+.page-detail-menu .galerie-photos img {
+    width: 31%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Version mobile ou tablette */
+
+@media screen and (max-width: 768px) {
+    .page-detail-menu .galerie-photos img {
+        width: 31.5%;
+        height: 154px;
+    }
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.select-commande-client {
+    display: block;
+    margin: 12px 0;
+    padding: 8px;
+    max-width: 100%;
+}
+
+#message-validation-commande {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Accessibilité : clavier et contrastes */
+
+.lien-evitement {
+    position: absolute;
+    left: 12px;
+    top: -100px;
+    z-index: 100;
+    padding: 12px 16px;
+    background-color: #FFFFFF;
+    color: #2B1B0F;
+    font-weight: bold;
+    border: 2px solid #2B1B0F;
+}
+
+.lien-evitement:focus {
+    top: 12px;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+summary:focus {
+    outline: 3px solid #946200;
+    outline-offset: 3px;
+}
+
+header a:focus,
+header summary:focus,
+footer a:focus,
+.navigation-employe a:focus,
+.navigation-espace a:focus {
+    outline-color: #FFDF7A;
+}
+
+.page-detail-menu .plat-menu h3 {
+    color: #946200;
+}

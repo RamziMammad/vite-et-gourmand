@@ -1,24 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez le Menu Classique de Vite & Gourmand, traiteur à Bordeaux.">
+    <meta name="description" content="Découvrez les menus de Vite & Gourmand, traiteur à Bordeaux.">
+
     <title>Menu Classique - Vite & Gourmand</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/detail-menu.css">
+    <link rel="stylesheet" href="./assets/css/front-finitions.css">
 </head>
 
 <body class="page-detail-menu">
 
-    <!-- En-tête commun au site -->
-    <header>
-        <a href="index.html">Vite <span class="texte-dore">&amp;</span> Gourmand</a>
+    <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
-        <!-- Navigation de l'ordinateur -->
+    <header>
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -28,9 +32,9 @@
             </ul>
         </nav>
 
-        <!-- Navigation du téléphone -->
         <details class="menu-mobile">
             <summary>☰ Menu</summary>
+
             <nav aria-label="Navigation mobile">
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
@@ -44,19 +48,26 @@
 
     <main id="contenu-principal">
 
-        <!-- Titre du menu -->
         <section class="introduction-detail">
+
             <h1>Menu Classique</h1>
-            <p>Un repas convivial composé d'une entrée, d'un plat et d'un dessert</p>
+
+            <p>
+                Un repas convivial composé d'une entrée,
+                d'un plat et d'un dessert
+            </p>
+
         </section>
 
-        <!-- Grande photo et informations -->
-        <section class="presentation-detail" aria-label="Présentation du Menu Classique">
+        <section
+            class="presentation-detail"
+            aria-label="Présentation du Menu Classique"
+        >
 
             <div class="photo-principale">
                 <img
                     src="assets/images/menus/Menu classique _ poulet roti.png"
-                    alt="Poulet rôti accompagné de tomates mozzarella et d'une tarte aux pommes"
+                    alt="Poulet rôti avec tomates mozzarella et tarte aux pommes"
                 >
             </div>
 
@@ -71,23 +82,38 @@
                 </p>
 
                 <p class="minimum-personnes">
-                    <img src="assets/images/menus/Icône d’équipe avec badge 10+.png" alt="">
-                    <span><strong>Minimum</strong> : 10 personnes</span>
+                    <img
+                        src="assets/images/menus/Icône d’équipe avec badge 10+.png"
+                        alt=""
+                    >
+
+                    <span>
+                        <strong>Minimum</strong> : 10 personnes
+                    </span>
                 </p>
 
                 <p class="stock-menu">
-                    <img src="assets/images/detail-menu/Icône de stock en boîtes empilées.png" alt="">
-                    <span><strong>Stock</strong> : 5 commandes</span>
+                    <img
+                        src="assets/images/detail-menu/Icône de stock en boîtes empilées.png"
+                        alt=""
+                    >
+
+                    <span>
+                        <strong>Stock</strong> : 5 commandes
+                    </span>
                 </p>
 
                 <div class="prix-detail">
+
                     <p class="montant-menu">
                         <strong>250 €</strong>
                     </p>
 
                     <p class="precision-prix">
-                        <span class="mot-prix">Prix </span>pour 10 personnes
+                        <span class="mot-prix">Prix </span>
+                        pour 10 personnes
                     </p>
+
                 </div>
 
                 <a class="bouton-commander" href="commande.html">
@@ -97,11 +123,10 @@
             </div>
         </section>
 
-        <!-- Composition et conditions du menu -->
         <div class="composition-et-conditions">
 
-            <!-- Composition -->
             <section class="composition-menu">
+
                 <h2>Composition du menu</h2>
 
                 <div class="plat-menu">
@@ -121,18 +146,21 @@
                     <p>Tarte aux pommes</p>
                     <p>Allergènes : blé, œufs, lait</p>
                 </div>
+
             </section>
 
-            <!-- Conditions -->
             <section class="conditions-menu">
+
                 <h2>Conditions du menu</h2>
 
                 <ul class="liste-conditions">
+
                     <li>
                         <img
                             src="assets/images/detail-menu/Icône dorée de réservation et horloge.png"
                             alt=""
                         >
+
                         <span>
                             Réservation : au moins 72 h à l'avance.
                         </span>
@@ -143,8 +171,10 @@
                             src="assets/images/detail-menu/Icône de boîte de stockage réfrigérée.png"
                             alt=""
                         >
+
                         <span>
-                            Conservation : respecter les consignes fournies à la livraison.
+                            Conservation : respecter les consignes
+                            fournies à la livraison.
                         </span>
                     </li>
 
@@ -154,6 +184,7 @@
                             src="assets/images/detail-menu/Icône  avec badge 10+.png"
                             alt=""
                         >
+
                         <span id="condition-minimum">
                             Minimum : 10 personnes.
                         </span>
@@ -164,47 +195,48 @@
                             src="assets/images/detail-menu/Icône checklist avec loupe d’information.png"
                             alt=""
                         >
+
                         <span>
                             Conditions à consulter avant de commander.
                         </span>
                     </li>
+
                 </ul>
             </section>
-
         </div>
 
-        <!-- Autres photos du menu -->
         <section class="autres-photos">
+
             <h2>Autres photos du menu</h2>
 
             <div class="galerie-photos">
+
                 <img
                     src="assets/images/detail-menu/Poulet rôti, légumes et jus doré.png"
-                    alt="Poulet rôti servi avec des pommes de terre et des légumes"
+                    alt="Poulet rôti avec pommes de terre et légumes"
                 >
 
                 <img
                     src="assets/images/detail-menu/Salade caprese au basilic frais.png"
-                    alt="Entrée de tomates et mozzarella accompagnée de basilic"
+                    alt="Tomates et mozzarella accompagnées de basilic"
                 >
 
                 <img
                     src="assets/images/detail-menu/Tarte aux pommes caramélisées.png"
-                    alt="Tarte aux pommes dorée présentée sur un plat"
+                    alt="Tarte aux pommes dorée"
                 >
+
             </div>
         </section>
 
     </main>
 
-    <!-- Pied de page -->
     <footer>
         <div class="footer-contenu">
 
             <section>
                 <h2>Horaires d'ouverture</h2>
 
-                <!-- Horaires sur ordinateur -->
                 <ul class="horaires-pc">
                     <li>Lundi : 09h00 - 18h00</li>
                     <li>Mardi : 09h00 - 18h00</li>
@@ -215,7 +247,6 @@
                     <li>Dimanche : Fermé</li>
                 </ul>
 
-                <!-- Horaires sur téléphone -->
                 <ul class="horaires-mobile">
                     <li>Lundi au vendredi : 09h00 - 18h00</li>
                     <li>Samedi : 09h00 - 17h00</li>
@@ -224,8 +255,11 @@
             </section>
 
             <div class="informations-legales">
+
                 <p>
-                    <a href="mentions-legales.html">Mentions légales</a>
+                    <a href="mentions-legales.html">
+                        Mentions légales
+                    </a>
                 </p>
 
                 <p>
@@ -233,12 +267,15 @@
                         Conditions générales de vente
                     </a>
                 </p>
-            </div>
 
+            </div>
         </div>
     </footer>
 
+    <script src="./assets/js/donnees.js"></script>
+    <script src="./assets/js/donnees-exemples.js"></script>
+    <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/affichage.js"></script>
     <script src="./assets/js/detail-menu.js"></script>
-
 </body>
 </html>

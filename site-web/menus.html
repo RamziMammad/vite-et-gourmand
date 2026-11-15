@@ -1,28 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez les menus de Vite & Gourmand, traiteur à Bordeaux, pour vos événements.">
+    <meta name="description" content="Découvrez les menus de Vite & Gourmand, traiteur à Bordeaux.">
 
     <title>Tous nos menus - Vite & Gourmand</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/menus.css">
+    <link rel="stylesheet" href="./assets/css/front-finitions.css">
 </head>
 
 <body class="page-menus">
 
-    <!-- En-tête commun -->
+    <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
     <header>
         <a href="index.html">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
-        <!-- Navigation sur ordinateur -->
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -32,7 +32,6 @@
             </ul>
         </nav>
 
-        <!-- Menu déroulant sur téléphone -->
         <details class="menu-mobile">
             <summary>☰ Menu</summary>
 
@@ -47,26 +46,21 @@
         </details>
     </header>
 
-
     <main id="contenu-principal">
 
-        <!-- Titre de la page -->
         <section class="introduction-menus">
             <h1>Tous nos menus</h1>
             <p>Découvrez nos menus pour vos événements à Bordeaux</p>
         </section>
 
-
         <div class="contenu-menus">
 
-            <!-- Filtres à gauche sur PC -->
             <section class="filtres-menus">
 
                 <h2>Filtrer les menus</h2>
 
                 <form id="formulaire-filtres">
 
-                    <!-- Prix maximum -->
                     <div class="champ-filtre">
                         <label for="prix-max">Prix maximum</label>
 
@@ -79,8 +73,6 @@
                         >
                     </div>
 
-
-                    <!-- Fourchette de prix -->
                     <div class="champ-filtre">
                         <label for="prix-min">Fourchette de prix</label>
 
@@ -102,11 +94,10 @@
                                 placeholder="Max €"
                                 aria-label="Prix maximum de la fourchette"
                             >
+
                         </div>
                     </div>
 
-
-                    <!-- Thème -->
                     <div class="champ-filtre">
                         <label for="theme">Thème</label>
 
@@ -119,8 +110,6 @@
                         </select>
                     </div>
 
-
-                    <!-- Régime alimentaire -->
                     <div class="champ-filtre">
                         <label for="regime">Régime</label>
 
@@ -132,8 +121,6 @@
                         </select>
                     </div>
 
-
-                    <!-- Nombre de personnes -->
                     <div class="champ-filtre">
                         <label for="personnes">Personnes minimum</label>
 
@@ -150,15 +137,12 @@
                 </form>
             </section>
 
-
-            <!-- Les menus disponibles -->
             <section class="resultats-menus">
 
                 <h2>Nos menus disponibles</h2>
 
                 <div class="cartes-menus">
 
-                    <!-- Menu classique -->
                     <article class="carte-menu" id="menu-classique">
 
                         <img
@@ -170,7 +154,8 @@
                         <h3>Menu Classique</h3>
 
                         <p class="description-menu">
-                            Tomates-mozzarella, poulet rôti et tarte aux pommes.
+                            Tomates-mozzarella, poulet rôti
+                            et tarte aux pommes.
                         </p>
 
                         <div class="informations-menu">
@@ -188,6 +173,7 @@
                                     src="assets/images/menus/Étiquette dorée avec symbole euro.png"
                                     alt=""
                                 >
+
                                 <span>
                                     <span class="prix-libelle">Prix : </span>
                                     <strong>250 €</strong>
@@ -196,20 +182,21 @@
 
                         </div>
 
-                        <a class="bouton-menu" href="detail-menu.html?menu=classique">
+                        <a
+                            class="bouton-menu"
+                            href="detail-menu.html?menu=classique"
+                        >
                             Voir le menu
                         </a>
 
                     </article>
 
-
-                    <!-- Menu végétarien -->
                     <article class="carte-menu" id="menu-vegetarien">
 
                         <img
                             class="photo-menu"
                             src="assets/images/menus/végétarien gourmand aux champignons.png"
-                            alt="Risotto aux champignons accompagné d'une salade et d'un dessert"
+                            alt="Risotto aux champignons avec salade et dessert"
                         >
 
                         <h3>Menu Végétarien</h3>
@@ -234,6 +221,7 @@
                                     src="assets/images/menus/Étiquette dorée avec symbole euro.png"
                                     alt=""
                                 >
+
                                 <span>
                                     <span class="prix-libelle">Prix : </span>
                                     <strong>200 €</strong>
@@ -242,32 +230,30 @@
 
                         </div>
 
-                        <a class="bouton-menu" href="detail-menu.html?menu=vegetarien">
+                        <a
+                            class="bouton-menu"
+                            href="detail-menu.html?menu=vegetarien"
+                        >
                             Voir le menu
                         </a>
 
                     </article>
-
                 </div>
 
-                <p id="aucun-menu" class="menu-cache">Aucun menu ne correspond à votre recherche.</p>
+                <p id="aucun-menu" class="menu-cache">
+                    Aucun menu ne correspond à votre recherche.
+                </p>
 
             </section>
-
         </div>
     </main>
 
-
-    <!-- Pied de page commun -->
     <footer>
-
         <div class="footer-contenu">
 
             <section>
-
                 <h2>Horaires d'ouverture</h2>
 
-                <!-- Horaires complets sur PC -->
                 <ul class="horaires-pc">
                     <li>Lundi : 09h00 - 18h00</li>
                     <li>Mardi : 09h00 - 18h00</li>
@@ -278,21 +264,17 @@
                     <li>Dimanche : Fermé</li>
                 </ul>
 
-                <!-- Présentation courte sur mobile -->
                 <ul class="horaires-mobile">
                     <li>Lundi au vendredi : 09h00 - 18h00</li>
                     <li>Samedi : 09h00 - 17h00</li>
                     <li>Dimanche : Fermé</li>
                 </ul>
-
             </section>
 
             <div class="informations-legales">
 
                 <p>
-                    <a href="mentions-legales.html">
-                        Mentions légales
-                    </a>
+                    <a href="mentions-legales.html">Mentions légales</a>
                 </p>
 
                 <p>
@@ -304,9 +286,12 @@
             </div>
 
         </div>
-
     </footer>
 
+    <script src="./assets/js/donnees.js"></script>
+    <script src="./assets/js/donnees-exemples.js"></script>
+    <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/affichage.js"></script>
     <script src="./assets/js/menus.js"></script>
 </body>
 </html>

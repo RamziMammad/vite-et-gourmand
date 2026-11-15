@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestion de Vite & Gourmand.">
+
+    <title>Espace employé - Vite & Gourmand</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/espace-employe.css">
+    <link rel="stylesheet" href="./assets/css/front-finitions.css">
+    <link rel="stylesheet" href="./assets/css/gestion.css">
+</head>
+
+<body class="page-espace-employe">
+
+    <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
+    <header>
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
+        <nav class="navigation-pc" aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <details class="menu-mobile">
+            <summary>☰ Menu</summary>
+            <nav aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </details>
+    </header>
+
+    <main id="contenu-principal">
+
+        <section class="introduction-employe">
+            <h1>Espace employé</h1>
+            <p>Retrouvez les commandes et les informations utiles à l'équipe.</p>
+        </section>
+
+        <nav class="navigation-employe" aria-label="Rubriques employé">
+            <a href="#commandes">Commandes</a>
+            <a href="#gestion-commandes">Gestion des commandes</a>
+            <a href="#menus">Menus</a>
+            <a href="#plats">Plats</a>
+            <a href="#horaires">Horaires</a>
+            <a href="#avis">Avis clients</a>
+        </nav>
+
+        <section id="commandes" class="bloc-employe">
+
+            <h2>Commandes</h2>
+
+            <p class="explication-employe">
+                Retrouvez une commande par statut ou par client.
+            </p>
+
+            <div class="filtres-employe">
+
+                <div class="champ-employe">
+                    <label for="filtre-statut">Statut</label>
+
+                    <select id="filtre-statut">
+                        <option value="tous">Tous les statuts</option>
+                        <option value="attente">En attente</option>
+                        <option value="acceptee">Acceptée</option>
+                        <option value="preparation">En préparation</option>
+                        <option value="livraison">En cours de livraison</option>
+                        <option value="livree">Livrée</option>
+                        <option value="materiel">En attente du retour de matériel</option>
+                        <option value="terminee">Terminée</option>
+                        <option value="annulee">Annulée</option>
+                    </select>
+                </div>
+
+                <div class="champ-employe">
+                    <label for="filtre-client">Client</label>
+
+                    <select id="filtre-client">
+                        <option value="tous">Tous les clients</option>
+                        <option value="camille">Camille Martin</option>
+                        <option value="thomas">Thomas Bernard</option>
+                        <option value="lea">Léa Dubois</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="nombre-resultats" aria-live="polite">
+                3 commandes affichées
+            </p>
+
+            <article id="commande-001" class="fiche-commande">
+                <div class="entete-fiche">
+                    <h3>Commande n° 001</h3>
+                    <strong id="etat-commande-001">En attente</strong>
+                </div>
+
+                <p><strong>Client :</strong> Camille Martin</p>
+                <p><strong>Menu :</strong> Classique</p>
+                <p><strong>Personnes :</strong> <span id="personnes-commande-001">10</span></p>
+                <p><strong>Prestation :</strong> <span id="prestation-commande-001">20 novembre 2026</span></p>
+                <p><strong>Montant indicatif :</strong> <span id="montant-commande-001">250 €</span></p>
+
+                <p><strong>Historique :</strong></p>
+                <ul id="historique-commande-001" class="historique-employe">
+                    <li>En attente (commande d'exemple)</li>
+                </ul>
+            </article>
+
+            <article id="commande-002" class="fiche-commande">
+                <div class="entete-fiche">
+                    <h3>Commande n° 002</h3>
+                    <strong id="etat-commande-002">Acceptée</strong>
+                </div>
+
+                <p><strong>Client :</strong> Thomas Bernard</p>
+                <p><strong>Menu :</strong> Végétarien</p>
+                <p><strong>Personnes :</strong> <span id="personnes-commande-002">8</span></p>
+                <p><strong>Prestation :</strong> <span id="prestation-commande-002">21 novembre 2026</span></p>
+                <p><strong>Montant indicatif :</strong> <span id="montant-commande-002">200 €</span></p>
+
+                <p><strong>Historique :</strong></p>
+                <ul id="historique-commande-002" class="historique-employe">
+                    <li>Acceptée (commande d'exemple)</li>
+                </ul>
+            </article>
+
+            <article id="commande-003" class="fiche-commande">
+                <div class="entete-fiche">
+                    <h3>Commande n° 003</h3>
+                    <strong id="etat-commande-003">En préparation</strong>
+                </div>
+
+                <p><strong>Client :</strong> Léa Dubois</p>
+                <p><strong>Menu :</strong> Classique</p>
+                <p><strong>Personnes :</strong> <span id="personnes-commande-003">15</span></p>
+                <p><strong>Prestation :</strong> <span id="prestation-commande-003">24 novembre 2026</span></p>
+                <p><strong>Montant indicatif :</strong> <span id="montant-commande-003">337,50 €</span></p>
+
+                <p><strong>Historique :</strong></p>
+                <ul id="historique-commande-003" class="historique-employe">
+                    <li>En préparation (commande d'exemple)</li>
+                </ul>
+            </article>
+
+        </section>
+
+        <!-- Gestion des commandes -->
+        <section id="gestion-commandes" class="bloc-employe">
+
+            <h2>Gestion des commandes</h2>
+
+            <form id="formulaire-statut" class="formulaire-employe">
+
+                <h3>Mettre à jour un statut</h3>
+
+                <div class="filtres-employe">
+
+                    <div class="champ-employe">
+                        <label for="statut-commande">Commande</label>
+
+                        <select id="statut-commande">
+                            <option value="commande-001">Commande n° 001 — Camille Martin</option>
+                            <option value="commande-002">Commande n° 002 — Thomas Bernard</option>
+                            <option value="commande-003">Commande n° 003 — Léa Dubois</option>
+                        </select>
+                    </div>
+
+                    <div class="champ-employe">
+                        <label for="nouveau-statut">Nouveau statut</label>
+
+                        <select id="nouveau-statut" required>
+                            <option value="">Choisir un statut</option>
+                            <option value="acceptee">Acceptée</option>
+                            <option value="preparation">En préparation</option>
+                            <option value="livraison">En cours de livraison</option>
+                            <option value="livree">Livrée</option>
+                            <option value="materiel">En attente du retour de matériel</option>
+                            <option value="terminee">Terminée</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p>
+                    Le changement de statut suit les étapes de préparation,
+                    de livraison et, si nécessaire, de retour du matériel.
+                </p>
+
+                <button type="submit" class="bouton-employe">
+                    Mettre à jour le statut
+                </button>
+
+                <p id="message-statut" class="message-employe" aria-live="polite"></p>
+            </form>
+
+            <form id="formulaire-annulation" class="formulaire-employe">
+
+                <h3>Annuler une commande</h3>
+
+                <p>
+                    Vous devez contacter le client avant de confirmer l'annulation.
+                </p>
+
+                <div class="champ-employe champ-complet">
+                    <label for="annulation-commande">Commande concernée</label>
+
+                    <select id="annulation-commande">
+                        <option value="commande-001">Commande n° 001 — Camille Martin</option>
+                        <option value="commande-002">Commande n° 002 — Thomas Bernard</option>
+                        <option value="commande-003">Commande n° 003 — Léa Dubois</option>
+                    </select>
+                </div>
+
+                <div class="champ-employe champ-complet">
+                    <label for="mode-contact">Mode de contact</label>
+
+                    <select id="mode-contact" required>
+                        <option value="">Choisir</option>
+                        <option value="téléphone">Téléphone</option>
+                        <option value="e-mail">E-mail</option>
+                    </select>
+                </div>
+
+                <div class="champ-employe champ-complet">
+                    <label for="motif-annulation">Motif de l'annulation</label>
+
+                    <textarea id="motif-annulation" rows="3" required></textarea>
+                </div>
+
+                <p class="confirmation-contact">
+                    <input type="checkbox" id="contact-effectue">
+
+                    <label for="contact-effectue">
+                        J'ai contacté le client avant l'annulation.
+                    </label>
+                </p>
+
+                <button type="submit" class="bouton-employe">
+                    Confirmer l'annulation
+                </button>
+
+                <p id="message-annulation" class="message-employe" aria-live="polite"></p>
+            </form>
+
+            <form
+                id="form-modifier-commande-employe"
+                class="formulaire-employe grille-gestion"
+            >
+                <h3>Modifier une commande</h3>
+
+                <label>
+                    Commande
+                    <select id="modifier-commande-id">
+                        <option value="commande-001">Commande n° 001</option>
+                        <option value="commande-002">Commande n° 002</option>
+                        <option value="commande-003">Commande n° 003</option>
+                    </select>
+                </label>
+
+                <label>
+                    Personnes
+                    <input
+                        id="modifier-commande-personnes"
+                        type="number"
+                        min="1"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Date de prestation
+                    <input id="modifier-commande-date" type="date" required>
+                </label>
+
+                <label>
+                    Mode de contact
+                    <select id="modifier-contact-mode" required>
+                        <option value="">Choisir</option>
+                        <option value="telephone">Téléphone</option>
+                        <option value="email">E-mail</option>
+                    </select>
+                </label>
+
+                <label>
+                    Motif de la modification
+                    <textarea
+                        id="modifier-commande-motif"
+                        rows="2"
+                        required
+                    ></textarea>
+                </label>
+
+                <label class="case-gestion">
+                    <input
+                        id="modifier-contact-confirmation"
+                        type="checkbox"
+                        required
+                    >
+                    J'ai contacté le client.
+                </label>
+
+                <button type="submit" class="bouton-employe">
+                    Enregistrer la modification
+                </button>
+
+                <p
+                    id="message-modifier-commande"
+                    class="message-employe"
+                    aria-live="polite"
+                ></p>
+            </form>
+
+        </section>
+
+        <section id="menus" class="bloc-employe">
+
+            <h2>Menus</h2>
+
+            <form id="form-gestion-menu" class="formulaire-employe grille-gestion">
+
+                <label>
+                    Menu
+                    <select id="gestion-menu">
+                        <option value="classique">Menu Classique</option>
+                        <option value="vegetarien">Menu Végétarien</option>
+                    </select>
+                </label>
+
+                <label>
+                    Titre
+                    <input id="gestion-menu-nom" required>
+                </label>
+
+                <label>
+                    Description
+                    <textarea id="gestion-menu-description" rows="3" required></textarea>
+                </label>
+
+                <label>
+                    Thème
+                    <select id="gestion-menu-theme">
+                        <option value="classique">Classique</option>
+                        <option value="noel">Noël</option>
+                        <option value="paques">Pâques</option>
+                        <option value="evenement">Événement</option>
+                    </select>
+                </label>
+
+                <label>
+                    Régime
+                    <select id="gestion-menu-regime">
+                        <option value="classique">Classique</option>
+                        <option value="vegetarien">Végétarien</option>
+                        <option value="vegan">Végan</option>
+                    </select>
+                </label>
+
+                <label>
+                    Personnes minimum
+                    <input id="gestion-menu-min" type="number" min="1" required>
+                </label>
+
+                <label>
+                    Prix du menu (€)
+                    <input id="gestion-menu-prix" type="number" min="1" step="0.01" required>
+                </label>
+
+                <label>
+                    Stock disponible
+                    <input id="gestion-menu-stock" type="number" min="0" required>
+                </label>
+
+                <label>
+                    Conditions
+                    <textarea id="gestion-menu-conditions" rows="2" required></textarea>
+                </label>
+                <label>Délai de réservation (en heures)
+                    <input id="gestion-menu-delai" type="number" min="1" step="1" value="72" required>
+                </label>
+
+                <button type="submit" class="bouton-employe">
+                    Enregistrer le menu
+                </button>
+
+                <button
+                    type="button"
+                    id="desactiver-menu"
+                    class="bouton-secondaire-gestion"
+                >
+                    Retirer / rétablir le menu
+                </button>
+
+                <p id="message-gestion-menu" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="plats" class="bloc-employe">
+
+            <h2>Plats</h2>
+
+            <form id="form-gestion-plat" class="formulaire-employe grille-gestion">
+
+                <label>
+                    Plat à modifier
+                    <select id="gestion-plat"></select>
+                </label>
+
+                <label>
+                    Nom
+                    <input id="gestion-plat-nom" required>
+                </label>
+
+                <label>
+                    Type
+                    <select id="gestion-plat-type">
+                        <option>Entrée</option>
+                        <option>Plat</option>
+                        <option>Dessert</option>
+                    </select>
+                </label>
+
+                <label>
+                    Allergènes
+                    <input id="gestion-plat-allergenes" placeholder="Ex. lait, œufs">
+                </label>
+
+                <button type="submit" class="bouton-employe">
+                    Enregistrer le plat
+                </button>
+
+                <button
+                    type="button"
+                    id="supprimer-plat"
+                    class="bouton-secondaire-gestion"
+                >
+                    Supprimer le plat
+                </button>
+
+                <p id="message-gestion-plat" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="horaires" class="bloc-employe">
+
+            <h2>Horaires d'ouverture</h2>
+
+            <form id="form-horaires" class="formulaire-employe grille-gestion">
+
+                <label>
+                    Jour
+                    <select id="gestion-jour">
+                        <option value="0">Lundi</option>
+                        <option value="1">Mardi</option>
+                        <option value="2">Mercredi</option>
+                        <option value="3">Jeudi</option>
+                        <option value="4">Vendredi</option>
+                        <option value="5">Samedi</option>
+                        <option value="6">Dimanche</option>
+                    </select>
+                </label>
+
+                <label>
+                    Horaires (ou Fermé)
+                    <input id="gestion-horaire" required>
+                </label>
+
+                <button type="submit" class="bouton-employe">
+                    Enregistrer les horaires
+                </button>
+
+                <p id="message-horaires" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="avis" class="bloc-employe">
+
+            <h2>Avis clients</h2>
+
+            <div id="liste-gestion-avis"></div>
+
+            <p id="message-gestion-avis" aria-live="polite"></p>
+        </section>
+
+        <p class="mention-demonstration">
+            Les informations affichées sont des données de démonstration.
+            Aucun e-mail n'est envoyé.
+        </p>
+
+    </main>
+
+    <footer>
+        <div class="footer-contenu">
+
+            <section>
+                <h2>Horaires d'ouverture</h2>
+
+                <ul class="horaires-pc">
+                    <li>Lundi : 09h00 - 18h00</li>
+                    <li>Mardi : 09h00 - 18h00</li>
+                    <li>Mercredi : 09h00 - 18h00</li>
+                    <li>Jeudi : 09h00 - 18h00</li>
+                    <li>Vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+                <ul class="horaires-mobile">
+                    <li>Lundi au vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+            </section>
+
+            <div class="informations-legales">
+                <p><a href="mentions-legales.html">Mentions légales</a></p>
+
+                <p>
+                    <a href="conditions-generales-de-vente.html">
+                        Conditions générales de vente
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="./assets/js/donnees.js"></script>
+    <script src="./assets/js/donnees-exemples.js"></script>
+    <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/validation.js"></script>
+    <script src="./assets/js/employe-commandes.js"></script>
+    <script src="./assets/js/employe-gestion.js"></script>
+</body>
+</html>

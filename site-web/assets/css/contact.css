@@ -1,5 +1,5 @@
 
-/* Page Contact */
+/* Contact */
 
 body.page-contact {
     min-height: 100vh;
@@ -7,14 +7,10 @@ body.page-contact {
     flex-direction: column;
 }
 
-/* Éléments cachés sur ordinateur */
-
 .page-contact .menu-mobile,
 .page-contact .horaires-mobile {
     display: none;
 }
-
-/* Contenu principal */
 
 .page-contact main {
     width: 92%;
@@ -22,8 +18,6 @@ body.page-contact {
     margin: 50px auto 70px;
     flex: 1;
 }
-
-/* Titre et introduction */
 
 .section-contact h1 {
     color: #202938;
@@ -39,15 +33,11 @@ body.page-contact {
     margin-bottom: 30px;
 }
 
-/* Formulaire */
-
 .formulaire-contact {
     background-color: #FFF8ED;
     padding: 35px;
     border-radius: 12px;
 }
-
-/* Champs */
 
 .champ-contact {
     margin-bottom: 22px;
@@ -74,16 +64,11 @@ body.page-contact {
     height: 45px;
 }
 
-/* Champ Votre message */
-/* Taille fixe et défilement du texte */
-
 .champ-contact textarea {
     height: 150px;
     resize: none;
     overflow: auto;
 }
-
-/* Bouton Envoyer */
 
 .bouton-contact {
     width: 100%;
@@ -97,11 +82,8 @@ body.page-contact {
     cursor: pointer;
 }
 
-/* VERSION MOBILE */
-
+/* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
-
-    /* En-tête */
 
     .page-contact header {
         width: 94%;
@@ -146,8 +128,6 @@ body.page-contact {
         gap: 14px;
     }
 
-    /* Contenu mobile */
-
     .page-contact main {
         width: 94%;
         margin: 30px auto 45px;
@@ -173,8 +153,6 @@ body.page-contact {
     .champ-contact input {
         height: 42px;
     }
-
-    /* Pied de page mobile */
 
     .page-contact .horaires-pc {
         display: none;

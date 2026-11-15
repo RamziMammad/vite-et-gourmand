@@ -1,22 +1,16 @@
 
-/* Page inscription */
-
-/* En-tête et horaires mobiles cachés sur PC */
+/* Inscription */
 
 .page-inscription .menu-mobile,
 .page-inscription .horaires-mobile {
     display: none;
 }
 
-/* Contenu principal */
-
 .page-inscription main {
     width: 92%;
     max-width: 700px;
     margin: 50px auto 70px;
 }
-
-/* Titre et introduction */
 
 .section-inscription h1 {
     color: #202938;
@@ -32,15 +26,11 @@
     margin-bottom: 30px;
 }
 
-/* Formulaire */
-
 .formulaire-inscription {
     background-color: #FFF8ED;
     padding: 35px;
     border-radius: 12px;
 }
-
-/* Champs du formulaire */
 
 .champ-inscription {
     margin-bottom: 22px;
@@ -63,15 +53,11 @@
     font-size: 16px;
 }
 
-/* Indication sur le mot de passe */
-
 .aide-mot-de-passe {
     font-size: 13px;
     color: #71665E;
     margin-top: 8px;
 }
-
-/* Bouton */
 
 .bouton-inscription {
     width: 100%;
@@ -85,8 +71,6 @@
     cursor: pointer;
 }
 
-/* Lien vers la connexion */
-
 .lien-connexion {
     text-align: center;
     margin-top: 24px;
@@ -98,11 +82,8 @@
     font-weight: bold;
 }
 
-/* VERSION MOBILE */
-
+/* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
-
-    /* Header mobile */
 
     .page-inscription header {
         width: 94%;
@@ -147,8 +128,6 @@
         gap: 14px;
     }
 
-    /* Contenu mobile */
-
     .page-inscription main {
         width: 94%;
         margin: 30px auto 45px;
@@ -174,8 +153,6 @@
     .champ-inscription input {
         height: 42px;
     }
-
-    /* Pied de page mobile */
 
     .page-inscription .horaires-pc {
         display: none;

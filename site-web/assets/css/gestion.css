@@ -1,0 +1,206 @@
+
+/* Gestion */
+
+.page-legale main,
+.page-administration main {
+    width: 92%;
+    max-width: 1080px;
+    margin: 45px auto 65px;
+}
+
+.page-legale main h1,
+.page-administration main h1 {
+    color: #202938;
+    font-size: 34px;
+    margin-bottom: 24px;
+}
+
+.page-legale main section,
+.bloc-administration {
+    background: #FFF8ED;
+    padding: 25px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+}
+
+.page-legale main section h2,
+.bloc-administration h2 {
+    font-size: 23px;
+    margin-bottom: 16px;
+}
+
+.page-legale main section p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.grille-gestion {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.grille-gestion label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.grille-gestion input:not([type="checkbox"]),
+.grille-gestion textarea,
+.grille-gestion select,
+.bloc-administration input,
+.bloc-administration select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    background: white;
+    font: inherit;
+}
+
+.grille-gestion .case-gestion {
+    flex-direction: row;
+    align-items: center;
+}
+
+.bouton-secondaire-gestion {
+    padding: 11px 16px;
+    margin-left: 8px;
+    border: 1px solid #765;
+    background: white;
+    color: #2B1B0F;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.bouton-administration {
+    padding: 12px 20px;
+    background: #F4B400;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.message-administration {
+    margin-top: 12px;
+}
+
+.liste-employes article {
+    padding: 14px;
+    background: #fff;
+    margin-top: 10px;
+    border: 1px solid #eadfce;
+    border-radius: 8px;
+}
+
+.graphique-ligne {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.graphique-ligne strong {
+    width: 135px;
+}
+
+.barre-fond {
+    flex: 1;
+    background: #f1e7d7;
+    border-radius: 6px;
+}
+
+.barre-valeur {
+    height: 26px;
+    background: #F4B400;
+    border-radius: 6px;
+}
+
+.page-legale .menu-mobile,
+.page-administration .menu-mobile,
+.page-legale .horaires-mobile,
+.page-administration .horaires-mobile {
+    display: none;
+}
+
+/* Version mobile ou tablette */
+@media screen and (max-width: 768px) {
+
+    .page-legale header,
+    .page-administration header {
+        width: 94%;
+        margin: 14px auto 0;
+        padding: 22px 14px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-legale .navigation-pc,
+    .page-administration .navigation-pc,
+    .page-legale .horaires-pc,
+    .page-administration .horaires-pc {
+        display: none;
+    }
+
+    .page-legale .menu-mobile,
+    .page-administration .menu-mobile,
+    .page-legale .horaires-mobile,
+    .page-administration .horaires-mobile {
+        display: block;
+    }
+
+    .page-legale .menu-mobile,
+    .page-administration .menu-mobile {
+        color: white;
+    }
+
+    .page-legale .menu-mobile summary,
+    .page-administration .menu-mobile summary {
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-legale .menu-mobile nav,
+    .page-administration .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+        z-index: 10;
+    }
+
+    .page-legale .menu-mobile nav ul,
+    .page-administration .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+        list-style: none;
+    }
+
+    .page-legale .footer-contenu,
+    .page-administration .footer-contenu {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-legale .footer-contenu section,
+    .page-administration .footer-contenu section {
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+    }
+
+    .page-legale main,
+    .page-administration main {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .graphique-ligne {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
