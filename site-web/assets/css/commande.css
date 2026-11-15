@@ -1,0 +1,275 @@
+
+/* Commande */
+
+body.page-commande {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-commande .menu-mobile,
+.page-commande .horaires-mobile {
+    display: none;
+}
+
+.page-commande main {
+    width: 94%;
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    flex: 1;
+}
+
+.introduction-commande {
+    margin-bottom: 30px;
+}
+
+.introduction-commande h1 {
+    color: #202938;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.introduction-commande p {
+    color: #71665E;
+    font-size: 18px;
+}
+
+.contenu-commande {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.formulaire-commande {
+    width: 63%;
+}
+
+.recapitulatif-commande {
+    width: 35%;
+}
+
+.bloc-commande {
+    background-color: #FFF8ED;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+.bloc-commande h2 {
+    color: #2B1B0F;
+    font-size: 24px;
+    margin-bottom: 22px;
+}
+
+.champ-commande {
+    margin-bottom: 20px;
+}
+
+.champ-commande label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.champ-commande input,
+.champ-commande select {
+    display: block;
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    border: 1px solid #888888;
+    background-color: #FFFFFF;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+}
+
+.ligne-commande {
+    display: flex;
+    gap: 15px;
+}
+
+.ligne-commande .champ-commande {
+    width: 50%;
+}
+
+.information-commande {
+    color: #71665E;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.recapitulatif-commande {
+    background-color: #FFF8ED;
+    padding: 25px;
+    border: 1px solid #E9DDCC;
+    border-radius: 12px;
+}
+
+.recapitulatif-commande h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.recapitulatif-commande p {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+.recapitulatif-commande hr {
+    border: none;
+    border-top: 1px solid #DCCDBB;
+    margin: 20px 0;
+}
+
+.recapitulatif-commande .total-commande {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.bouton-commande {
+    width: 100%;
+    background-color: #F4B400;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Version mobile ou tablette */
+@media screen and (max-width: 768px) {
+
+    .page-commande header {
+        width: 94%;
+        margin: 14px auto 0;
+        padding: 22px 14px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-commande header > a {
+        font-size: 22px;
+    }
+
+    .page-commande .navigation-pc {
+        display: none;
+    }
+
+    .page-commande .menu-mobile {
+        display: block;
+        color: #FFFFFF;
+    }
+
+    .page-commande .menu-mobile summary {
+        font-size: 17px;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-commande .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+        z-index: 10;
+    }
+
+    .page-commande .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .page-commande main {
+        width: 94%;
+        margin: 30px auto 45px;
+    }
+
+    .introduction-commande h1 {
+        font-size: 28px;
+    }
+
+    .introduction-commande p {
+        font-size: 16px;
+    }
+
+    .contenu-commande {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .formulaire-commande,
+    .recapitulatif-commande {
+        width: 100%;
+    }
+
+    .bloc-commande,
+    .recapitulatif-commande {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .bloc-commande h2,
+    .recapitulatif-commande h2 {
+        font-size: 21px;
+    }
+
+    .ligne-commande {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .ligne-commande .champ-commande {
+        width: 100%;
+    }
+
+    .champ-commande label {
+        font-size: 15px;
+    }
+
+    .page-commande .horaires-pc {
+        display: none;
+    }
+
+    .page-commande .horaires-mobile {
+        display: block;
+    }
+
+    .page-commande footer {
+        padding: 28px 0;
+    }
+
+    .page-commande .footer-contenu {
+        width: 86%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-commande .footer-contenu section {
+        width: 100%;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    .page-commande footer h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .page-commande footer li {
+        font-size: 17px;
+    }
+
+    .page-commande .informations-legales p {
+        font-size: 17px;
+        margin-bottom: 24px;
+    }
+
+    .page-commande .informations-legales a {
+        font-weight: 400;
+    }
+}

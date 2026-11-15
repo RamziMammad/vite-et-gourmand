@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Gestion du catalogue Vite & Gourmand."
+    >
+
+    <title>Gestion du catalogue - Vite &amp; Gourmand</title>
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700"
+    >
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/gestion.css">
+    <link rel="stylesheet" href="./assets/css/front-finitions.css">
+</head>
+
+<body class="page-administration">
+
+    <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
+    <header>
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
+        <nav class="navigation-pc" aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <details class="menu-mobile">
+            <summary>☰ Menu</summary>
+
+            <nav aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </details>
+    </header>
+
+    <main id="contenu-principal">
+
+        <h1>Gestion du catalogue</h1>
+
+        <p>
+            Ajoutez des menus et choisissez leurs plats et leurs photos.
+        </p>
+
+        <section class="bloc-administration">
+
+            <h2>Menus et galeries</h2>
+
+            <form id="catalogue-formulaire" class="grille-gestion">
+
+                <label>
+                    Choisir un menu
+                    <select id="catalogue-choix"></select>
+                </label>
+
+                <label>
+                    Nom du menu
+                    <input id="catalogue-nom" required>
+                </label>
+
+                <label>
+                    Description
+                    <textarea
+                        id="catalogue-description"
+                        rows="3"
+                        required
+                    ></textarea>
+                </label>
+
+                <label>
+                    Thème
+                    <select id="catalogue-theme">
+                        <option value="classique">Classique</option>
+                        <option value="noel">Noël</option>
+                        <option value="paques">Pâques</option>
+                        <option value="evenement">Événement</option>
+                    </select>
+                </label>
+
+                <label>
+                    Régime
+                    <select id="catalogue-regime">
+                        <option value="classique">Classique</option>
+                        <option value="vegetarien">Végétarien</option>
+                        <option value="vegan">Végan</option>
+                    </select>
+                </label>
+
+                <label>
+                    Minimum de personnes
+                    <input
+                        id="catalogue-minimum"
+                        type="number"
+                        min="1"
+                        step="1"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Prix pour le minimum (€)
+                    <input
+                        id="catalogue-prix"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Stock
+                    <input
+                        id="catalogue-stock"
+                        type="number"
+                        min="0"
+                        step="1"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Délai minimum de réservation (heures)
+                    <input id="catalogue-delai" type="number" min="1" step="1" value="72" required>
+                </label>
+
+                <label>
+                    Conditions du menu
+                    <textarea
+                        id="catalogue-conditions"
+                        rows="3"
+                        required
+                    ></textarea>
+                </label>
+
+                <h3>Plats associés</h3>
+
+                <p>
+                    Un même plat peut être choisi dans plusieurs menus.
+                </p>
+
+                <label>
+                    Entrée
+                    <select id="catalogue-entree" required></select>
+                </label>
+
+                <label>
+                    Plat
+                    <select id="catalogue-plat" required></select>
+                </label>
+
+                <label>
+                    Dessert
+                    <select id="catalogue-dessert" required></select>
+                </label>
+
+                <h3>Photos du menu</h3>
+
+                <p>
+                    Sélectionnez des images disponibles dans le catalogue.
+                </p>
+
+                <label>
+                    Photo principale
+                    <select id="catalogue-photo" required></select>
+                </label>
+
+                <label>
+                    Galerie : photo 1
+                    <select id="catalogue-image-1"></select>
+                </label>
+
+                <label>
+                    Galerie : photo 2
+                    <select id="catalogue-image-2"></select>
+                </label>
+
+                <label>
+                    Galerie : photo 3
+                    <select id="catalogue-image-3"></select>
+                </label>
+
+                <label class="case-gestion">
+                    <input
+                        id="catalogue-actif"
+                        type="checkbox"
+                        checked
+                    >
+                    Menu actif
+                </label>
+
+                <button
+                    type="submit"
+                    class="bouton-administration"
+                >
+                    Enregistrer le menu
+                </button>
+
+                <button
+                    type="button"
+                    id="catalogue-retirer"
+                    class="bouton-secondaire-gestion"
+                >
+                    Retirer / rétablir le menu
+                </button>
+
+                <p id="catalogue-message" aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <section class="bloc-administration">
+
+            <h2>Créer un plat réutilisable</h2>
+
+            <form
+                id="nouveau-plat-formulaire"
+                class="grille-gestion"
+            >
+
+                <label>
+                    Nom du plat
+                    <input id="nouveau-plat-nom" required>
+                </label>
+
+                <label>
+                    Type
+                    <select id="nouveau-plat-type">
+                        <option>Entrée</option>
+                        <option>Plat</option>
+                        <option>Dessert</option>
+                    </select>
+                </label>
+
+                <label>
+                    Allergènes
+                    <input
+                        id="nouveau-plat-allergenes"
+                        placeholder="Ex. lait, œufs"
+                    >
+                </label>
+
+                <button
+                    type="submit"
+                    class="bouton-administration"
+                >
+                    Ajouter le plat
+                </button>
+
+                <p
+                    id="nouveau-plat-message"
+                    aria-live="polite"
+                ></p>
+            </form>
+
+            <p>
+                Pour modifier ou supprimer un plat existant,
+                utilisez la rubrique Plats de l'espace Employé.
+            </p>
+        </section>
+
+        <p>
+            <a href="espace-employe.html">
+                Retour à l'espace Employé
+            </a>
+            —
+            <a href="menus.html">Voir tous les menus</a>
+        </p>
+
+    </main>
+
+    <footer>
+        <div class="footer-contenu">
+
+            <section>
+                <h2>Horaires d'ouverture</h2>
+
+                <ul class="horaires-pc">
+                    <li>Lundi : 09h00 - 18h00</li>
+                    <li>Mardi : 09h00 - 18h00</li>
+                    <li>Mercredi : 09h00 - 18h00</li>
+                    <li>Jeudi : 09h00 - 18h00</li>
+                    <li>Vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+                <ul class="horaires-mobile">
+                    <li>Lundi au vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+            </section>
+
+            <div class="informations-legales">
+                <p>
+                    <a href="mentions-legales.html">
+                        Mentions légales
+                    </a>
+                </p>
+
+                <p>
+                    <a href="conditions-generales-de-vente.html">
+                        Conditions générales de vente
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/donnees.js"></script>
+    <script src="./assets/js/donnees-exemples.js"></script>
+    <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/catalogue.js"></script>
+</body>
+</html>

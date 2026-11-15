@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,18 +11,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/connexion.css">
+    <link rel="stylesheet" href="./assets/css/front-finitions.css">
 </head>
 
 <body class="page-connexion">
 
-    <!-- En-tête du site -->
-    <header>
+    <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
+    <header>
         <a href="index.html">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
-        <!-- Navigation sur ordinateur -->
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -33,7 +32,6 @@
             </ul>
         </nav>
 
-        <!-- Navigation sur téléphone -->
         <details class="menu-mobile">
             <summary>☰ Menu</summary>
 
@@ -46,10 +44,8 @@
                 </ul>
             </nav>
         </details>
-
     </header>
 
-    <!-- Contenu principal -->
     <main id="contenu-principal">
 
         <section class="section-connexion">
@@ -60,10 +56,8 @@
                 Connectez-vous à votre compte Vite & Gourmand.
             </p>
 
-            <!-- Formulaire de connexion -->
-            <form class="formulaire-connexion">
+            <form class="formulaire-connexion" id="formulaire-connexion">
 
-                <!-- Adresse mail -->
                 <div class="champ-connexion">
                     <label for="email">Adresse mail</label>
 
@@ -75,7 +69,6 @@
                     >
                 </div>
 
-                <!-- Mot de passe -->
                 <div class="champ-connexion">
                     <label for="mot-de-passe">Mot de passe</label>
 
@@ -87,40 +80,38 @@
                     >
                 </div>
 
-                <!-- Mot de passe oublié -->
                 <p class="lien-mot-de-passe">
                     <a href="mot-de-passe-oublie.html">
                         Mot de passe oublié ?
                     </a>
                 </p>
 
-                <!-- Bouton provisoire -->
-                <button type="button" class="bouton-connexion">
+                <button type="submit" class="bouton-connexion">
                     Se connecter
                 </button>
 
             </form>
 
-            <!-- Lien vers l'inscription -->
+            <p
+                class="message-formulaire"
+                id="message-connexion"
+                aria-live="polite"
+            ></p>
+
             <p class="lien-inscription">
                 Vous n'avez pas de compte ?
                 <a href="inscription.html">Créer un compte</a>
             </p>
 
         </section>
-
     </main>
 
-    <!-- Pied de page -->
     <footer>
-
         <div class="footer-contenu">
 
             <section>
-
                 <h2>Horaires d'ouverture</h2>
 
-                <!-- Horaires sur ordinateur -->
                 <ul class="horaires-pc">
                     <li>Lundi : 09h00 - 18h00</li>
                     <li>Mardi : 09h00 - 18h00</li>
@@ -131,34 +122,30 @@
                     <li>Dimanche : Fermé</li>
                 </ul>
 
-                <!-- Horaires sur téléphone -->
                 <ul class="horaires-mobile">
                     <li>Lundi au vendredi : 09h00 - 18h00</li>
                     <li>Samedi : 09h00 - 17h00</li>
                     <li>Dimanche : Fermé</li>
                 </ul>
-
             </section>
 
             <div class="informations-legales">
-
                 <p>
-                    <a href="mentions-legales.html">
-                        Mentions légales
-                    </a>
+                    <a href="mentions-legales.html">Mentions légales</a>
                 </p>
-
                 <p>
                     <a href="conditions-generales-de-vente.html">
                         Conditions générales de vente
                     </a>
                 </p>
-
             </div>
 
         </div>
-
     </footer>
 
+    <script src="./assets/js/donnees.js"></script>
+    <script src="./assets/js/donnees-exemples.js"></script>
+    <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/formulaires.js"></script>
 </body>
 </html>

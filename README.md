@@ -1,105 +1,66 @@
-Vite & Gourmand
+# Vite & Gourmand
 
+## Présentation du projet
 
-Présentation
+Vite & Gourmand est un site de traiteur imaginé pour l'ECF Développeur Web et Web Mobile de Studi. L'entreprise se trouve à Bordeaux. Le but du site est de présenter les menus et de permettre aux clients de préparer une commande en ligne.
 
+Le projet avance en deux parties : d'abord les pages et les interactions côté navigateur, puis le développement côté serveur et les bases de données.
 
+## État du projet
 
-Vite & Gourmand est un projet que je réalise dans le cadre de mon ECF chez Studi, pour ma formation de développeur web.
+La partie front-end est en place, avec 14 pages HTML, les feuilles CSS, les images et 15 fichiers JavaScript regroupés par fonctionnalité.
 
+On peut notamment :
 
-Le but est de créer un site pour une entreprise de traiteur située à Bordeaux. Elle est tenue par Julie et José depuis 25 ans.
+- consulter les menus et utiliser cinq filtres sans recharger la page ;
+- afficher la composition d'un menu, ses allergènes, ses conditions et ses photos ;
+- préparer une commande et voir le calcul du prix, de la remise et des frais de livraison ;
+- tester les espaces utilisateur, employé et administrateur avec des données de démonstration ;
+- simuler le suivi des commandes, les avis clients et la gestion du catalogue.
 
+Pour le moment, les comptes et les commandes ne sont **pas enregistrés sur un vrai serveur**. Certaines données sont gardées dans le navigateur avec `localStorage` pour tester les écrans. Le mode démonstration est indiqué sur la page de connexion. Il ne faut pas utiliser de vraies données personnelles dans ce mode.
 
-Sur le site, les visiteurs pourront consulter les menus, voir les détails des plats et passer des commandes.
+## Technologies
 
+- HTML5 pour les pages ;
+- CSS3 pour la mise en forme et l'affichage sur mobile ;
+- JavaScript pour les filtres, les formulaires et les interactions ;
+- XAMPP et Apache pour lancer le site en local.
 
-Les outils utilisés
+Pour le back-end, la solution envisagée est PHP avec PDO, MySQL pour les données relationnelles et une base NoSQL pour la partie demandée dans l'énoncé.
 
-Pour ce projet, j'utilise plusieurs outils :
+## Lancer le site en local
 
-HTML pour construire les pages.
+1. Installer XAMPP si ce n'est pas déjà fait.
+2. Placer le dossier du projet `vite-et-gourmand` dans `C:\xampp\htdocs\`.
+3. Vérifier que les pages se trouvent bien dans `C:\xampp\htdocs\vite-et-gourmand\site-web\`.
+4. Ouvrir XAMPP et démarrer **Apache**.
+5. Dans le navigateur, ouvrir :
 
-CSS pour la mise en page et les couleurs.
+   `http://localhost/vite-et-gourmand/site-web/index.html`
 
-JavaScript pour rendre le site interactif.
+Il n'y a pas encore de base de données à importer pour utiliser cette version du front-end.
 
-PHP pour gérer le fonctionnement côté serveur.
+Si le dossier a un autre nom, il faut adapter l'adresse dans le navigateur.
 
-MySQL pour la base de données relationnelle.
+## Organisation des fichiers
 
-Une base NoSQL pour les données demandées dans l'ECF.
+Le dossier `site-web` contient les pages HTML et un dossier `assets` :
 
-Figma pour les maquettes.
+- `assets/css` : les styles des pages ;
+- `assets/images` : les images et les icônes ;
+- `assets/js` : les scripts JavaScript.
 
-VS Code pour écrire le code.
+Les scripts sont séparés par sujet : menus, commande, espace client, espace employé, administration et données de démonstration. Cette organisation permet de retrouver plus facilement une partie du code.
 
-XAMPP pour faire fonctionner le projet en local.
+## Vérifications du front-end
 
-Git et GitHub pour sauvegarder les différentes versions du projet.
+Les principaux points à contrôler dans Brave sont les filtres des menus, le détail des deux menus, les calculs de commande, le parcours en démonstration, le suivi des statuts et l'affichage sur mobile.
 
-Le PHP et les bases de données ne sont pas encore mis en place.
+Le site doit encore être vérifié en conditions réelles dans le navigateur, notamment pour l'accessibilité et les différents formats d'écran. La présence des pages ne signifie pas à elle seule que toute l'application est terminée.
 
+## Suite du projet
 
+La prochaine étape est de relier les pages à un vrai back-end : inscription et connexion sécurisées, rôles utilisateur/employé/administrateur, enregistrement des menus et commandes, envoi des e-mails, bases de données SQL et NoSQL, puis tests et déploiement.
 
-Ce qui a été fait
-
-J'ai commencé par l'analyse des besoins et les maquettes sur Figma.
-
-Ensuite, j'ai réalisé les trois premières pages du site :
-
-index.html : page d'accueil.
-
-menus.html : page avec les menus et les filtres.
-
-detail-menu.html : page qui affiche les informations d'un menu.
-
-J'ai également fait les versions pour ordinateur et téléphone avec le CSS.
-
-Il reste encore à développer les fonctionnalités en JavaScript, les comptes utilisateurs, les commandes et la partie administration.
-
-
-
-Comment lancer le site en local
-
-Pour récupérer et ouvrir le projet sur un ordinateur :
-
-Installer Git et XAMPP.
-
-Ouvrir un terminal dans le dossier C:\xampp\htdocs.
-
-Télécharger le projet avec cette commande :
-
-git clone -b develop https://github.com/RamziMammad/vite-et-gourmand.git
-
-Ouvrir XAMPP et démarrer Apache.
-
-Dans le navigateur, aller sur :
-
-http://localhost/vite-et-gourmand/site-web/index.html
-
-Pour le moment, cette méthode permet de consulter les pages HTML et CSS. Les étapes d'installation de la base de données seront ajoutées lorsque le back-end sera terminé.
-
-
-
-
-Organisation du projet
-
-Les fichiers du site se trouvent dans le dossier site-web.
-
-Les fichiers CSS sont dans assets/css, les images dans assets/images et les fichiers JavaScript dans assets/js.
-
-Pour Git, j'utilise une branche main, une branche develop et des branches feature pour travailler sur les différentes fonctionnalités.
-
-
-
-
-
-
-Ce qu'il reste à faire
-
-La suite sera de rendre les filtres fonctionnels avec JavaScript, puis de développer la partie PHP et les bases de données.
-
-Il faudra aussi tester le site, préparer les documents demandés pour l'ECF et mettre l'application en ligne.
-
-Ce README sera mis à jour au fur et à mesure de l'avancement du projet.
+Le dépôt Git sert à conserver l'historique du travail. Les changements sont réalisés sur des branches de fonctionnalités, puis intégrés dans `develop` après vérification et dans la branche principale lorsque la version est prête.

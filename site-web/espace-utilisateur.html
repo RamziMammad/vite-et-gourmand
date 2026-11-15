@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultez vos commandes et gérez votre compte Vite & Gourmand.">
+
+    <title>Mon espace - Vite & Gourmand</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/espace-utilisateur.css">
+    <link rel="stylesheet" href="./assets/css/suivi-avis.css">
+    <link rel="stylesheet" href="./assets/css/front-finitions.css">
+</head>
+
+<body class="page-espace-utilisateur">
+
+    <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
+
+    <header>
+        <a href="index.html">
+            Vite <span class="texte-dore">&amp;</span> Gourmand
+        </a>
+
+        <nav class="navigation-pc" aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <details class="menu-mobile">
+            <summary>☰ Menu</summary>
+
+            <nav aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </details>
+    </header>
+
+    <main id="contenu-principal">
+
+        <section class="introduction-espace">
+            <h1>Mon espace</h1>
+
+            <p>
+                Retrouvez vos commandes et gérez
+                vos informations personnelles.
+            </p>
+        </section>
+
+        <div class="organisation-espace">
+
+            <nav class="navigation-espace" aria-label="Mon espace utilisateur">
+
+                <h2>Mon compte</h2>
+
+                <ul>
+                    <li><a href="#mes-commandes">Mes commandes</a></li>
+                    <li><a href="#mes-informations">Mes informations</a></li>
+                    <li><a href="#suivi-commande">Suivi de commande</a></li>
+                    <li><a href="#avis-client">Mes avis</a></li>
+                </ul>
+            </nav>
+
+            <div class="sections-espace">
+
+                <!-- Suivi des commandes -->
+                <section id="mes-commandes" class="bloc-espace">
+
+                    <h2>Mes commandes</h2>
+                    <label for="choix-commande-client">Choisir une commande</label>
+                    <select id="choix-commande-client" class="select-commande-client"></select>
+
+
+                    <article class="carte-commande">
+
+                        <div class="entete-commande">
+                            <h3>Commande n° 001</h3>
+
+                            <span id="statut-commande" class="statut-commande">
+                                En attente
+                            </span>
+                        </div>
+
+                        <p><strong>Menu :</strong> Menu Classique</p>
+
+                        <p>
+                            <strong>Nombre de personnes :</strong>
+                            <span id="commande-personnes">10</span>
+                        </p>
+
+                        <p>
+                            <strong>Date de la prestation :</strong>
+                            <span id="commande-date-prestation">20 novembre 2026</span>
+                        </p>
+
+                        <p>
+                            <strong>Adresse de la prestation :</strong>
+                            <span id="commande-adresse-prestation">Bordeaux</span>
+                        </p>
+
+                        <p>
+                            <strong>Date de livraison :</strong>
+                            <span id="commande-date-livraison">20 novembre 2026</span>
+                        </p>
+
+                        <p>
+                            <strong>Heure de livraison :</strong>
+                            <span id="commande-heure-livraison">12:00</span>
+                        </p>
+
+                        <p>
+                            <strong>Adresse de livraison :</strong>
+                            <span id="commande-adresse-livraison">Bordeaux</span>
+                        </p>
+
+                        <p>
+                            <strong>Lieu de livraison :</strong>
+                            <span id="commande-zone-livraison">Bordeaux</span>
+                        </p>
+
+                        <p>
+                            <strong>Montant indicatif :</strong>
+                            <span id="commande-montant">250,00 €</span>
+                        </p>
+
+                        <div class="actions-commande">
+
+                            <button
+                                type="button"
+                                id="bouton-modifier-commande"
+                                class="bouton-action"
+                            >
+                                Modifier
+                            </button>
+
+                            <button
+                                type="button"
+                                id="bouton-annuler-commande"
+                                class="bouton-secondaire"
+                            >
+                                Annuler
+                            </button>
+
+                        </div>
+
+                        <p id="message-commande" aria-live="polite"></p>
+
+                        <form
+                            id="formulaire-modification-commande"
+                            class="formulaire-profil"
+                            hidden
+                        >
+
+                            <h3>Modifier la commande</h3>
+
+                            <p>Le menu choisi ne peut pas être modifié.</p>
+
+                            <div class="champ-profil">
+                                <label for="modif-personnes">Nombre de personnes</label>
+
+                                <input
+                                    type="number"
+                                    id="modif-personnes"
+                                    name="nombre_personnes"
+                                    min="10"
+                                    step="1"
+                                    value="10"
+                                    required
+                                >
+                            </div>
+
+                            <div class="champ-profil">
+                                <label for="modif-date-prestation">
+                                    Date de la prestation
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="modif-date-prestation"
+                                    name="date_prestation"
+                                    value="2026-11-20"
+                                    required
+                                >
+                            </div>
+
+                            <div class="champ-profil">
+                                <label for="modif-adresse-prestation">
+                                    Adresse de la prestation
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="modif-adresse-prestation"
+                                    name="adresse_prestation"
+                                    value="Bordeaux"
+                                    required
+                                >
+                            </div>
+
+                            <div class="ligne-profil">
+
+                                <div class="champ-profil">
+                                    <label for="modif-date-livraison">
+                                        Date de livraison
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="modif-date-livraison"
+                                        name="date_livraison"
+                                        value="2026-11-20"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="champ-profil">
+                                    <label for="modif-heure-livraison">
+                                        Heure de livraison
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        id="modif-heure-livraison"
+                                        name="heure_livraison"
+                                        value="12:00"
+                                        required
+                                    >
+                                </div>
+
+                            </div>
+
+                            <div class="champ-profil">
+                                <label for="modif-adresse-livraison">
+                                    Adresse de livraison
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="modif-adresse-livraison"
+                                    name="adresse_livraison"
+                                    value="Bordeaux"
+                                    required
+                                >
+                            </div>
+
+                            <div class="champ-profil">
+                                <label for="modif-zone-livraison">
+                                    Lieu de livraison
+                                </label>
+
+                                <select
+                                    id="modif-zone-livraison"
+                                    name="zone_livraison"
+                                >
+                                    <option value="bordeaux">Bordeaux</option>
+                                    <option value="hors-bordeaux">En dehors de Bordeaux</option>
+                                </select>
+                            </div>
+
+                            <div class="champ-profil">
+                                <label for="modif-distance">
+                                    Distance depuis Bordeaux (km)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="modif-distance"
+                                    name="distance"
+                                    min="0"
+                                    step="0.1"
+                                    value="0"
+                                >
+                            </div>
+
+                            <div class="actions-commande">
+
+                                <button type="submit" class="bouton-action">
+                                    Enregistrer les changements
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="bouton-retour-modification"
+                                    class="bouton-secondaire"
+                                >
+                                    Retour
+                                </button>
+
+                            </div>
+                        </form>
+
+                        <div id="confirmation-annulation" hidden>
+
+                            <h3>Annuler la commande</h3>
+
+                            <p>
+                                Voulez-vous vraiment annuler cette commande ?
+                            </p>
+
+                            <div class="actions-commande">
+
+                                <button
+                                    type="button"
+                                    id="bouton-confirmer-annulation"
+                                    class="bouton-action"
+                                >
+                                    Confirmer l'annulation
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="bouton-garder-commande"
+                                    class="bouton-secondaire"
+                                >
+                                    Garder la commande
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </article>
+
+                    <article class="carte-commande commande-suivante">
+
+                        <div class="entete-commande">
+                            <h3>Commande n° 004</h3>
+                            <span class="statut-commande">Terminée</span>
+                        </div>
+
+                        <p><strong>Menu :</strong> Menu Végétarien</p>
+                        <p><strong>Nombre de personnes :</strong> 8</p>
+                        <p><strong>Date de la prestation :</strong> 3 novembre 2026</p>
+                        <p><strong>Adresse de la prestation :</strong> Bordeaux</p>
+                        <p><strong>Date et heure de livraison :</strong> 3 novembre 2026 à 12:00</p>
+                        <p><strong>Montant :</strong> 200,00 €</p>
+
+                        <p>
+                            <a href="#avis-client">
+                                Donner mon avis sur cette commande
+                            </a>
+                        </p>
+
+                    </article>
+                </section>
+
+                <section id="mes-informations" class="bloc-espace">
+
+                    <h2>Mes informations</h2>
+
+                    <form
+                        id="formulaire-informations"
+                        class="formulaire-profil"
+                    >
+
+                        <div class="ligne-profil">
+
+                            <div class="champ-profil">
+                                <label for="nom">Nom</label>
+                                <input type="text" id="nom" name="nom" required>
+                            </div>
+
+                            <div class="champ-profil">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" id="prenom" name="prenom" required>
+                            </div>
+                        </div>
+
+                        <div class="champ-profil">
+                            <label for="email">Adresse mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="champ-profil">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+
+                        <div class="champ-profil">
+                            <label for="adresse">Adresse postale</label>
+                            <input type="text" id="adresse" name="adresse" required>
+                        </div>
+
+                        <button type="submit" class="bouton-enregistrer">
+                            Vérifier mes informations
+                        </button>
+
+                    </form>
+
+                    <div
+                        id="apercu-informations"
+                        class="suivi-contenu commande-suivante"
+                        hidden
+                    >
+
+                        <h3>Récapitulatif de mes informations</h3>
+
+                        <p><strong>Nom :</strong> <span id="apercu-nom"></span></p>
+                        <p><strong>Prénom :</strong> <span id="apercu-prenom"></span></p>
+                        <p><strong>Adresse mail :</strong> <span id="apercu-email"></span></p>
+                        <p><strong>Téléphone :</strong> <span id="apercu-telephone"></span></p>
+                        <p><strong>Adresse postale :</strong> <span id="apercu-adresse"></span></p>
+
+                    </div>
+                </section>
+
+                <section id="suivi-commande" class="bloc-espace">
+
+                    <h2>Suivi de commande</h2>
+
+                    <div class="suivi-contenu">
+
+                        <h3>Commande n° 001</h3>
+
+                        <p>
+                            <strong>Statut :</strong>
+                            <span id="statut-suivi">En attente</span>
+                        </p>
+
+                        <p id="texte-suivi">
+                            Le suivi détaillé sera disponible dès
+                            l'acceptation de votre commande.
+                        </p>
+                        <ol id="historique-client-dynamique"></ol>
+                    </div>
+
+                    <div class="suivi-contenu commande-suivante">
+
+                        <h3>Commande n° 004</h3>
+
+                        <p><strong>Statut :</strong> Terminée</p>
+
+                        <ol class="historique-statut">
+                            <li><strong>Acceptée</strong> — 2 novembre 2026 à 09:10</li>
+                            <li><strong>En préparation</strong> — 2 novembre 2026 à 16:30</li>
+                            <li><strong>En cours de livraison</strong> — 3 novembre 2026 à 11:15</li>
+                            <li><strong>Livrée</strong> — 3 novembre 2026 à 12:00</li>
+                            <li><strong>Terminée</strong> — 3 novembre 2026 à 15:00</li>
+                        </ol>
+
+                    </div>
+                </section>
+
+                <section id="avis-client" class="bloc-espace">
+
+                    <h2>Mes avis</h2>
+
+                    <p>
+                        Vous pouvez laisser un avis pour
+                        votre commande terminée.
+                    </p>
+
+                    <form id="formulaire-avis" class="formulaire-profil">
+                        <label for="choix-avis-commande">Commande terminée</label>
+                        <select id="choix-avis-commande"></select>
+
+                        <h3>
+                            Commande n° 004 — Menu Végétarien
+                        </h3>
+
+                        <div class="champ-profil">
+                            <label for="note-avis">
+                                Votre note (de 1 à 5)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="note-avis"
+                                name="note"
+                                min="1"
+                                max="5"
+                                step="1"
+                                required
+                            >
+                        </div>
+
+                        <div class="champ-profil">
+                            <label for="commentaire-avis">
+                                Votre commentaire
+                            </label>
+
+                            <textarea
+                                id="commentaire-avis"
+                                name="commentaire"
+                                rows="4"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="bouton-enregistrer">
+                            Envoyer mon avis
+                        </button>
+                        <p id="message-avis" aria-live="polite"></p>
+
+                    </form>
+
+                    <div
+                        id="apercu-avis"
+                        class="suivi-contenu commande-suivante"
+                        hidden
+                    >
+
+                        <h3>Avis en attente de validation</h3>
+
+                        <p>
+                            <strong>Note :</strong>
+                            <span id="note-affichee"></span>/5
+                        </p>
+
+                        <p id="commentaire-affiche"></p>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-contenu">
+
+            <section>
+                <h2>Horaires d'ouverture</h2>
+
+                <ul class="horaires-pc">
+                    <li>Lundi : 09h00 - 18h00</li>
+                    <li>Mardi : 09h00 - 18h00</li>
+                    <li>Mercredi : 09h00 - 18h00</li>
+                    <li>Jeudi : 09h00 - 18h00</li>
+                    <li>Vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+
+                <ul class="horaires-mobile">
+                    <li>Lundi au vendredi : 09h00 - 18h00</li>
+                    <li>Samedi : 09h00 - 17h00</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+            </section>
+
+            <div class="informations-legales">
+
+                <p>
+                    <a href="mentions-legales.html">Mentions légales</a>
+                </p>
+
+                <p>
+                    <a href="conditions-generales-de-vente.html">
+                        Conditions générales de vente
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="./assets/js/donnees.js"></script>
+    <script src="./assets/js/donnees-exemples.js"></script>
+    <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/validation.js"></script>
+    <script src="./assets/js/client-commandes.js"></script>
+    <script src="./assets/js/client-actions.js"></script>
+</body>
+</html>

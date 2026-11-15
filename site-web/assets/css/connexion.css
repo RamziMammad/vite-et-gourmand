@@ -1,5 +1,5 @@
 
-/* Page Connexion */
+/* Connexion */
 
 body.page-connexion {
     min-height: 100vh;
@@ -7,14 +7,10 @@ body.page-connexion {
     flex-direction: column;
 }
 
-/* Éléments cachés sur ordinateur */
-
 .page-connexion .menu-mobile,
 .page-connexion .horaires-mobile {
     display: none;
 }
-
-/* Contenu principal */
 
 .page-connexion main {
     width: 92%;
@@ -22,8 +18,6 @@ body.page-connexion {
     margin: 50px auto 70px;
     flex: 1;
 }
-
-/* Titre et introduction */
 
 .section-connexion h1 {
     color: #202938;
@@ -39,15 +33,11 @@ body.page-connexion {
     margin-bottom: 30px;
 }
 
-/* Formulaire */
-
 .formulaire-connexion {
     background-color: #FFF8ED;
     padding: 35px;
     border-radius: 12px;
 }
-
-/* Champs */
 
 .champ-connexion {
     margin-bottom: 22px;
@@ -70,8 +60,6 @@ body.page-connexion {
     font-size: 16px;
 }
 
-/* Mot de passe oublié */
-
 .lien-mot-de-passe {
     text-align: right;
     margin-bottom: 24px;
@@ -81,8 +69,6 @@ body.page-connexion {
 .lien-mot-de-passe a {
     color: #2B1B0F;
 }
-
-/* Bouton Se connecter */
 
 .bouton-connexion {
     width: 100%;
@@ -96,8 +82,6 @@ body.page-connexion {
     cursor: pointer;
 }
 
-/* Lien vers l'inscription */
-
 .lien-inscription {
     text-align: center;
     margin-top: 24px;
@@ -109,12 +93,8 @@ body.page-connexion {
     font-weight: bold;
 }
 
-
-/* Version mobile */
-
+/* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
-
-    /* En-tête */
 
     .page-connexion header {
         width: 94%;
@@ -159,8 +139,6 @@ body.page-connexion {
         gap: 14px;
     }
 
-    /* Contenu sur téléphone */
-
     .page-connexion main {
         width: 94%;
         margin: 30px auto 45px;
@@ -186,8 +164,6 @@ body.page-connexion {
     .champ-connexion input {
         height: 42px;
     }
-
-    /* Pied de page mobile */
 
     .page-connexion .horaires-pc {
         display: none;

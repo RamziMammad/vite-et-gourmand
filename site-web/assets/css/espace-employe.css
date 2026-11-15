@@ -1,0 +1,320 @@
+
+/* Espace employé */
+
+.page-espace-employe {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-espace-employe .menu-mobile,
+.page-espace-employe .horaires-mobile {
+    display: none;
+}
+
+.page-espace-employe main {
+    width: 94%;
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    flex: 1;
+}
+
+.introduction-employe {
+    margin-bottom: 25px;
+}
+
+.introduction-employe h1 {
+    color: #202938;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.introduction-employe p,
+.explication-employe {
+    color: #71665E;
+    font-size: 17px;
+}
+
+.navigation-employe {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.navigation-employe a {
+    background-color: #2B1B0F;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.bloc-employe {
+    background-color: #FFF8ED;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.bloc-employe h2 {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.bloc-employe p {
+    margin-bottom: 12px;
+}
+
+.lien-catalogue {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 11px 16px;
+    color: #2B1B0F;
+    background: #FFFFFF;
+    border: 1px solid #2B1B0F;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lien-catalogue:hover {
+    background: #F8EDDA;
+}
+
+.filtres-employe {
+    display: flex;
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.champ-employe {
+    width: 50%;
+}
+
+.champ-employe label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.champ-employe select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #888888;
+    background-color: #FFFFFF;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+}
+
+#nombre-resultats {
+    font-weight: bold;
+}
+
+.fiche-commande {
+    background-color: #FFFFFF;
+    border: 1px solid #E9DDCC;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.fiche-commande.masque {
+    display: none;
+}
+
+.entete-fiche {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.entete-fiche h3 {
+    font-size: 19px;
+}
+
+.entete-fiche strong {
+    background-color: #F4B400;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+.ligne-employe {
+    display: flex;
+    gap: 20px;
+}
+
+.ligne-employe p {
+    width: 50%;
+}
+
+/* Version mobile ou tablette */
+@media screen and (max-width: 768px) {
+
+    .page-espace-employe header {
+        width: 94%;
+        margin: 14px auto 0;
+        padding: 22px 14px;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .page-espace-employe header > a {
+        font-size: 22px;
+    }
+
+    .page-espace-employe .navigation-pc,
+    .page-espace-employe .horaires-pc {
+        display: none;
+    }
+
+    .page-espace-employe .menu-mobile,
+    .page-espace-employe .horaires-mobile {
+        display: block;
+    }
+
+    .page-espace-employe .menu-mobile {
+        color: #FFFFFF;
+    }
+
+    .page-espace-employe .menu-mobile summary {
+        font-size: 17px;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .page-espace-employe .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: #2B1B0F;
+        padding: 18px;
+        border-radius: 12px;
+        z-index: 10;
+    }
+
+    .page-espace-employe .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .page-espace-employe main {
+        margin: 30px auto 45px;
+    }
+
+    .introduction-employe h1 {
+        font-size: 28px;
+    }
+
+    .navigation-employe a {
+        font-size: 14px;
+    }
+
+    .bloc-employe {
+        padding: 20px 16px;
+    }
+
+    .filtres-employe,
+    .ligne-employe,
+    .entete-fiche {
+        flex-direction: column;
+    }
+
+    .champ-employe,
+    .ligne-employe p {
+        width: 100%;
+    }
+
+    .entete-fiche {
+        align-items: flex-start;
+    }
+
+    .page-espace-employe footer {
+        padding: 28px 0;
+    }
+
+    .page-espace-employe .footer-contenu {
+        width: 86%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-espace-employe .footer-contenu section {
+        width: 100%;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    .page-espace-employe footer h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+    .page-espace-employe footer li,
+    .page-espace-employe .informations-legales p {
+        font-size: 17px;
+    }
+
+    .page-espace-employe .informations-legales a {
+        font-weight: 400;
+    }
+}
+
+.formulaire-employe {
+    background-color: #FFFFFF;
+    border: 1px solid #E9DDCC;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.formulaire-employe h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.formulaire-employe .champ-complet {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.formulaire-employe textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #888888;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.bouton-employe {
+    background-color: #F4B400;
+    color: #2B1B0F;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.message-employe {
+    margin-top: 14px;
+}
+
+.historique-employe {
+    margin: 6px 0 0 22px;
+}
+
+.historique-employe li {
+    margin-bottom: 8px;
+}
+
+.confirmation-contact {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}

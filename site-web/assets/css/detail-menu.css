@@ -1,5 +1,5 @@
 
-/* Page détail des menus */
+/* Détail des menus */
 
 body.page-detail-menu {
     min-height: 100vh;
@@ -7,16 +7,12 @@ body.page-detail-menu {
     flex-direction: column;
 }
 
-/* Largeur du contenu principal */
-
 .page-detail-menu main {
     width: 94%;
     max-width: 1500px;
     margin: 0 auto;
     padding: 45px 0 12px;
 }
-
-/* Titre et description */
 
 .introduction-detail {
     margin-bottom: 36px;
@@ -33,8 +29,6 @@ body.page-detail-menu {
     color: #2B1B0F;
     font-size: 20px;
 }
-
-/* Grande photo et informations du menu */
 
 .presentation-detail {
     display: flex;
@@ -53,8 +47,6 @@ body.page-detail-menu {
     border-radius: 8px;
 }
 
-/* Cadre des informations */
-
 .informations-detail {
     width: 33%;
     border: 1px solid #F4B400;
@@ -69,8 +61,6 @@ body.page-detail-menu {
     font-size: 20px;
     margin-bottom: 22px;
 }
-
-/* Nombre minimum et stock */
 
 .minimum-personnes,
 .stock-menu {
@@ -90,8 +80,6 @@ body.page-detail-menu {
     height: auto;
 }
 
-/* Prix du menu */
-
 .montant-menu {
     font-size: 34px;
     font-weight: 700;
@@ -104,8 +92,6 @@ body.page-detail-menu {
     margin: 4px 0 10px;
 }
 
-/* Bouton Commander */
-
 .bouton-commander {
     display: block;
     background-color: #F4B400;
@@ -117,8 +103,6 @@ body.page-detail-menu {
     font-weight: 700;
     padding: 14px 12px;
 }
-
-/* Composition et conditions du menu */
 
 .composition-et-conditions {
     display: flex;
@@ -148,8 +132,6 @@ body.page-detail-menu {
     margin-bottom: 22px;
 }
 
-/* Entrée, plat et dessert */
-
 .plat-menu {
     padding: 0 0 13px;
     margin-bottom: 18px;
@@ -172,8 +154,6 @@ body.page-detail-menu {
     margin-bottom: 10px;
 }
 
-/* Conditions et icônes */
-
 .liste-conditions {
     list-style: none;
 }
@@ -191,15 +171,11 @@ body.page-detail-menu {
     height: auto;
 }
 
-/* Titre de la galerie */
-
 .autres-photos h2 {
     color: #000000;
     font-size: 28px;
     margin-bottom: 12px;
 }
-
-/* Galerie des photos du Menu Classique */
 
 .galerie-photos {
     display: flex;
@@ -214,10 +190,6 @@ body.page-detail-menu {
     border-radius: 8px;
 }
 
-/* Galerie du Menu Végétarien */
-
-/* Trois cadres de dimensions identiques */
-
 .page-detail-menu .galerie-photos .vignette-vegetarienne {
     width: 31%;
     height: 270px;
@@ -227,42 +199,29 @@ body.page-detail-menu {
     border-radius: 8px;
 }
 
-/* Première image : quiche aux légumes */
-
 .page-detail-menu .galerie-photos .photo-quiche {
     background-image: url("../images/detail-menu/Menu végétarien – Quiche aux légumes.png");
 }
-
-/* Deuxième image : menu végétarien */
 
 .page-detail-menu .galerie-photos .photo-menu {
     background-image: url("../images/detail-menu/menu.png");
 }
 
-/* Troisième image : gratin végétal */
-
 .page-detail-menu .galerie-photos .photo-gratin {
     background-image: url("../images/detail-menu/Gratin végétal et tarte citron meringuée.png");
 }
 
-/* Positionnement du pied de page */
-
 .page-detail-menu footer {
     margin-top: auto;
 }
-
-/* Éléments cachés sur ordinateur */
 
 .page-detail-menu header .menu-mobile,
 .page-detail-menu .horaires-mobile {
     display: none;
 }
 
-/* VERSION MOBILE : jusqu'à 768 pixels */
-
+/* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
-
-    /* Header mobile */
 
     .page-detail-menu header {
         width: 94%;
@@ -307,15 +266,11 @@ body.page-detail-menu {
         gap: 14px;
     }
 
-    /* Contenu principal */
-
     .page-detail-menu main {
         width: 94%;
         max-width: none;
         padding: 26px 0 22px;
     }
-
-    /* Titre et description */
 
     .page-detail-menu .introduction-detail {
         margin: 0 14px 30px;
@@ -333,8 +288,6 @@ body.page-detail-menu {
         line-height: 1.3;
     }
 
-    /* Photo principale sur téléphone */
-
     .page-detail-menu .presentation-detail {
         flex-direction: column;
         gap: 14px;
@@ -350,8 +303,6 @@ body.page-detail-menu {
         height: auto;
         border-radius: 16px;
     }
-
-    /* Carte d'informations */
 
     .page-detail-menu .informations-detail {
         width: 100%;
@@ -369,8 +320,6 @@ body.page-detail-menu {
         margin-bottom: 10px;
     }
 
-    /* Icônes masquées sur mobile */
-
     .page-detail-menu .minimum-personnes img,
     .page-detail-menu .stock-menu img {
         display: none;
@@ -380,8 +329,6 @@ body.page-detail-menu {
     .page-detail-menu .stock-menu strong {
         font-weight: 700;
     }
-
-    /* Affichage du prix */
 
     .page-detail-menu .mot-prix {
         display: none;
@@ -403,8 +350,6 @@ body.page-detail-menu {
         margin: 0;
     }
 
-    /* Bouton Commander */
-
     .page-detail-menu .bouton-commander {
         width: 100%;
         padding: 12px 8px;
@@ -412,8 +357,6 @@ body.page-detail-menu {
         font-size: 16px;
         font-weight: 400;
     }
-
-    /* Composition et conditions verticales */
 
     .page-detail-menu .composition-et-conditions {
         flex-direction: column;
@@ -426,8 +369,6 @@ body.page-detail-menu {
         width: 100%;
         border-radius: 16px;
     }
-
-    /* Composition */
 
     .page-detail-menu .composition-menu {
         padding: 16px 16px 25px;
@@ -462,8 +403,6 @@ body.page-detail-menu {
         padding-bottom: 0;
     }
 
-    /* Conditions */
-
     .page-detail-menu .conditions-menu {
         padding: 22px;
     }
@@ -483,13 +422,9 @@ body.page-detail-menu {
         display: none;
     }
 
-    /* Quatrième condition masquée sur mobile */
-
     .page-detail-menu .liste-conditions .condition-complementaire {
         display: none;
     }
-
-    /* Galerie du Menu Classique */
 
     .page-detail-menu .autres-photos h2 {
         font-size: 24px;
@@ -506,15 +441,11 @@ body.page-detail-menu {
         border-radius: 14px;
     }
 
-    /* Galerie du Menu Végétarien */
-
     .page-detail-menu .galerie-photos .vignette-vegetarienne {
         width: 31.5%;
         height: 154px;
         border-radius: 14px;
     }
-
-    /* Pied de page mobile */
 
     .page-detail-menu footer {
         padding: 28px 0 14px;
@@ -556,8 +487,6 @@ body.page-detail-menu {
         font-weight: 400;
     }
 }
-
-/* Petits téléphones */
 
 @media screen and (max-width: 360px) {
 

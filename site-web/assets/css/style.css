@@ -1,5 +1,4 @@
 
-/* Réglages de base */
 
 * {
     margin: 0;
@@ -11,9 +10,6 @@ body {
     font-family: "Inter", Arial, sans-serif;
     color: #2B1B0F;
 }
-
-
-/* En-tête et navigation */
 
 header {
     background-color: #2B1B0F;
@@ -43,24 +39,15 @@ header nav a {
     font-size: 18px;
 }
 
-
-/* Largeur du contenu de l'accueil */
-
 main {
     width: 97%;
     max-width: 1600px;
     margin: 0 auto;
 }
 
-
-/* Couleur dorée utilisée dans les titres */
-
 .texte-dore {
     color: #F4B400;
 }
-
-
-/* Présentation de l'entreprise */
 
 .presentation {
     background-color: #2B1B0F;
@@ -114,9 +101,6 @@ main {
     object-fit: cover;
 }
 
-
-/* Les trois points forts */
-
 .savoir-faire {
     background-color: #FFF8ED;
     margin: 0 0 20px;
@@ -152,9 +136,6 @@ main {
     border-left: 1px solid #E0E0E0;
 }
 
-
-/* Avis des clients */
-
 .avis-clients {
     margin: 20px 0 50px;
 }
@@ -185,9 +166,6 @@ main {
 .avis blockquote {
     margin-top: 12px;
 }
-
-
-/* Pied de page */
 
 footer {
     background-color: #2B1B0F;
@@ -229,9 +207,6 @@ footer a {
     margin-bottom: 25px;
 }
 
-
-/* Éléments mobiles cachés sur ordinateur */
-
 .page-accueil header .menu-mobile,
 .page-accueil .horaires-mobile {
     display: none;
@@ -245,12 +220,8 @@ footer a {
     display: none;
 }
 
-
-/* Version mobile de la page d'accueil */
-
+/* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
-
-    /* Header mobile */
 
     .page-accueil header {
         width: 94%;
@@ -294,16 +265,10 @@ footer a {
         gap: 14px;
     }
 
-
-    /* Largeur du contenu mobile */
-
     .page-accueil main {
         width: 100%;
         max-width: none;
     }
-
-
-    /* Présentation avec la photo en fond */
 
     .page-accueil .presentation {
         display: block;
@@ -355,9 +320,6 @@ footer a {
         display: none;
     }
 
-
-    /* Grande photo du buffet */
-
     .page-accueil .photo-buffet-mobile {
         display: block;
         width: 94%;
@@ -366,9 +328,6 @@ footer a {
         margin: 0 auto 20px;
         border-radius: 16px;
     }
-
-
-    /* Notre savoir-faire sur mobile */
 
     .page-accueil .savoir-faire {
         margin: 0;
@@ -408,9 +367,6 @@ footer a {
         border-left: none;
     }
 
-
-    /* Avis des clients sur mobile */
-
     .page-accueil .avis-clients {
         margin: 0;
         padding: 12px 3% 30px;
@@ -439,9 +395,6 @@ footer a {
     .page-accueil .avis p {
         font-size: 16px;
     }
-
-
-    /* Pied de page sur mobile */
 
     .page-accueil .horaires-pc {
         display: none;

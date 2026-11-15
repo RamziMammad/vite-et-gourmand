@@ -1,5 +1,5 @@
 
-/* Organisation de la page des menus */
+/* Liste des menus */
 
 body.page-menus {
     min-height: 100vh;
@@ -7,17 +7,11 @@ body.page-menus {
     flex-direction: column;
 }
 
-
-/* Largeur et espaces du contenu */
-
 .page-menus main {
     width: 92%;
     margin: 0 auto;
     padding: 55px 0 45px;
 }
-
-
-/* Titre et phrase de présentation */
 
 .introduction-menus {
     margin-bottom: 38px;
@@ -36,17 +30,11 @@ body.page-menus {
     font-weight: 400;
 }
 
-
-/* Filtres à gauche et cartes à droite */
-
 .contenu-menus {
     display: flex;
     align-items: flex-start;
     gap: 14px;
 }
-
-
-/* Panneau des filtres */
 
 .filtres-menus {
     width: 29%;
@@ -74,9 +62,6 @@ body.page-menus {
     margin-bottom: 12px;
 }
 
-
-/* Champs et listes déroulantes */
-
 .champ-filtre input,
 .champ-filtre select {
     display: block;
@@ -90,9 +75,6 @@ body.page-menus {
     font-size: 16px;
 }
 
-
-/* Prix minimum et maximum sur une ligne */
-
 .fourchette-prix {
     display: flex;
     justify-content: space-between;
@@ -103,9 +85,6 @@ body.page-menus {
 .fourchette-prix input {
     width: 47%;
 }
-
-
-/* Partie des résultats */
 
 .resultats-menus {
     width: 69%;
@@ -118,14 +97,13 @@ body.page-menus {
     margin: 25px 0 30px;
 }
 
-
-/* Les deux cartes sur ordinateur */
-
 .cartes-menus {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 6%;
+    flex-wrap: wrap;
+    row-gap: 24px;
 }
 
 .carte-menu {
@@ -136,18 +114,12 @@ body.page-menus {
     flex-direction: column;
 }
 
-
-/* Photos des menus */
-
 .photo-menu {
     display: block;
     width: 100%;
     height: 160px;
     object-fit: cover;
 }
-
-
-/* Titre et description des cartes */
 
 .carte-menu h3 {
     color: #202938;
@@ -163,9 +135,6 @@ body.page-menus {
     padding: 0 12px;
     min-height: 90px;
 }
-
-
-/* Informations sur les personnes et le prix */
 
 .informations-menu {
     border-top: 1px solid #E9D9C9;
@@ -191,9 +160,6 @@ body.page-menus {
     color: #000000;
 }
 
-
-/* Boutons Voir le menu */
-
 .bouton-menu {
     display: block;
     width: 80%;
@@ -207,28 +173,17 @@ body.page-menus {
     margin: 16px auto 0;
 }
 
-
-/* Le pied de page reste en bas */
-
 .page-menus footer {
     margin-top: auto;
 }
-
-
-/* Sur ordinateur on cache le menu mobile et les horaires courts */
 
 .page-menus header .menu-mobile,
 .page-menus .horaires-mobile {
     display: none;
 }
 
-
-
-/* VERSION MOBILE : jusqu'à 768 pixels */
-
+/* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
-
-    /* En-tête du téléphone */
 
     .page-menus header {
         width: 94%;
@@ -273,9 +228,6 @@ body.page-menus {
         gap: 14px;
     }
 
-
-    /* Titres et largeur du contenu */
-
     .page-menus main {
         width: 94%;
         padding: 26px 0;
@@ -295,9 +247,6 @@ body.page-menus {
         color: #2B1B0F;
         font-size: 17px;
     }
-
-
-    /* Les filtres au-dessus des cartes */
 
     .page-menus .contenu-menus {
         flex-direction: column;
@@ -346,9 +295,6 @@ body.page-menus {
     .page-menus .fourchette-prix input {
         width: 47%;
     }
-
-
-    /* Les cartes passent l'une sous l'autre */
 
     .page-menus .resultats-menus h2 {
         color: #000000;
@@ -417,9 +363,6 @@ body.page-menus {
         margin-top: 14px;
     }
 
-
-    /* Pied de page sur téléphone */
-
     .page-menus footer {
         padding: 28px 0 22px;
     }
@@ -461,9 +404,6 @@ body.page-menus {
     }
 }
 
-
-/* Sur les téléphones étroits, on réduit légèrement le header */
-
 @media screen and (max-width: 360px) {
 
     .page-menus header > a {
@@ -475,19 +415,10 @@ body.page-menus {
     }
 }
 
-
-
-/* Cache les menus qui ne correspondent pas aux filtres */
 .carte-menu.menu-cache {
     display: none;
 }
 
-
-
-/* Cache le message quand des menus sont disponibles */
 .page-menus #aucun-menu.menu-cache {
     display: none;
 }
-
-
-
