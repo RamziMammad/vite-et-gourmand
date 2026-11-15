@@ -2,101 +2,56 @@
 
 ## Présentation du projet
 
-Vite & Gourmand est un projet de site web réalisé dans le cadre de mon ECF Développeur Web et Web Mobile chez Studi.
-
-Le site présente une entreprise de traiteur située à Bordeaux, qui propose différents menus pour des événements ou des repas particuliers.
-
-L'objectif est de permettre aux visiteurs de consulter les menus, de voir leur composition et de passer une commande en ligne.
-
-Le développement du projet se fait en deux parties : le front-end, puis le back-end.
+Vite & Gourmand est un site de traiteur réalisé dans le cadre de mon ECF Développeur Web et Web Mobile chez Studi. L'entreprise est située à Bordeaux. L'objectif est de présenter ses menus et de permettre aux clients de commander en ligne.
 
 ## État du projet
 
-La partie front-end est en place. Le site comprend 14 pages HTML, des fichiers CSS pour la mise en page et 15 fichiers JavaScript pour les fonctionnalités dynamiques.
+La partie front-end est en place. Elle comprend 13 pages HTML, une page PHP d'inscription, 12 feuilles CSS, 15 fichiers JavaScript et les images du site.
 
-Les principales fonctionnalités sont :
+Le site permet déjà de consulter les menus, de les filtrer, de voir les plats et les allergènes, et de calculer le prix d'une commande. Les espaces client, employé et administrateur sont également présentés. Certaines interactions sont encore des démonstrations réalisées avec JavaScript et `localStorage`.
 
-- consulter les menus proposés par l'entreprise ;
-- filtrer les menus selon le prix, le thème, le régime alimentaire et le nombre de personnes ;
-- afficher le détail d'un menu avec ses plats, ses allergènes, ses photos et ses conditions ;
-- calculer le prix d'une commande selon le nombre de personnes, la remise et les frais de livraison ;
-- afficher les espaces utilisateur, employé et administrateur ;
-- gérer les menus et les plats depuis les interfaces prévues ;
-- afficher le suivi des commandes et les avis clients.
+Côté back-end, la base MariaDB et ses tables ont été créées. La connexion PHP avec PDO fonctionne et l'inscription des clients enregistre désormais des comptes dans la table `utilisateurs`, avec un mot de passe haché.
 
-Pour le moment, certaines fonctionnalités utilisent des données d'exemple enregistrées avec `localStorage`. Les comptes et les commandes ne sont pas encore enregistrés dans une véritable base de données.
-
-Cette partie sera développée avec le back-end. Pour les essais actuels, seules des données fictives doivent être utilisées.
+La connexion des clients, les vraies commandes, les espaces de gestion reliés au serveur et l'envoi des e-mails restent à réaliser. Les tests doivent utiliser uniquement des informations fictives pour le moment.
 
 ## Technologies utilisées
 
-Pour la partie front-end, j'ai utilisé :
+- HTML5 pour les pages ;
+- CSS3 pour la présentation et l'affichage sur mobile ;
+- JavaScript pour les filtres et les interactions ;
+- PHP avec PDO pour accéder aux données ;
+- MariaDB pour la base de données relationnelle ;
+- XAMPP et Apache pour faire fonctionner le projet en local.
 
-- **HTML5** pour créer les pages ;
-- **CSS3** pour la mise en forme et l'adaptation aux écrans ;
-- **JavaScript** pour les filtres, les formulaires et les interactions ;
-- **XAMPP et Apache** pour lancer le site en local.
-
-Pour le back-end, je prévois d'utiliser PHP avec PDO, MySQL pour la base de données relationnelle et une base NoSQL pour les statistiques demandées dans l'énoncé.
+Une base NoSQL sera ajoutée pour les statistiques demandées dans l'énoncé.
 
 ## Lancer le site en local
 
-Pour ouvrir le projet sur un ordinateur :
+1. Installer XAMPP et placer le dossier `vite-et-gourmand` dans `C:\xampp\htdocs`.
+2. Démarrer Apache dans XAMPP.
+3. Ouvrir `http://localhost/vite-et-gourmand/site-web/index.html` dans le navigateur.
 
-1. Installer XAMPP.
-2. Placer le dossier `vite-et-gourmand` dans `C:\xampp\htdocs\`.
-3. Ouvrir XAMPP et démarrer Apache.
-4. Ouvrir un navigateur comme Brave ou Chrome.
-5. Saisir l'adresse suivante :
+Pour tester aussi l'inscription :
 
-`http://localhost/vite-et-gourmand/site-web/index.html`
+4. Démarrer MySQL dans XAMPP.
+5. Depuis phpMyAdmin, importer `base-de-donnees/01_creation.sql`, puis `base-de-donnees/02_donnees.sql` dans la base `vite_et_gourmand`.
+6. Dans `site-web/php`, copier `config.local.exemple.php` en `config.local.php`, puis renseigner les identifiants MariaDB de son ordinateur.
+7. Ouvrir `http://localhost/vite-et-gourmand/site-web/inscription.php`.
 
-Si le dossier du projet porte un autre nom, il faut adapter l'adresse.
-
-Pour le moment, aucune base de données n'est nécessaire pour consulter la partie front-end.
+Le fichier `config.local.php` contient des informations privées : il ne faut pas le publier sur GitHub ni l'inclure dans les ZIP transmis.
 
 ## Organisation des fichiers
 
-Le projet contient un dossier principal `site-web` avec les pages HTML.
+Le dossier `site-web` contient les pages HTML et `inscription.php`. Les ressources sont rangées dans `assets/css`, `assets/js` et `assets/images`. Le dossier `site-web/php` contient la connexion PDO, un exemple de configuration et une page de test de connexion à la base.
 
-Les autres fichiers sont rangés dans le dossier `assets` :
+Les scripts JavaScript sont regroupés par fonctionnalité pour faciliter la lecture du code.
 
-- `assets/css` : les fichiers CSS des pages ;
-- `assets/images` : les photos et les icônes ;
-- `assets/js` : les fichiers JavaScript.
+## Vérifications réalisées
 
-Les fichiers JavaScript sont séparés selon les fonctionnalités : menus, commandes, espace utilisateur, espace employé et administration.
-
-Cette organisation me permet de retrouver plus facilement le code lorsque je dois effectuer une modification.
-
-## Vérifications du front-end
-
-Plusieurs vérifications ont été effectuées sur les fichiers HTML, CSS et JavaScript.
-
-Les principaux éléments à tester dans le navigateur sont :
-
-- les filtres et l'affichage des menus ;
-- les détails des menus ;
-- le calcul des prix et des frais de livraison ;
-- la redirection vers la connexion avant une commande ;
-- les différentes interfaces de gestion ;
-- l'affichage sur ordinateur et sur mobile.
-
-Des vérifications complémentaires restent nécessaires pour l'accessibilité et le fonctionnement de l'application complète.
+Les fichiers HTML, CSS, JavaScript et PHP ont été contrôlés. L'inscription a été testée en local et un compte a été retrouvé dans phpMyAdmin. Il reste des tests à réaliser sur le site complet, notamment sur mobile, sur les droits d'accès et sur l'accessibilité.
 
 ## Suite du projet
 
-La prochaine étape est le développement du back-end.
+Il reste notamment à développer la connexion et les rôles des utilisateurs, le mot de passe oublié, les commandes réelles, la gestion des menus et des avis, les statistiques NoSQL, les e-mails et le déploiement.
 
-Il faudra notamment mettre en place :
-
-- l'inscription et la connexion sécurisées ;
-- la gestion des utilisateurs et de leurs rôles ;
-- l'enregistrement des menus et des commandes ;
-- la connexion aux bases de données SQL et NoSQL ;
-- l'envoi des e-mails ;
-- les tests et le déploiement de l'application.
-
-Le projet est suivi avec Git et GitHub afin de conserver les différentes étapes du développement.
-
-J'utilise des branches pour les fonctionnalités, puis je les intègre dans `develop` après vérification. La branche principale sera mise à jour lorsque l'application sera prête.
+Le projet est suivi avec Git et GitHub. Chaque fonctionnalité est développée dans une branche, puis intégrée à `develop` après vérification. La branche principale sera mise à jour lorsque l'ensemble de l'application sera prêt.
