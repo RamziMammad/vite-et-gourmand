@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+site-web/php/config.local.php
 
 # Dépendances
 /vendor/
