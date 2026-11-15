@@ -60,7 +60,7 @@ contenuElement("form-gestion-menu").addEventListener("submit", function(event) {
     m.delaiHeures = delai;
     m.conditions = contenuElement("gestion-menu-conditions").value;
     VG.ecrire("menus", gestionMenus);
-    contenuElement("message-gestion-menu").textContent = "Menu enregistré pour le test.";
+    contenuElement("message-gestion-menu").textContent = "Menu enregistré.";
 });
 
 contenuElement("desactiver-menu").addEventListener("click", function() {
@@ -108,7 +108,7 @@ contenuElement("form-gestion-plat").addEventListener("submit", function(event) {
 });
 
 contenuElement("supprimer-plat").addEventListener("click", function() {
-    if (!confirm("Supprimer ce plat de la démonstration ?")) return;
+    if (!confirm("Supprimer ce plat ?")) return;
     gestionPlats.splice(Number(contenuElement("gestion-plat").value), 1);
     VG.ecrire("plats", gestionPlats);
     remplirPlatsEmploye();
@@ -200,7 +200,7 @@ contenuElement("form-modifier-commande-employe").addEventListener("submit", func
     c.date = prestation;
     c.montant = montant.total;
     ajouterHistorique(c, "Modification employé après contact : " + contenuElement("modifier-commande-motif").value);
-    message.textContent = "Commande modifiée pour le test.";
+    message.textContent = "Commande modifiée.";
 });
 
 chargerMenu();

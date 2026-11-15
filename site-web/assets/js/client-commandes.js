@@ -23,12 +23,6 @@ function dateClient(texte) {
 const commandesClient = VG.commandes();
 let commandeActive = null;
 
-const noteDemonstration = document.querySelector(".information-demo");
-
-if (noteDemonstration) {
-    noteDemonstration.textContent =
-        "Utilisez uniquement des informations fictives : les commandes d'essai sont conservées dans ce navigateur.";
-}
 
 const listeClient = clientElement("choix-commande-client");
 const messagesClient = clientElement("message-commande");

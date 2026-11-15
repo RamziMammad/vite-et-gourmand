@@ -66,6 +66,22 @@
     margin-bottom: 12px;
 }
 
+.lien-catalogue {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 11px 16px;
+    color: #2B1B0F;
+    background: #FFFFFF;
+    border: 1px solid #2B1B0F;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lien-catalogue:hover {
+    background: #F8EDDA;
+}
+
 .filtres-employe {
     display: flex;
     gap: 16px;
@@ -132,11 +148,6 @@
 
 .ligne-employe p {
     width: 50%;
-}
-
-.mention-demonstration {
-    color: #71665E;
-    font-size: 14px;
 }
 
 /* Version mobile ou tablette */

@@ -45,13 +45,13 @@ const VF = {
         const heuresMinimum = Number(delai) || 72;
         const minimum = heuresMinimum * 60 * 60 * 1000;
 
-        if (datePrestation.getTime() - maintenant.getTime() < minimum) {
-            return "Réservez au moins " + heuresMinimum + " heures avant la prestation.";
-        }
-
+        // Le délai se calcule avec la date et l'heure de livraison.
         dateLivraison.setHours(heures, minutes, 0, 0);
         if (dateLivraison.getTime() <= maintenant.getTime()) {
             return "La livraison doit être dans le futur.";
+        }
+        if (dateLivraison.getTime() - maintenant.getTime() < minimum) {
+            return "Réservez au moins " + heuresMinimum + " heures à l'avance.";
         }
         if (livraison > prestation) {
             return "La livraison ne peut pas avoir lieu après la prestation.";

@@ -85,7 +85,7 @@ modifierClient.addEventListener("submit", function(event) {
         !clientElement("modif-adresse-livraison").value.trim()
     ) {
         messagesClient.textContent =
-            "Renseignez les deux adresses de démonstration.";
+            "Renseignez les deux adresses.";
         return;
     }
 
@@ -120,7 +120,7 @@ modifierClient.addEventListener("submit", function(event) {
     afficherCommande();
 
     messagesClient.textContent =
-        "Modification enregistrée dans la démonstration.";
+        "Modification enregistrée sur cet appareil.";
 });
 
 
@@ -165,7 +165,7 @@ clientElement("bouton-confirmer-annulation").addEventListener("click", function(
 
     afficherCommande();
 
-    messagesClient.textContent = "Commande annulée pour le test.";
+    messagesClient.textContent = "Commande annulée.";
 });
 
 
@@ -183,8 +183,7 @@ for (let i = 0; i < commandesClient.length; i++) {
         const option = document.createElement("option");
 
         option.value = c.id;
-        option.textContent = c.id === "archive-demo"
-            ? "Archive fictive terminée" : "Commande " + c.id;
+        option.textContent = "Commande " + c.id;
 
         choixAvis.appendChild(option);
     }
@@ -229,7 +228,7 @@ clientElement("formulaire-avis").addEventListener("submit", function(event) {
     });
 
     VG.ecrire("avis", avis);
-    message.textContent = "Avis envoyé pour validation (démonstration).";
+    message.textContent = "Avis ajouté, en attente de validation.";
 
     clientElement("note-affichee").textContent = note;
     clientElement("commentaire-affiche").textContent = texte;

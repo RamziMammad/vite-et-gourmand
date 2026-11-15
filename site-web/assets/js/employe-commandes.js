@@ -67,7 +67,7 @@ for (let i = 0; i < commandes.length; i++) {
         fiche.id = c.id;
 
         const titre = document.createElement("h3");
-        titre.textContent = "Commande d'essai " + c.id;
+        titre.textContent = "Commande " + c.id;
         fiche.appendChild(titre);
         const etat = document.createElement("strong");
         etat.id = "etat-" + c.id;
@@ -109,7 +109,7 @@ function afficherFiche(c) {
     employeElement("prestation-" + c.id).textContent = new Date(c.date + "T12:00:00").toLocaleDateString("fr-FR");
     const zone = employeElement("historique-" + c.id);
     zone.textContent = "";
-    const historique = c.historique || ["État initial de démonstration"];
+    const historique = c.historique || ["En attente"];
     for (let i = 0; i < historique.length; i++) {
         const ligne = document.createElement("li");
         ligne.textContent = historique[i];
@@ -180,7 +180,7 @@ employeElement("formulaire-annulation").addEventListener("submit", function(even
     }
     c.statut = "annulee";
     ajouterHistorique(c, "Annulation après contact : " + employeElement("motif-annulation").value);
-    message.textContent = "Commande annulée pour le test.";
+    message.textContent = "Commande annulée.";
 });
 
 for (let i = 0; i < commandes.length; i++) afficherFiche(commandes[i]);

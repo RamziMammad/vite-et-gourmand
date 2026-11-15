@@ -132,13 +132,8 @@ if (!menuDetail) {
     afficherGalerieDetail(menuDetail);
 
     if (VG.menuDisponible(codeDetail)) {
-        if (localStorage.getItem("vg_mode_demo") === "oui") {
-            boutonDetail.href = "commande.html?menu=" + codeDetail;
-            boutonDetail.textContent = "Commander";
-        } else {
-            boutonDetail.href = "connexion.html?menu=" + codeDetail;
-            boutonDetail.textContent = "Se connecter pour commander";
-        }
+        boutonDetail.href = "connexion.html?menu=" + codeDetail;
+        boutonDetail.textContent = "Se connecter pour commander";
         boutonDetail.removeAttribute("aria-disabled");
     } else {
         boutonDetail.removeAttribute("href");

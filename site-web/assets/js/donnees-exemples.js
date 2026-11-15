@@ -81,7 +81,7 @@ VG.commandes = function() {
             date: "2026-11-24"
         },
         {
-            id: "archive-demo",
+            id: "commande-004",
             client: "camille",
             statut: "terminee",
             menu: "vegetarien",
@@ -89,10 +89,10 @@ VG.commandes = function() {
             montant: 200,
             date: "2026-11-03",
             historique: [
-                "Acceptée — 02/11/2026 à 09:00 (exemple)",
-                "En préparation — 02/11/2026 à 10:00 (exemple)",
-                "Livrée — 03/11/2026 à 12:00 (exemple)",
-                "Terminée — 03/11/2026 à 15:00 (exemple)"
+                "Acceptée — 02/11/2026 à 09:00",
+                "En préparation — 02/11/2026 à 10:00",
+                "Livrée — 03/11/2026 à 12:00",
+                "Terminée — 03/11/2026 à 15:00"
             ]
         }
     ];
@@ -102,7 +102,11 @@ VG.commandes = function() {
     let modifie = false;
 
     for (let i = 0; i < commandes.length; i++) {
-        if (commandes[i].id === "archive-demo") archiveTrouvee = true;
+        if (commandes[i].id === "archive-demo") {
+            commandes[i].id = "commande-004";
+            modifie = true;
+        }
+        if (commandes[i].id === "commande-004") archiveTrouvee = true;
 
         // Les anciennes commandes n'avaient pas toujours de suivi daté.
         if (!commandes[i].historique || commandes[i].historique.length === 0) {

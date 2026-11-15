@@ -71,19 +71,6 @@ if (rechercheCommande.indexOf("menu=") !== -1) {
     menuDemande = rechercheCommande.split("menu=")[1].split("&")[0];
 }
 
-// Pour la démonstration, on passe d'abord par la page Connexion.
-if (localStorage.getItem("vg_mode_demo") !== "oui") {
-    window.location.href = "connexion.html?menu=" + menuDemande;
-}
-
-// Identité fictive pour essayer le formulaire sans serveur.
-if (localStorage.getItem("vg_mode_demo") === "oui") {
-    document.getElementById("nom").value = "Durand";
-    document.getElementById("prenom").value = "Camille";
-    document.getElementById("email").value = "camille@example.test";
-    document.getElementById("telephone").value = "0600000000";
-}
-
 choixCommande.textContent = "";
 let premierMenu = "";
 const menusCommande = VG.menus();
@@ -120,10 +107,10 @@ champDistance.addEventListener("input", calculerCommande);
 
 // ===== Commande verification =====
 
-/* Enregistrement d'une commande d'essai */
+/* Vérification des informations du formulaire */
 
-const formulaireEssai = document.getElementById("formulaire-commande");
-const messageEssai = document.getElementById("message-validation-commande");
+const formulaireCommande = document.getElementById("formulaire-commande");
+const messageCommande = document.getElementById("message-validation-commande");
 
 function lireChamp(id) {
     return document.getElementById(id).value;
@@ -166,75 +153,21 @@ function verifierCommandeEssai() {
 }
 
 
-// ===== Commande enregistrement =====
+// ===== Confirmation de commande =====
 
-formulaireEssai.addEventListener("submit", function(event) {
+// Les informations seront enregistrées par PHP quand le back-end sera en place.
+formulaireCommande.addEventListener("submit", function(event) {
     event.preventDefault();
-
-    if (localStorage.getItem("vg_mode_demo") !== "oui") {
-        messageEssai.textContent = "Passez par la connexion avant de commander.";
-        return;
-    }
-
     const erreur = verifierCommandeEssai();
-    messageEssai.textContent = erreur;
-
-    if (erreur !== "") return;
-
-    if (
-        !lireChamp("adresse-prestation").trim() ||
-        !lireChamp("adresse-livraison").trim()
-    ) {
-        messageEssai.textContent =
-            "Renseignez les deux adresses de démonstration.";
+    if (erreur !== "") {
+        messageCommande.textContent = erreur;
         return;
     }
-
-    const code = lireChamp("menu-choisi");
-    const menu = VG.menus()[code];
-    const personnes = Number(lireChamp("nombre-personnes"));
-    const zone = lireChamp("ville-livraison");
-
-    const distance = zone === "bordeaux"
-        ? 0
-        : Number(lireChamp("distance"));
-
-    const montant = VF.calcul(menu, personnes, zone, distance);
-
-    const commandes = VG.commandes();
-    const identifiant = "essai-" + Date.now();
-
-    commandes.push({
-        id: identifiant,
-        client: "camille",
-        menu: code,
-        personnes: personnes,
-        statut: "attente",
-        montant: montant.total,
-        fraisLivraison: montant.livraison,
-        date: lireChamp("date-prestation"),
-        dateLivraison: lireChamp("date-livraison"),
-        heureLivraison: lireChamp("heure-livraison"),
-        adressePrestation: lireChamp("adresse-prestation").trim(),
-        adresseLivraison: lireChamp("adresse-livraison").trim(),
-        zoneLivraison: zone,
-        distance: distance,
-        historique: ["Commande d'essai créée — " + new Date().toLocaleString("fr-FR")],
-        simulation: true
-    });
-
-    VG.ecrire("commandes", commandes);
-
-    const menus = VG.menus();
-
-    menus[code].stock = Number(menus[code].stock) - 1;
-
-    VG.ecrire("menus", menus);
-
-    messageEssai.textContent =
-        "Commande d'essai enregistrée : " + identifiant +
-        ". Vous pouvez la consulter dans Mon espace. Aucun paiement ni e-mail envoyé.";
-
-    document.getElementById("lien-espace-apres-commande").hidden = false;
-    document.getElementById("bouton-essai-commande").disabled = true;
+    if (!lireChamp("adresse-prestation").trim() ||
+        !lireChamp("adresse-livraison").trim()) {
+        messageCommande.textContent = "Renseignez les deux adresses.";
+        return;
+    }
+    messageCommande.textContent = "Connectez-vous pour confirmer votre commande.";
+    window.location.href = "connexion.html?menu=" + lireChamp("menu-choisi");
 });

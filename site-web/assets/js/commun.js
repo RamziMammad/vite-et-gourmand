@@ -83,35 +83,3 @@ if (localStorage.getItem("vg_horaires") !== null) {
         }
     }
 }
-
-
-// ===== Lien catalogue =====
-
-// Lien vers le catalogue
-
-if (
-    document.body.classList.contains("page-espace-employe") ||
-    document.body.classList.contains("page-administration")
-) {
-    if (
-        window.location.pathname.indexOf("gestion-catalogue.html") === -1
-    ) {
-        let zone = document.getElementById("menus");
-
-        if (!zone) {
-            zone = document.querySelector(".bloc-administration");
-        }
-
-        if (zone) {
-            const lien = document.createElement("a");
-
-            lien.href = "gestion-catalogue.html";
-            lien.textContent = "Gérer le catalogue et les photos";
-
-            const paragraphe = document.createElement("p");
-
-            paragraphe.appendChild(lien);
-            zone.appendChild(paragraphe);
-        }
-    }
-}

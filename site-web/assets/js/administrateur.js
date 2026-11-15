@@ -4,17 +4,21 @@
 
 // ===== Admin employes =====
 
-/* Statistiques et comptes employés de démonstration */
+/* Statistiques et gestion des employés */
 
 function adminElement(id) {
     return document.getElementById(id);
 }
 
-let employes = VG.lire("employes", [{ email: "equipe@exemple.fr", actif: true }]);
+let employes = VG.lire("employes", []);
 
 function afficherEmployes() {
     const zone = adminElement("liste-employes");
     zone.textContent = "";
+    if (employes.length === 0) {
+        zone.textContent = "Aucun employé enregistré.";
+        return;
+    }
     for (let i = 0; i < employes.length; i++) {
         const ligne = document.createElement("p");
         const texte = document.createElement("span");
@@ -48,7 +52,7 @@ adminElement("form-employe").addEventListener("submit", function(event) {
     adminElement("admin-email").value = "";
     adminElement("admin-motdepasse").value = "";
     afficherEmployes();
-    message.textContent = "Employé ajouté à la démonstration. Aucun e-mail n'a été envoyé.";
+    message.textContent = "Employé ajouté à la liste.";
 });
 
 
@@ -129,16 +133,10 @@ function calculerMontantAdmin(event) {
         nombre++;
     }
     resultat.textContent = nombre + " commande(s) ; montant prévisionnel : " +
-        total.toFixed(2).replace(".", ",") + " € (démonstration).";
+        total.toFixed(2).replace(".", ",") + " €.";
 }
 
 adminElement("form-statistiques").addEventListener("submit", calculerMontantAdmin);
-adminElement("reset-demo").addEventListener("click", function() {
-    if (!confirm("Effacer les données d'essai de ce navigateur ?")) return;
-    const noms = ["menus", "plats", "horaires", "avis", "commandes", "employes"];
-    for (let i = 0; i < noms.length; i++) localStorage.removeItem("vg_" + noms[i]);
-    window.location.href = "espace-administrateur.html";
-});
 
 afficherEmployes();
 afficherStatistiques();

@@ -2,7 +2,7 @@
    Les parties de ce fichier sont regroupées par fonctionnalité. */
 
 
-// ===== Demo data =====
+// ===== Stockage local =====
 
 /* Lit et enregistre les données de test dans ce navigateur. */
 
