@@ -1,3 +1,54 @@
+<?php
+require __DIR__ . '/php/authentification.php';
+
+if (isset($_SESSION['utilisateur_id'], $_SESSION['role_id'])) {
+    header('Location: ' . pagePourRole((int) $_SESSION['role_id']));
+    exit;
+}
+
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$message = '';
+$email = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message = 'Le formulaire a expiré. Veuillez actualiser la page et réessayer.';
+    } else {
+        $email = trim($_POST['email'] ?? '');
+        $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+
+        if ($email === '' || $mot_de_passe === '') {
+            $message = 'Veuillez remplir tous les champs.';
+        } else {
+            require __DIR__ . '/php/connexion.php';
+
+            try {
+                $requete = $pdo->prepare('SELECT id, prenom, role_id, actif, mot_de_passe FROM utilisateurs WHERE email = ?');
+                $requete->execute([$email]);
+                $compte = $requete->fetch(PDO::FETCH_ASSOC);
+
+                if ($compte && (int) $compte['actif'] === 1 && password_verify($mot_de_passe, $compte['mot_de_passe'])) {
+                    session_regenerate_id(true);
+                    $_SESSION['utilisateur_id'] = (int) $compte['id'];
+                    $_SESSION['role_id'] = (int) $compte['role_id'];
+                    $_SESSION['prenom'] = $compte['prenom'];
+                    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+                    header('Location: ' . pagePourRole($_SESSION['role_id']));
+                    exit;
+                }
+
+                $message = 'Adresse mail ou mot de passe incorrect.';
+            } catch (PDOException $erreur) {
+                $message = 'La connexion est momentanément indisponible. Veuillez réessayer plus tard.';
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -27,7 +78,7 @@
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="menus.html">Tous les menus</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -39,7 +90,7 @@
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="menus.html">Tous les menus</a></li>
-                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -56,7 +107,8 @@
                 Connectez-vous à votre compte Vite & Gourmand.
             </p>
 
-            <form class="formulaire-connexion" id="formulaire-connexion">
+            <form class="formulaire-connexion" id="formulaire-connexion" action="connexion.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
 
                 <div class="champ-connexion">
                     <label for="email">Adresse mail</label>
@@ -65,6 +117,8 @@
                         type="email"
                         id="email"
                         name="email"
+                        value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>"
+                        autocomplete="email"
                         required
                     >
                 </div>
@@ -76,6 +130,7 @@
                         type="password"
                         id="mot-de-passe"
                         name="mot_de_passe"
+                        autocomplete="current-password"
                         required
                     >
                 </div>
@@ -96,7 +151,11 @@
                 class="message-formulaire"
                 id="message-connexion"
                 aria-live="polite"
-            ></p>
+            ><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
+
+            <?php if (isset($_GET['deconnexion'])) { ?>
+                <p class="message-formulaire" role="status">Vous avez été déconnecté.</p>
+            <?php } ?>
 
             <p class="lien-inscription">
                 Vous n'avez pas de compte ?
@@ -146,6 +205,5 @@
     <script src="./assets/js/donnees.js"></script>
     <script src="./assets/js/donnees-exemples.js"></script>
     <script src="./assets/js/commun.js"></script>
-    <script src="./assets/js/formulaires.js"></script>
 </body>
 </html>

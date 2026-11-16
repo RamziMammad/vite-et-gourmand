@@ -169,5 +169,5 @@ formulaireCommande.addEventListener("submit", function(event) {
         return;
     }
     messageCommande.textContent = "Connectez-vous pour confirmer votre commande.";
-    window.location.href = "connexion.html?menu=" + lireChamp("menu-choisi");
+    window.location.href = "connexion.php?menu=" + lireChamp("menu-choisi");
 });

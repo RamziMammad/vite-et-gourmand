@@ -1,3 +1,7 @@
+<?php
+require __DIR__ . '/php/authentification.php';
+verifierAcces([2, 3]);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -20,6 +24,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/gestion.css">
     <link rel="stylesheet" href="./assets/css/front-finitions.css">
+    <link rel="stylesheet" href="./assets/css/authentification.css">
 </head>
 
 <body class="page-administration">
@@ -35,7 +40,10 @@
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="menus.html">Tous les menus</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
+                <li><form action="deconnexion.php" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <button type="submit" class="lien-deconnexion">Déconnexion</button>
+                </form></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -47,7 +55,10 @@
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="menus.html">Tous les menus</a></li>
-                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><form action="deconnexion.php" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <button type="submit" class="lien-deconnexion">Déconnexion</button>
+                </form></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -55,6 +66,7 @@
     </header>
 
     <main id="contenu-principal">
+        <p class="bandeau-demonstration">Les fonctions de cet espace utilisent encore des données fictives. Elles seront reliées à votre compte et à la base de données dans les prochaines étapes.</p>
 
         <h1>Gestion du catalogue</h1>
 
@@ -280,7 +292,7 @@
         </section>
 
         <p>
-            <a href="espace-employe.html">
+            <a href="espace-employe.php">
                 Retour à l'espace Employé
             </a>
             —
