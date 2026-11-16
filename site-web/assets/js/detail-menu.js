@@ -132,7 +132,7 @@ if (!menuDetail) {
     afficherGalerieDetail(menuDetail);
 
     if (VG.menuDisponible(codeDetail)) {
-        boutonDetail.href = "connexion.html?menu=" + codeDetail;
+        boutonDetail.href = "connexion.php?menu=" + codeDetail;
         boutonDetail.textContent = "Se connecter pour commander";
         boutonDetail.removeAttribute("aria-disabled");
     } else {

@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="menus.html">Tous les menus</a></li>
-                <li><a href="connexion.html">Connexion</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="menus.html">Tous les menus</a></li>
-                    <li><a href="connexion.html">Connexion</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -177,18 +177,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <p class="message-formulaire" id="message-inscription" aria-live="polite">
                 <?php if ($compte_cree) { ?>
-                    Votre compte a bien été créé. Vous pourrez bientôt vous connecter à votre espace.
+                    Votre compte a bien été créé. Vous pouvez maintenant vous connecter à votre espace.
                 <?php } else { echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); } ?>
             </p>
 
             <?php if ($compte_cree) { ?>
                 <p class="lien-connexion">
-                    <a href="index.html">Retour à l’accueil</a>
+                    <a href="connexion.php">Se connecter</a>
                 </p>
             <?php } else { ?>
                 <p class="lien-connexion">
                     Vous avez déjà un compte ?
-                    <a href="connexion.html">Se connecter</a>
+                    <a href="connexion.php">Se connecter</a>
                 </p>
             <?php } ?>
 
