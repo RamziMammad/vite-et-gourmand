@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'Le formulaire a expiré. Veuillez actualiser la page et réessayer.';
     } else {
         $email = trim($_POST['email'] ?? '');
-        $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+        $mot_de_passe_saisi = $_POST['mot_de_passe'] ?? '';
 
-        if ($email === '' || $mot_de_passe === '') {
+        if ($email === '' || $mot_de_passe_saisi === '') {
             $message = 'Veuillez remplir tous les champs.';
         } else {
             require __DIR__ . '/php/connexion.php';
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $requete->execute([$email]);
                 $compte = $requete->fetch(PDO::FETCH_ASSOC);
 
-                if ($compte && (int) $compte['actif'] === 1 && password_verify($mot_de_passe, $compte['mot_de_passe'])) {
+                if ($compte && (int) $compte['actif'] === 1 && password_verify($mot_de_passe_saisi, $compte['mot_de_passe'])) {
                     session_regenerate_id(true);
                     $_SESSION['utilisateur_id'] = (int) $compte['id'];
                     $_SESSION['role_id'] = (int) $compte['role_id'];
@@ -107,6 +107,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Connectez-vous à votre compte Vite & Gourmand.
             </p>
 
+            <?php if ($message !== '') { ?>
+                <p class="message-formulaire" id="message-connexion" role="alert"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
+            <?php } ?>
+
+            <?php if (isset($_GET['reinitialisation']) && $_GET['reinitialisation'] === 'ok') { ?>
+                <p class="message-formulaire" role="status">Votre mot de passe a bien été modifié. Vous pouvez vous connecter.</p>
+            <?php } ?>
+
+            <?php if (isset($_GET['deconnexion'])) { ?>
+                <p class="message-formulaire" role="status">Vous avez été déconnecté.</p>
+            <?php } ?>
+
             <form class="formulaire-connexion" id="formulaire-connexion" action="connexion.php" method="post">
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
 
@@ -136,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <p class="lien-mot-de-passe">
-                    <a href="mot-de-passe-oublie.html">
+                    <a href="mot-de-passe-oublie.php">
                         Mot de passe oublié ?
                     </a>
                 </p>
@@ -147,15 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             </form>
 
-            <p
-                class="message-formulaire"
-                id="message-connexion"
-                aria-live="polite"
-            ><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
-
-            <?php if (isset($_GET['deconnexion'])) { ?>
-                <p class="message-formulaire" role="status">Vous avez été déconnecté.</p>
-            <?php } ?>
 
             <p class="lien-inscription">
                 Vous n'avez pas de compte ?

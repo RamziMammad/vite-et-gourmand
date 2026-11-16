@@ -1,3 +1,56 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$message = '';
+$email = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message = 'Le formulaire a expiré. Veuillez actualiser la page.';
+    } else {
+        $email = trim($_POST['email'] ?? '');
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 190) {
+            $message = 'Veuillez saisir une adresse mail valide.';
+        } else {
+            $message = 'Si un compte correspond à cette adresse, un lien vous sera envoyé par mail.';
+            require __DIR__ . '/php/connexion.php';
+
+            try {
+                $requete = $pdo->prepare('SELECT id FROM utilisateurs WHERE email = ? AND actif = 1');
+                $requete->execute([$email]);
+                $compte = $requete->fetch(PDO::FETCH_ASSOC);
+
+                if ($compte) {
+                    $jeton = bin2hex(random_bytes(32));
+                    $jeton_hash = hash('sha256', $jeton);
+                    $requete = $pdo->prepare('INSERT INTO reinitialisations_mdp (utilisateur_id, jeton_hash, date_expiration) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 HOUR))');
+                    $requete->execute([$compte['id'], $jeton_hash]);
+
+                    // Adresse locale pour les tests avec XAMPP : à adapter au déploiement.
+                    $lien = 'http://localhost/vite-et-gourmand/site-web/reinitialiser-mot-de-passe.php?jeton=' . $jeton;
+                    $texte = "Bonjour,\n\nPour choisir un nouveau mot de passe Vite & Gourmand, ouvrez ce lien :\n" . $lien . "\n\nCe lien expire dans une heure et ne peut servir qu'une fois.\nSi vous n'avez rien demandé, ignorez ce message.";
+                    $entetes = "From: Vite et Gourmand <noreply@vite-et-gourmand.test>\r\nContent-Type: text/plain; charset=UTF-8";
+
+                    if (mail($email, 'Vite et Gourmand - Nouveau mot de passe', $texte, $entetes)) {
+                        $requete = $pdo->prepare('UPDATE reinitialisations_mdp SET date_utilisation = NOW() WHERE utilisateur_id = ? AND jeton_hash <> ? AND date_utilisation IS NULL');
+                        $requete->execute([$compte['id'], $jeton_hash]);
+                    } else {
+                        $requete = $pdo->prepare('DELETE FROM reinitialisations_mdp WHERE jeton_hash = ?');
+                        $requete->execute([$jeton_hash]);
+                    }
+                }
+            } catch (PDOException $erreur) {
+                $message = 'Le service est momentanément indisponible. Veuillez réessayer plus tard.';
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -57,10 +110,8 @@
                 un lien de réinitialisation de votre mot de passe.
             </p>
 
-            <form
-                class="formulaire-connexion"
-                id="formulaire-mot-de-passe-oublie"
-            >
+            <form class="formulaire-connexion" id="formulaire-mot-de-passe-oublie" action="mot-de-passe-oublie.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
 
                 <div class="champ-connexion">
                     <label for="email">Adresse mail</label>
@@ -69,6 +120,8 @@
                         type="email"
                         id="email"
                         name="email"
+                        value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>"
+                        autocomplete="email"
                         required
                     >
                 </div>
@@ -83,7 +136,7 @@
                 class="message-formulaire"
                 id="message-mot-de-passe-oublie"
                 aria-live="polite"
-            ></p>
+            ><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
 
             <p class="lien-inscription">
                 <a href="connexion.php">Retour à la connexion</a>
@@ -132,6 +185,5 @@
     <script src="./assets/js/donnees.js"></script>
     <script src="./assets/js/donnees-exemples.js"></script>
     <script src="./assets/js/commun.js"></script>
-    <script src="./assets/js/formulaires.js"></script>
 </body>
 </html>

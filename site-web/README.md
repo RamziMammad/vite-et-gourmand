@@ -54,6 +54,12 @@ Les fichiers HTML, CSS, JavaScript et PHP ont été contrôlés. L'inscription a
 
 ## Suite du projet
 
-Il reste notamment à développer le mot de passe oublié, les commandes réelles, la gestion des menus et des avis, les statistiques NoSQL, les e-mails et le déploiement.
+Il reste notamment à tester l’envoi des liens de réinitialisation, les commandes réelles, la gestion des menus et des avis, les statistiques NoSQL, les e-mails et le déploiement.
 
 Le projet est suivi avec Git et GitHub. Chaque fonctionnalité est développée dans une branche, puis intégrée à `develop` après vérification. La branche principale sera mise à jour lorsque l'ensemble de l'application sera prêt.
+
+## Réinitialisation du mot de passe (étape 5)
+
+Le formulaire `mot-de-passe-oublie.php` prépare un lien envoyé par mail. Le lien est valable une heure et une seule utilisation est autorisée.
+La page `reinitialiser-mot-de-passe.php` enregistre le nouveau mot de passe de manière protégée.
+En local, il faut configurer un serveur de mails de test (comme Mailpit). Les tests réels et l’envoi de mails depuis le site public restent à valider.

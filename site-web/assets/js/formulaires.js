@@ -1,10 +1,4 @@
-/* Vite et Gourmand - formulaires.js
-   Les parties de ce fichier sont regroupées par fonctionnalité. */
-
-
-// ===== Formulaires =====
-
-/* Messages des formulaires */
+/* Messages des formulaires encore sans traitement PHP. */
 
 function preparerFormulaire(nom, message) {
     const formulaire = document.getElementById("formulaire-" + nom);
@@ -18,4 +12,3 @@ function preparerFormulaire(nom, message) {
 }
 
 preparerFormulaire("contact", "L’envoi de messages est temporairement indisponible.");
-preparerFormulaire("mot-de-passe-oublie", "La réinitialisation du mot de passe est temporairement indisponible.");
