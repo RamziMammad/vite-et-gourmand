@@ -1,13 +1,13 @@
 # Base de données - Vite & Gourmand
 
-Cette première partie du back-end prépare les tables nécessaires au site. Elle utilise **MariaDB / MySQL**, comme dans le cours Studi sur la création d'une base de données SQL.
+Ce dossier contient la structure SQL et les données de départ utilisées par le site. Elle utilise **MariaDB / MySQL**, comme dans le cours Studi sur la création d'une base de données SQL.
 
 ## Les fichiers
 
 - `01_creation.sql` crée la base de données `vite_et_gourmand` et ses tables.
 - `02_donnees.sql` ajoute les deux menus du site, leurs plats, leurs photos, les allergènes, les horaires et les rôles.
 
-Il n'y a pas de vrai compte utilisateur dans les données de départ. Le compte administrateur sera créé plus tard avec un mot de passe protégé par PHP.
+Les données de départ ne contiennent aucun compte utilisateur, employé ou administrateur. Les comptes de démonstration doivent être préparés séparément sur une base de test, avec des mots de passe hachés par PHP. Ne pas utiliser de vrais comptes personnels.
 
 ## Importer dans XAMPP
 
@@ -57,8 +57,6 @@ Par exemple :
 
 Les prix sont enregistrés avec `DECIMAL(10,2)` pour avoir des montants précis en euros. Le mot de passe sera enregistré sous une forme hachée, jamais en clair.
 
-## Et après ?
+## État actuel
 
-La base relationnelle est seulement le début. Il reste à connecter les formulaires avec **PHP et PDO**, à créer une vraie connexion sécurisée et à contrôler les permissions. Il faudra aussi ajouter **MongoDB** pour les statistiques de l'administrateur, puis tester et déployer le site.
-
-Les données de test présentes actuellement dans `localStorage` ne sont pas encore reliées à cette base SQL.
+Les pages et formulaires sont reliés à MariaDB par PHP et PDO. Le site utilise CouchDB pour les statistiques de l'administrateur (et non MongoDB). Les fichiers locaux de configuration sont exclus de Git. Le projet a été testé sur la configuration locale XAMPP ; le déploiement public sera vérifié séparément.

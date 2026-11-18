@@ -28,4 +28,4 @@ Ce guide explique le déploiement ; il ne signifie pas que le site est déjà en
 - Les fichiers PHP de configuration du dossier `php` sont protégés par `.htaccess` sur Apache, mais doivent également rester hors des archives publiques et de Git.
 - Le ZIP de livraison ne contient **aucun** mot de passe ; conserver les fichiers locaux existants lors de la fusion sous Windows.
 - Sans hébergeur retenu, URL publique et boîte e-mail réelles, une mise en ligne fonctionnelle à 100 % ne peut pas être certifiée.
-- Il reste à rédiger la copie ECF, le manuel PDF, la charte PDF, les diagrammes et la documentation de gestion de projet demandés dans l'énoncé (pages 11-12).
+- Le manuel utilisateur, la charte graphique, les maquettes et les documents technique et de gestion de projet sont dans `documentation/`. La copie ECF Word/Excel et le lien du tableau de suivi restent à finaliser. Le manuel doit encore être complété avec des comptes de démonstration réellement testés.
