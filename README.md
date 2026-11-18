@@ -1,66 +1,56 @@
 # Vite & Gourmand
 
-## Présentation du projet
+Projet réalisé pour l'ECF du titre professionnel Développeur Web et Web Mobile (Studi).
 
-Vite & Gourmand est un site de traiteur imaginé pour l'ECF Développeur Web et Web Mobile de Studi. L'entreprise se trouve à Bordeaux. Le but du site est de présenter les menus et de permettre aux clients de préparer une commande en ligne.
+## Présentation
 
-Le projet avance en deux parties : d'abord les pages et les interactions côté navigateur, puis le développement côté serveur et les bases de données.
+Vite & Gourmand est une application web de traiteur située dans le contexte fictif de Bordeaux. Elle présente les menus et permet de passer une commande, de la suivre et de donner un avis. Elle prévoit trois types de comptes : client, employé et administrateur.
 
-## État du projet
+## Fonctionnalités
 
-La partie front-end est en place, avec 14 pages HTML, les feuilles CSS, les images et 15 fichiers JavaScript regroupés par fonctionnalité.
+- **Visiteur** : consulter les menus, utiliser cinq filtres dynamiques, lire le détail des menus et contacter l'entreprise.
+- **Client** : s'inscrire, se connecter, réinitialiser son mot de passe, commander, consulter et modifier ses commandes autorisées, les annuler et déposer un avis après leur achèvement.
+- **Employé** : consulter et filtrer les commandes, mettre à jour leur statut, gérer menus, plats et horaires, et modérer les avis.
+- **Administrateur** : gérer les comptes employés, accéder aux fonctions de gestion et consulter des statistiques par menu.
 
-On peut notamment :
-
-- consulter les menus et utiliser cinq filtres sans recharger la page ;
-- afficher la composition d'un menu, ses allergènes, ses conditions et ses photos ;
-- préparer une commande et voir le calcul du prix, de la remise et des frais de livraison ;
-- tester les espaces utilisateur, employé et administrateur avec des données de démonstration ;
-- simuler le suivi des commandes, les avis clients et la gestion du catalogue.
-
-Pour le moment, les comptes et les commandes ne sont **pas enregistrés sur un vrai serveur**. Certaines données sont gardées dans le navigateur avec `localStorage` pour tester les écrans. Le mode démonstration est indiqué sur la page de connexion. Il ne faut pas utiliser de vraies données personnelles dans ce mode.
+Les parcours principaux ont été testés localement avec XAMPP, Brave et Mailpit. Ces tests ne remplacent pas un contrôle complet en hébergement public.
 
 ## Technologies
 
-- HTML5 pour les pages ;
-- CSS3 pour la mise en forme et l'affichage sur mobile ;
-- JavaScript pour les filtres, les formulaires et les interactions ;
-- XAMPP et Apache pour lancer le site en local.
+HTML5, CSS3, JavaScript, PHP, PDO, MariaDB (SQL) et Apache CouchDB (NoSQL). Le projet est développé en local avec XAMPP ; Mailpit sert à recevoir les e-mails de test.
 
-Pour le back-end, la solution envisagée est PHP avec PDO, MySQL pour les données relationnelles et une base NoSQL pour la partie demandée dans l'énoncé.
+## Installer le projet en local
 
-## Lancer le site en local
+1. Installer **XAMPP** et placer ce dépôt dans `C:\xampp\htdocs\vite-et-gourmand`.
+2. Dans XAMPP, démarrer **Apache** et **MySQL** (MariaDB).
+3. Ouvrir `http://localhost/phpmyadmin`. Sur une installation neuve uniquement, exécuter `base-de-donnees/01_creation.sql`, puis `base-de-donnees/02_donnees.sql`. **Ne pas réimporter ces scripts sur une base déjà utilisée**, pour ne pas écraser ou dupliquer les données.
+4. Dans `site-web/php/`, copier `config.local.exemple.php` vers `config.local.php`, puis renseigner les paramètres de la base SQL locale.
+5. Installer et démarrer **Apache CouchDB**. Copier `nosql.local.exemple.php` en `nosql.local.php` et renseigner la connexion CouchDB. Les statistiques de l'administrateur utilisent cette base NoSQL.
+6. Pour les e-mails de test, démarrer **Mailpit** (SMTP 1025, interface `http://localhost:8025`) et configurer l'envoi des e-mails de PHP vers ce service selon l'environnement XAMPP.
+7. Si nécessaire, créer `parametres-site.local.php` et `contact.local.php` à partir de leurs fichiers `.exemple.php`, dans `site-web/php/`, en conservant des coordonnées de test adaptées à l'environnement local.
+8. Ouvrir `http://localhost/vite-et-gourmand/site-web/index.php`.
 
-1. Installer XAMPP si ce n'est pas déjà fait.
-2. Placer le dossier du projet `vite-et-gourmand` dans `C:\xampp\htdocs\`.
-3. Vérifier que les pages se trouvent bien dans `C:\xampp\htdocs\vite-et-gourmand\site-web\`.
-4. Ouvrir XAMPP et démarrer **Apache**.
-5. Dans le navigateur, ouvrir :
+Un compte client peut être créé depuis l'interface. Le compte administrateur initial doit être mis en place de façon sécurisée dans la base : l'application **ne permet pas** l'inscription publique d'un administrateur. Aucun identifiant administrateur réel ou mot de passe n'est fourni dans ce dépôt.
 
-   `http://localhost/vite-et-gourmand/site-web/index.html`
+## Organisation
 
-Il n'y a pas encore de base de données à importer pour utiliser cette version du front-end.
+- `site-web/` : pages publiques et espaces privés PHP, CSS, JavaScript et images.
+- `site-web/php/` : connexion aux bases, contrôles d'accès et traitement des actions côté serveur.
+- `base-de-donnees/01_creation.sql` : structure relationnelle.
+- `base-de-donnees/02_donnees.sql` : données de départ.
+- `site-web/DEPLOIEMENT.md` : prérequis et procédure de déploiement.
+- `site-web/VERIFICATIONS_FINALES.md` : points de contrôle.
 
-Si le dossier a un autre nom, il faut adapter l'adresse dans le navigateur.
+## Sécurité
 
-## Organisation des fichiers
+La connexion utilise des sessions PHP et des mots de passe hachés. L'accès aux espaces dépend du rôle. Les données SQL sont traitées avec PDO et des requêtes préparées ; les formulaires sensibles utilisent des contrôles côté serveur. Les fichiers `*.local.php` contiennent des paramètres **privés** : ils ne doivent être ni committés ni publiés.
 
-Le dossier `site-web` contient les pages HTML et un dossier `assets` :
+## État de la livraison
 
-- `assets/css` : les styles des pages ;
-- `assets/images` : les images et les icônes ;
-- `assets/js` : les scripts JavaScript.
+Le projet fonctionne en local sur la configuration de développement testée. **La mise en ligne publique n'est pas encore attestée**, et les mentions légales, les CGV, l'accessibilité RGAA et les paramètres d'envoi de courriels devront être validés dans l'environnement de déploiement. Aucune donnée de contact ou d'entreprise non confirmée ne doit être inventée.
 
-Les scripts sont séparés par sujet : menus, commande, espace client, espace employé, administration et données de démonstration. Cette organisation permet de retrouver plus facilement une partie du code.
+Les livrables complémentaires demandés par l'ECF (manuel utilisateur PDF, charte graphique PDF et maquettes, documentation technique, gestion du projet, diagrammes, lien du projet déployé et lien de l'outil de suivi) sont à joindre au dossier de remise.
 
-## Vérifications du front-end
+## Git
 
-Les principaux points à contrôler dans Brave sont les filtres des menus, le détail des deux menus, les calculs de commande, le parcours en démonstration, le suivi des statuts et l'affichage sur mobile.
-
-Le site doit encore être vérifié en conditions réelles dans le navigateur, notamment pour l'accessibilité et les différents formats d'écran. La présence des pages ne signifie pas à elle seule que toute l'application est terminée.
-
-## Suite du projet
-
-La prochaine étape est de relier les pages à un vrai back-end : inscription et connexion sécurisées, rôles utilisateur/employé/administrateur, enregistrement des menus et commandes, envoi des e-mails, bases de données SQL et NoSQL, puis tests et déploiement.
-
-Le dépôt Git sert à conserver l'historique du travail. Les changements sont réalisés sur des branches de fonctionnalités, puis intégrés dans `develop` après vérification et dans la branche principale lorsque la version est prête.
+Les développements sont intégrés sur `develop`, puis réunis dans `main` après vérification. Les fichiers de configuration locale sont exclus du suivi Git.
