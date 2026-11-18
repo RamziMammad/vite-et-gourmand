@@ -1,15 +1,6 @@
-/* Vite et Gourmand - commun.js
-   Les parties de ce fichier sont regroupées par fonctionnalité. */
-
-
-// ===== Accessibilite =====
-
 /* Le lien d'évitement est placé dans les pages HTML. */
 const principal = document.getElementById("contenu-principal");
 if (principal) principal.setAttribute("tabindex", "-1");
-
-
-// ===== Avis accueil =====
 
 /* Affiche seulement les avis validés sur la page Accueil. */
 
@@ -41,15 +32,17 @@ if (document.body.getAttribute("class") === "page-accueil") {
 
             zone.appendChild(carte);
         }
+        if (zone.childElementCount === 0) {
+            const message = document.createElement("p");
+            message.textContent = "Aucun avis publié pour le moment.";
+            zone.appendChild(message);
+        }
     }
 }
 
-
-// ===== Horaires =====
-
 /* Affiche les horaires modifiés dans le pied de page. */
 
-if (localStorage.getItem("vg_horaires") !== null) {
+if (window.VG_DONNEES_SQL) {
     const jours = [
         "Lundi",
         "Mardi",

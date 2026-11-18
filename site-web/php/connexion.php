@@ -11,5 +11,5 @@ $options = [
 try {
     $pdo = new PDO($dsn, $utilisateur, $mot_de_passe, $options);
 } catch (PDOException $erreur) {
-    die('Connexion impossible. Vérifie MySQL et les identifiants de la base.');
+    die('Le site est momentanément indisponible. Veuillez réessayer plus tard.');
 }

@@ -326,3 +326,19 @@ body.page-espace-utilisateur {
         font-weight: 400;
     }
 }
+
+/* Commandes et formulaires de l'espace client */
+.message-espace-client { background: #FFF8ED; border-left: 4px solid #F4B400; padding: 15px 18px; border-radius: 8px; margin-bottom: 22px; }
+.choix-commande-formulaire { margin-bottom: 20px; }
+.choix-commande-formulaire label { display: block; margin-bottom: 10px; }
+.choix-commande-ligne { display: flex; align-items: center; gap: 12px; }
+.choix-commande-ligne select { flex: 1; min-width: 0; padding: 12px; font: inherit; border: 1px solid #888; background: white; }
+.page-espace-utilisateur .detail-prix-client { border-top: 1px solid #E9DDCC; padding-top: 12px; margin-top: 15px; }
+.page-espace-utilisateur .details-action-client { margin-top: 16px; border: 1px solid #E9DDCC; border-radius: 8px; padding: 12px 15px; }
+.page-espace-utilisateur .details-action-client summary { cursor: pointer; font-weight: 700; color: #2B1B0F; }
+.page-espace-utilisateur .details-action-client form { margin-top: 18px; }
+.page-espace-utilisateur .details-action-client .champ-profil select { width: 100%; padding: 12px; background: white; border: 1px solid #888; }
+.page-espace-utilisateur .historique-statut { padding-left: 22px; }
+.page-espace-utilisateur .historique-statut li { margin-bottom: 12px; }
+.page-espace-utilisateur .lien-espace-client { color: #2B1B0F; text-decoration: underline; }
+@media screen and (max-width: 768px) { .choix-commande-ligne { flex-direction: column; align-items: stretch; } }

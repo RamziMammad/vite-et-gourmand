@@ -1,0 +1,232 @@
+body.page-confirmation {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-confirmation .menu-mobile,
+.page-confirmation .horaires-mobile {
+    display: none;
+}
+
+.page-confirmation main {
+    width: 94%;
+    max-width: 900px;
+    margin: 50px auto 65px;
+    flex: 1;
+}
+
+.confirmation-carte {
+    padding: 48px 40px;
+    background-color: #FFF8ED;
+    border: 1px solid #E9DDCC;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.confirmation-icone {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 22px;
+    background-color: #E8F5EA;
+    border: 2px solid #277044;
+    border-radius: 50%;
+    color: #277044;
+    font-size: 52px;
+    line-height: 76px;
+    font-weight: bold;
+}
+
+.confirmation-carte h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #2B1B0F;
+}
+
+.confirmation-principale {
+    font-size: 21px;
+    line-height: 1.5;
+    color: #202938;
+}
+
+.confirmation-texte {
+    max-width: 630px;
+    margin: 12px auto 0;
+    color: #625348;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.confirmation-email {
+    margin: 18px auto 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #30573A;
+}
+
+.confirmation-recapitulatif {
+    margin: 32px auto;
+    padding: 25px;
+    background-color: #FFFFFF;
+    border: 1px solid #E9DDCC;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.confirmation-recapitulatif h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #2B1B0F;
+}
+
+.confirmation-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 25px;
+}
+
+.confirmation-details div {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 12px;
+}
+
+.confirmation-details dt {
+    color: #685E56;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.confirmation-details dd {
+    color: #2B1B0F;
+    font-size: 17px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.confirmation-total {
+    margin-top: 22px;
+    font-size: 19px;
+    color: #2B1B0F;
+}
+
+.confirmation-total strong {
+    font-size: 24px;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.confirmation-actions a {
+    display: inline-block;
+    padding: 15px 22px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.confirmation-bouton-principal {
+    background-color: #F4B400;
+    color: #2B1B0F;
+}
+
+.confirmation-bouton-secondaire {
+    background-color: #2B1B0F;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    .page-confirmation header {
+        position: relative;
+        padding: 22px 14px;
+    }
+
+    .page-confirmation header > a {
+        font-size: 22px;
+    }
+
+    .page-confirmation header .navigation-pc {
+        display: none;
+    }
+
+    .page-confirmation .menu-mobile,
+    .page-confirmation .horaires-mobile {
+        display: block;
+    }
+
+    .page-confirmation .menu-mobile summary {
+        color: #FFFFFF;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    .page-confirmation .menu-mobile nav {
+        position: absolute;
+        top: 100%;
+        right: 10px;
+        width: 210px;
+        padding: 18px;
+        background-color: #2B1B0F;
+        border-radius: 10px;
+        z-index: 2;
+    }
+
+    .page-confirmation .menu-mobile nav ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .page-confirmation main {
+        width: 94%;
+        margin: 28px auto 40px;
+    }
+
+    .confirmation-carte {
+        padding: 30px 18px;
+    }
+
+    .confirmation-carte h1 {
+        font-size: 28px;
+    }
+
+    .confirmation-principale {
+        font-size: 18px;
+    }
+
+    .confirmation-details {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .confirmation-recapitulatif {
+        padding: 20px 16px;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+
+    .confirmation-actions a {
+        text-align: center;
+    }
+
+    .page-confirmation footer {
+        padding: 28px 0;
+    }
+
+    .page-confirmation .footer-contenu {
+        width: 86%;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .page-confirmation .footer-contenu section {
+        width: 100%;
+        border-bottom: 1px solid #FFFFFF;
+        padding-bottom: 24px;
+    }
+}

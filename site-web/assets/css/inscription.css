@@ -19,6 +19,10 @@
     margin-bottom: 12px;
 }
 
+.page-inscription .message-formulaire {
+    text-align: center;
+}
+
 .introduction-inscription {
     color: #71665E;
     font-size: 18px;

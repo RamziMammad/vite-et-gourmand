@@ -5,7 +5,8 @@ if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-$jeton = $_POST['jeton'] ?? ($_GET['jeton'] ?? '');
+$jeton_saisi = $_POST['jeton'] ?? ($_GET['jeton'] ?? '');
+$jeton = is_string($jeton_saisi) ? $jeton_saisi : '';
 $message = '';
 $lien_valide = false;
 
@@ -20,11 +21,12 @@ if (preg_match('/^[a-f0-9]{64}$/', $jeton)) {
         $lien_valide = (bool) $compte;
 
         if ($lien_valide && $_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            if (!isset($_POST['csrf_token']) || !is_string($_POST['csrf_token']) ||
+                !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
                 $message = 'Le formulaire a expiré. Veuillez actualiser la page.';
             } else {
-                $mot_de_passe = $_POST['mot_de_passe'] ?? '';
-                $confirmation = $_POST['confirmation'] ?? '';
+                $mot_de_passe = isset($_POST['mot_de_passe']) && is_string($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : '';
+                $confirmation = isset($_POST['confirmation']) && is_string($_POST['confirmation']) ? $_POST['confirmation'] : '';
 
                 if (strlen($mot_de_passe) < 10 ||
                     !preg_match('/[a-z]/', $mot_de_passe) ||
@@ -88,16 +90,16 @@ if (preg_match('/^[a-f0-9]{64}$/', $jeton)) {
     <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
     <header>
-        <a href="index.html">
+        <a href="index.php">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="menus.php">Tous les menus</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
 
@@ -106,10 +108,10 @@ if (preg_match('/^[a-f0-9]{64}$/', $jeton)) {
 
             <nav aria-label="Navigation mobile">
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="menus.php">Tous les menus</a></li>
                     <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
         </details>
@@ -182,7 +184,7 @@ if (preg_match('/^[a-f0-9]{64}$/', $jeton)) {
     </footer>
 
     <script src="./assets/js/donnees.js"></script>
-    <script src="./assets/js/donnees-exemples.js"></script>
     <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/horaires-public.js"></script>
 </body>
 </html>

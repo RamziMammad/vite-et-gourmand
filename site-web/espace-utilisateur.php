@@ -1,6 +1,5 @@
 <?php
-require __DIR__ . '/php/authentification.php';
-verifierAcces([1]);
+require __DIR__ . '/php/espace-client.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,19 +24,21 @@ verifierAcces([1]);
     <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
     <header>
-        <a href="index.html">
+        <a href="index.php">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menus.html">Tous les menus</a></li>
-                <li><form action="deconnexion.php" method="post">
-                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
-                    <button type="submit" class="lien-deconnexion">Déconnexion</button>
-                </form></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="menus.php">Tous les menus</a></li>
+                <li>
+                    <form action="deconnexion.php" method="post">
+                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <button type="submit" class="lien-deconnexion">Déconnexion</button>
+                    </form>
+                </li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
 
@@ -46,36 +47,33 @@ verifierAcces([1]);
 
             <nav aria-label="Navigation mobile">
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menus.html">Tous les menus</a></li>
-                    <li><form action="deconnexion.php" method="post">
-                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
-                    <button type="submit" class="lien-deconnexion">Déconnexion</button>
-                </form></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="menus.php">Tous les menus</a></li>
+                    <li>
+                        <form action="deconnexion.php" method="post">
+                            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <button type="submit" class="lien-deconnexion">Déconnexion</button>
+                        </form>
+                    </li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
         </details>
     </header>
 
     <main id="contenu-principal">
-        <p class="bandeau-demonstration">Les fonctions de cet espace utilisent encore des données fictives. Elles seront reliées à votre compte et à la base de données dans les prochaines étapes.</p>
-
         <section class="introduction-espace">
             <h1>Mon espace</h1>
-
-            <p>
-                Retrouvez vos commandes et gérez
-                vos informations personnelles.
-            </p>
+            <p>Retrouvez vos commandes et gérez vos informations personnelles.</p>
         </section>
 
+        <?php if ($message_client !== '') { ?>
+            <p class="message-espace-client" role="status"><?php echo protegerClient($message_client); ?></p>
+        <?php } ?>
+
         <div class="organisation-espace">
-
             <nav class="navigation-espace" aria-label="Mon espace utilisateur">
-
                 <h2>Mon compte</h2>
-
                 <ul>
                     <li><a href="#mes-commandes">Mes commandes</a></li>
                     <li><a href="#mes-informations">Mes informations</a></li>
@@ -85,460 +83,213 @@ verifierAcces([1]);
             </nav>
 
             <div class="sections-espace">
-
-                <!-- Suivi des commandes -->
                 <section id="mes-commandes" class="bloc-espace">
-
                     <h2>Mes commandes</h2>
-                    <label for="choix-commande-client">Choisir une commande</label>
-                    <select id="choix-commande-client" class="select-commande-client"></select>
-
-
-                    <article class="carte-commande">
-
-                        <div class="entete-commande">
-                            <h3>Commande n° 001</h3>
-
-                            <span id="statut-commande" class="statut-commande">
-                                En attente
-                            </span>
-                        </div>
-
-                        <p><strong>Menu :</strong> Menu Classique</p>
-
-                        <p>
-                            <strong>Nombre de personnes :</strong>
-                            <span id="commande-personnes">10</span>
-                        </p>
-
-                        <p>
-                            <strong>Date de la prestation :</strong>
-                            <span id="commande-date-prestation">20 novembre 2026</span>
-                        </p>
-
-                        <p>
-                            <strong>Adresse de la prestation :</strong>
-                            <span id="commande-adresse-prestation">Bordeaux</span>
-                        </p>
-
-                        <p>
-                            <strong>Date de livraison :</strong>
-                            <span id="commande-date-livraison">20 novembre 2026</span>
-                        </p>
-
-                        <p>
-                            <strong>Heure de livraison :</strong>
-                            <span id="commande-heure-livraison">12:00</span>
-                        </p>
-
-                        <p>
-                            <strong>Adresse de livraison :</strong>
-                            <span id="commande-adresse-livraison">Bordeaux</span>
-                        </p>
-
-                        <p>
-                            <strong>Lieu de livraison :</strong>
-                            <span id="commande-zone-livraison">Bordeaux</span>
-                        </p>
-
-                        <p>
-                            <strong>Montant indicatif :</strong>
-                            <span id="commande-montant">250,00 €</span>
-                        </p>
-
-                        <div class="actions-commande">
-
-                            <button
-                                type="button"
-                                id="bouton-modifier-commande"
-                                class="bouton-action"
-                            >
-                                Modifier
-                            </button>
-
-                            <button
-                                type="button"
-                                id="bouton-annuler-commande"
-                                class="bouton-secondaire"
-                            >
-                                Annuler
-                            </button>
-
-                        </div>
-
-                        <p id="message-commande" aria-live="polite"></p>
-
-                        <form
-                            id="formulaire-modification-commande"
-                            class="formulaire-profil"
-                            hidden
-                        >
-
-                            <h3>Modifier la commande</h3>
-
-                            <p>Le menu choisi ne peut pas être modifié.</p>
-
-                            <div class="champ-profil">
-                                <label for="modif-personnes">Nombre de personnes</label>
-
-                                <input
-                                    type="number"
-                                    id="modif-personnes"
-                                    name="nombre_personnes"
-                                    min="10"
-                                    step="1"
-                                    value="10"
-                                    required
-                                >
-                            </div>
-
-                            <div class="champ-profil">
-                                <label for="modif-date-prestation">
-                                    Date de la prestation
-                                </label>
-
-                                <input
-                                    type="date"
-                                    id="modif-date-prestation"
-                                    name="date_prestation"
-                                    value="2026-11-20"
-                                    required
-                                >
-                            </div>
-
-                            <div class="champ-profil">
-                                <label for="modif-adresse-prestation">
-                                    Adresse de la prestation
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="modif-adresse-prestation"
-                                    name="adresse_prestation"
-                                    value="Bordeaux"
-                                    required
-                                >
-                            </div>
-
-                            <div class="ligne-profil">
-
-                                <div class="champ-profil">
-                                    <label for="modif-date-livraison">
-                                        Date de livraison
-                                    </label>
-
-                                    <input
-                                        type="date"
-                                        id="modif-date-livraison"
-                                        name="date_livraison"
-                                        value="2026-11-20"
-                                        required
-                                    >
-                                </div>
-
-                                <div class="champ-profil">
-                                    <label for="modif-heure-livraison">
-                                        Heure de livraison
-                                    </label>
-
-                                    <input
-                                        type="time"
-                                        id="modif-heure-livraison"
-                                        name="heure_livraison"
-                                        value="12:00"
-                                        required
-                                    >
-                                </div>
-
-                            </div>
-
-                            <div class="champ-profil">
-                                <label for="modif-adresse-livraison">
-                                    Adresse de livraison
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="modif-adresse-livraison"
-                                    name="adresse_livraison"
-                                    value="Bordeaux"
-                                    required
-                                >
-                            </div>
-
-                            <div class="champ-profil">
-                                <label for="modif-zone-livraison">
-                                    Lieu de livraison
-                                </label>
-
-                                <select
-                                    id="modif-zone-livraison"
-                                    name="zone_livraison"
-                                >
-                                    <option value="bordeaux">Bordeaux</option>
-                                    <option value="hors-bordeaux">En dehors de Bordeaux</option>
+                    <?php if (!$commandes_client) { ?>
+                        <p>Vous n'avez pas encore passé de commande.</p>
+                        <a class="lien-espace-client" href="menus.php">Découvrir nos menus</a>
+                    <?php } else { ?>
+                        <form method="get" action="espace-utilisateur.php" class="choix-commande-formulaire">
+                            <label for="choix-commande-client">Choisir une commande</label>
+                            <div class="choix-commande-ligne">
+                                <select id="choix-commande-client" name="commande" class="select-commande-client">
+                                    <?php foreach ($commandes_client as $commande) { ?>
+                                        <option value="<?php echo (int) $commande['id']; ?>" <?php if ((int) $commande_selectionnee['id'] === (int) $commande['id']) echo 'selected'; ?>>
+                                            Commande n°<?php echo (int) $commande['id']; ?> — <?php echo protegerClient($commande['nom_menu']); ?>
+                                        </option>
+                                    <?php } ?>
                                 </select>
-                            </div>
-
-                            <div class="champ-profil">
-                                <label for="modif-distance">
-                                    Distance depuis Bordeaux (km)
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="modif-distance"
-                                    name="distance"
-                                    min="0"
-                                    step="0.1"
-                                    value="0"
-                                >
-                            </div>
-
-                            <div class="actions-commande">
-
-                                <button type="submit" class="bouton-action">
-                                    Enregistrer les changements
-                                </button>
-
-                                <button
-                                    type="button"
-                                    id="bouton-retour-modification"
-                                    class="bouton-secondaire"
-                                >
-                                    Retour
-                                </button>
-
+                                <button type="submit" class="bouton-action">Afficher</button>
                             </div>
                         </form>
 
-                        <div id="confirmation-annulation" hidden>
-
-                            <h3>Annuler la commande</h3>
-
-                            <p>
-                                Voulez-vous vraiment annuler cette commande ?
-                            </p>
-
-                            <div class="actions-commande">
-
-                                <button
-                                    type="button"
-                                    id="bouton-confirmer-annulation"
-                                    class="bouton-action"
-                                >
-                                    Confirmer l'annulation
-                                </button>
-
-                                <button
-                                    type="button"
-                                    id="bouton-garder-commande"
-                                    class="bouton-secondaire"
-                                >
-                                    Garder la commande
-                                </button>
-
+                        <?php $c = $commande_selectionnee; ?>
+                        <article class="carte-commande">
+                            <div class="entete-commande">
+                                <h3>Commande n°<?php echo (int) $c['id']; ?></h3>
+                                <span class="statut-commande"><?php echo protegerClient($statuts_client[$c['statut']] ?? $c['statut']); ?></span>
                             </div>
-                        </div>
+                            <p><strong>Menu :</strong> <?php echo protegerClient($c['nom_menu']); ?></p>
+                            <p><strong>Nombre de personnes :</strong> <?php echo (int) $c['nombre_personnes']; ?></p>
+                            <p><strong>Date de la prestation :</strong> <?php echo dateClientPHP($c['date_prestation']); ?></p>
+                            <p><strong>Adresse de la prestation :</strong> <?php echo protegerClient($c['adresse_prestation']); ?></p>
+                            <p><strong>Date de livraison :</strong> <?php echo dateClientPHP($c['date_livraison']); ?></p>
+                            <p><strong>Heure de livraison :</strong> <?php echo protegerClient(substr($c['heure_livraison'], 0, 5)); ?></p>
+                            <p><strong>Adresse de livraison :</strong> <?php echo protegerClient($c['adresse_livraison']); ?></p>
+                            <p><strong>Lieu de livraison :</strong> <?php echo $c['hors_bordeaux'] ? 'Hors Bordeaux' : 'Dans Bordeaux'; ?></p>
+                            <div class="detail-prix-client">
+                                <p><strong>Menu :</strong> <?php echo prixClientPHP($c['prix_menu']); ?></p>
+                                <p><strong>Réduction :</strong> −<?php echo prixClientPHP($c['reduction']); ?></p>
+                                <p><strong>Livraison :</strong> <?php echo prixClientPHP($c['frais_livraison']); ?></p>
+                                <p><strong>Total :</strong> <?php echo prixClientPHP($c['prix_total']); ?></p>
+                            </div>
 
-                    </article>
+                            <?php if (in_array($c['statut'], ['en_attente', 'attente'], true)) { ?>
+                                <details class="details-action-client">
+                                    <summary>Modifier cette commande</summary>
+                                    <form action="espace-utilisateur.php?commande=<?php echo (int) $c['id']; ?>" method="post" class="formulaire-profil">
+                                        <input type="hidden" name="csrf_token" value="<?php echo protegerClient($_SESSION['csrf_token']); ?>">
+                                        <input type="hidden" name="action_client" value="modifier">
+                                        <input type="hidden" name="commande_id" value="<?php echo (int) $c['id']; ?>">
+                                        <p>Le menu choisi reste inchangé. Le montant sera recalculé après validation.</p>
+                                        <div class="champ-profil">
+                                            <label for="modif-personnes">Nombre de personnes (minimum <?php echo (int) $c['personnes_minimum']; ?>)</label>
+                                            <input type="number" id="modif-personnes" name="nombre_personnes" min="<?php echo (int) $c['personnes_minimum']; ?>" max="5000" value="<?php echo (int) $c['nombre_personnes']; ?>" required>
+                                        </div>
+                                        <div class="champ-profil">
+                                            <label for="modif-date-prestation">Date de la prestation</label>
+                                            <input type="date" id="modif-date-prestation" name="date_prestation" value="<?php echo protegerClient($c['date_prestation']); ?>" required>
+                                        </div>
+                                        <div class="champ-profil">
+                                            <label for="modif-adresse-prestation">Adresse de la prestation</label>
+                                            <input type="text" id="modif-adresse-prestation" name="adresse_prestation" maxlength="255" value="<?php echo protegerClient($c['adresse_prestation']); ?>" required>
+                                        </div>
+                                        <div class="ligne-profil">
+                                            <div class="champ-profil">
+                                                <label for="modif-date-livraison">Date de livraison</label>
+                                                <input type="date" id="modif-date-livraison" name="date_livraison" value="<?php echo protegerClient($c['date_livraison']); ?>" required>
+                                            </div>
+                                            <div class="champ-profil">
+                                                <label for="modif-heure-livraison">Heure de livraison</label>
+                                                <input type="time" id="modif-heure-livraison" name="heure_livraison" value="<?php echo protegerClient(substr($c['heure_livraison'], 0, 5)); ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="champ-profil">
+                                            <label for="modif-adresse-livraison">Adresse de livraison</label>
+                                            <input type="text" id="modif-adresse-livraison" name="adresse_livraison" maxlength="255" value="<?php echo protegerClient($c['adresse_livraison']); ?>" required>
+                                        </div>
+                                        <div class="ligne-profil">
+                                            <div class="champ-profil">
+                                                <label for="modif-zone-livraison">Lieu de livraison</label>
+                                                <select id="modif-zone-livraison" name="ville_livraison" required>
+                                                    <option value="bordeaux" <?php if (!$c['hors_bordeaux']) echo 'selected'; ?>>Dans Bordeaux</option>
+                                                    <option value="hors-bordeaux" <?php if ($c['hors_bordeaux']) echo 'selected'; ?>>Hors Bordeaux</option>
+                                                </select>
+                                            </div>
+                                            <div class="champ-profil">
+                                                <label for="modif-distance">Distance en km (hors Bordeaux)</label>
+                                                <input type="number" id="modif-distance" name="distance" min="0" max="10000" step="0.01" value="<?php echo protegerClient($c['distance_km']); ?>" required>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="bouton-enregistrer">Enregistrer les modifications</button>
+                                    </form>
+                                </details>
 
-                    <article class="carte-commande commande-suivante">
-
-                        <div class="entete-commande">
-                            <h3>Commande n° 004</h3>
-                            <span class="statut-commande">Terminée</span>
-                        </div>
-
-                        <p><strong>Menu :</strong> Menu Végétarien</p>
-                        <p><strong>Nombre de personnes :</strong> 8</p>
-                        <p><strong>Date de la prestation :</strong> 3 novembre 2026</p>
-                        <p><strong>Adresse de la prestation :</strong> Bordeaux</p>
-                        <p><strong>Date et heure de livraison :</strong> 3 novembre 2026 à 12:00</p>
-                        <p><strong>Montant :</strong> 200,00 €</p>
-
-                        <p>
-                            <a href="#avis-client">
-                                Donner mon avis sur cette commande
-                            </a>
-                        </p>
-
-                    </article>
+                                <details class="details-action-client">
+                                    <summary>Annuler cette commande</summary>
+                                    <form action="espace-utilisateur.php?commande=<?php echo (int) $c['id']; ?>" method="post">
+                                        <input type="hidden" name="csrf_token" value="<?php echo protegerClient($_SESSION['csrf_token']); ?>">
+                                        <input type="hidden" name="action_client" value="annuler">
+                                        <input type="hidden" name="commande_id" value="<?php echo (int) $c['id']; ?>">
+                                        <p>Confirmez-vous l'annulation de la commande n°<?php echo (int) $c['id']; ?> ?</p>
+                                        <button type="submit" class="bouton-secondaire">Confirmer l'annulation</button>
+                                    </form>
+                                </details>
+                            <?php } else { ?>
+                                <p class="information-commande-client">Cette commande n'est plus modifiable depuis votre espace.</p>
+                            <?php } ?>
+                        </article>
+                    <?php } ?>
                 </section>
 
                 <section id="mes-informations" class="bloc-espace">
-
                     <h2>Mes informations</h2>
-
-                    <form
-                        id="formulaire-informations"
-                        class="formulaire-profil"
-                    >
-
+                    <form action="espace-utilisateur.php" method="post" class="formulaire-profil">
+                        <input type="hidden" name="csrf_token" value="<?php echo protegerClient($_SESSION['csrf_token']); ?>">
+                        <input type="hidden" name="action_client" value="profil">
                         <div class="ligne-profil">
-
                             <div class="champ-profil">
                                 <label for="nom">Nom</label>
-                                <input type="text" id="nom" name="nom" required>
+                                <input type="text" id="nom" name="nom" maxlength="100" value="<?php echo protegerClient($profil_client['nom']); ?>" required>
                             </div>
-
                             <div class="champ-profil">
                                 <label for="prenom">Prénom</label>
-                                <input type="text" id="prenom" name="prenom" required>
+                                <input type="text" id="prenom" name="prenom" maxlength="100" value="<?php echo protegerClient($profil_client['prenom']); ?>" required>
                             </div>
                         </div>
-
                         <div class="champ-profil">
                             <label for="email">Adresse mail</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" maxlength="190" value="<?php echo protegerClient($profil_client['email']); ?>" required>
                         </div>
-
                         <div class="champ-profil">
                             <label for="telephone">Téléphone</label>
-                            <input type="tel" id="telephone" name="telephone" required>
+                            <input type="tel" id="telephone" name="telephone" maxlength="30" value="<?php echo protegerClient($profil_client['telephone']); ?>" required>
                         </div>
-
                         <div class="champ-profil">
                             <label for="adresse">Adresse postale</label>
-                            <input type="text" id="adresse" name="adresse" required>
+                            <input type="text" id="adresse" name="adresse" maxlength="255" value="<?php echo protegerClient($profil_client['adresse_postale']); ?>" required>
                         </div>
-
-                        <button type="submit" class="bouton-enregistrer">
-                            Vérifier mes informations
-                        </button>
-
+                        <button type="submit" class="bouton-enregistrer">Enregistrer mes informations</button>
                     </form>
-
-                    <div
-                        id="apercu-informations"
-                        class="suivi-contenu commande-suivante"
-                        hidden
-                    >
-
-                        <h3>Récapitulatif de mes informations</h3>
-
-                        <p><strong>Nom :</strong> <span id="apercu-nom"></span></p>
-                        <p><strong>Prénom :</strong> <span id="apercu-prenom"></span></p>
-                        <p><strong>Adresse mail :</strong> <span id="apercu-email"></span></p>
-                        <p><strong>Téléphone :</strong> <span id="apercu-telephone"></span></p>
-                        <p><strong>Adresse postale :</strong> <span id="apercu-adresse"></span></p>
-
-                    </div>
                 </section>
 
                 <section id="suivi-commande" class="bloc-espace">
-
                     <h2>Suivi de commande</h2>
-
-                    <div class="suivi-contenu">
-
-                        <h3>Commande n° 001</h3>
-
-                        <p>
-                            <strong>Statut :</strong>
-                            <span id="statut-suivi">En attente</span>
-                        </p>
-
-                        <p id="texte-suivi">
-                            Le suivi détaillé sera disponible dès
-                            l'acceptation de votre commande.
-                        </p>
-                        <ol id="historique-client-dynamique"></ol>
-                    </div>
-
-                    <div class="suivi-contenu commande-suivante">
-
-                        <h3>Commande n° 004</h3>
-
-                        <p><strong>Statut :</strong> Terminée</p>
-
-                        <ol class="historique-statut">
-                            <li><strong>Acceptée</strong> — 2 novembre 2026 à 09:10</li>
-                            <li><strong>En préparation</strong> — 2 novembre 2026 à 16:30</li>
-                            <li><strong>En cours de livraison</strong> — 3 novembre 2026 à 11:15</li>
-                            <li><strong>Livrée</strong> — 3 novembre 2026 à 12:00</li>
-                            <li><strong>Terminée</strong> — 3 novembre 2026 à 15:00</li>
-                        </ol>
-
-                    </div>
+                    <?php if (!$commande_selectionnee) { ?>
+                        <p>Le suivi apparaîtra ici après votre première commande.</p>
+                    <?php } else { ?>
+                        <div class="suivi-contenu">
+                            <h3>Commande n°<?php echo (int) $commande_selectionnee['id']; ?></h3>
+                            <p><strong>Statut :</strong> <?php echo protegerClient($statuts_client[$commande_selectionnee['statut']] ?? $commande_selectionnee['statut']); ?></p>
+                            <?php if (in_array($commande_selectionnee['statut'], ['en_attente', 'attente'], true)) { ?>
+                                <p>Votre commande est en attente de validation.</p>
+                            <?php } elseif (!$historique_client) { ?>
+                                <p>Aucune évolution de statut n'est enregistrée.</p>
+                            <?php } else { ?>
+                                <ol class="historique-statut">
+                                    <?php foreach ($historique_client as $evenement) { ?>
+                                        <li>
+                                            <strong><?php echo protegerClient($statuts_client[$evenement['statut']] ?? $evenement['statut']); ?></strong>
+                                            — <?php echo protegerClient(date('d/m/Y à H:i', strtotime($evenement['date_changement']))); ?>
+                                            <?php if ($evenement['commentaire']) { ?>
+                                                — <?php echo protegerClient($evenement['commentaire']); ?>
+                                            <?php } ?>
+                                        </li>
+                                    <?php } ?>
+                                </ol>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                 </section>
 
                 <section id="avis-client" class="bloc-espace">
-
                     <h2>Mes avis</h2>
-
-                    <p>
-                        Vous pouvez laisser un avis pour
-                        votre commande terminée.
-                    </p>
-
-                    <form id="formulaire-avis" class="formulaire-profil">
-                        <label for="choix-avis-commande">Commande terminée</label>
-                        <select id="choix-avis-commande"></select>
-
-                        <h3>
-                            Commande n° 004 — Menu Végétarien
-                        </h3>
-
-                        <div class="champ-profil">
-                            <label for="note-avis">
-                                Votre note (de 1 à 5)
-                            </label>
-
-                            <input
-                                type="number"
-                                id="note-avis"
-                                name="note"
-                                min="1"
-                                max="5"
-                                step="1"
-                                required
-                            >
-                        </div>
-
-                        <div class="champ-profil">
-                            <label for="commentaire-avis">
-                                Votre commentaire
-                            </label>
-
-                            <textarea
-                                id="commentaire-avis"
-                                name="commentaire"
-                                rows="4"
-                                required
-                            ></textarea>
-                        </div>
-
-                        <button type="submit" class="bouton-enregistrer">
-                            Envoyer mon avis
-                        </button>
-                        <p id="message-avis" aria-live="polite"></p>
-
-                    </form>
-
-                    <div
-                        id="apercu-avis"
-                        class="suivi-contenu commande-suivante"
-                        hidden
-                    >
-
-                        <h3>Avis en attente de validation</h3>
-
-                        <p>
-                            <strong>Note :</strong>
-                            <span id="note-affichee"></span>/5
-                        </p>
-
-                        <p id="commentaire-affiche"></p>
-
-                    </div>
+                    <?php $avis_deja_envoyes = false; ?>
+                    <?php foreach ($commandes_client as $commande) { ?>
+                        <?php if ($commande['avis_id']) { $avis_deja_envoyes = true; ?>
+                            <p>Commande n°<?php echo (int) $commande['id']; ?> — Note : <?php echo (int) $commande['avis_note']; ?>/5 — <?php echo $commande['avis_statut'] === 'valide' ? 'Publié' : 'En cours de validation'; ?></p>
+                        <?php } ?>
+                    <?php } ?>
+                    <?php if ($commandes_a_evaluer) { ?>
+                        <p>Donnez votre avis sur une commande terminée.</p>
+                        <form action="espace-utilisateur.php" method="post" class="formulaire-profil">
+                            <input type="hidden" name="csrf_token" value="<?php echo protegerClient($_SESSION['csrf_token']); ?>">
+                            <input type="hidden" name="action_client" value="avis">
+                            <div class="champ-profil">
+                                <label for="choix-avis-commande">Commande terminée</label>
+                                <select id="choix-avis-commande" name="commande_id" required>
+                                    <?php foreach ($commandes_a_evaluer as $commande) { ?>
+                                        <option value="<?php echo (int) $commande['id']; ?>">Commande n°<?php echo (int) $commande['id']; ?> — <?php echo protegerClient($commande['nom_menu']); ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="champ-profil">
+                                <label for="note-avis">Votre note (de 1 à 5)</label>
+                                <input type="number" id="note-avis" name="note" min="1" max="5" step="1" required>
+                            </div>
+                            <div class="champ-profil">
+                                <label for="commentaire-avis">Votre commentaire</label>
+                                <textarea id="commentaire-avis" name="commentaire" minlength="3" maxlength="1500" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="bouton-enregistrer">Envoyer mon avis</button>
+                        </form>
+                    <?php } elseif (!$avis_deja_envoyes) { ?>
+                        <p>Vous pourrez déposer un avis une fois votre commande terminée.</p>
+                    <?php } ?>
                 </section>
-
             </div>
         </div>
-
     </main>
-
     <footer>
         <div class="footer-contenu">
 
@@ -578,12 +329,6 @@ verifierAcces([1]);
 
         </div>
     </footer>
-
-    <script src="./assets/js/donnees.js"></script>
-    <script src="./assets/js/donnees-exemples.js"></script>
-    <script src="./assets/js/commun.js"></script>
-    <script src="./assets/js/validation.js"></script>
-    <script src="./assets/js/client-commandes.js"></script>
-    <script src="./assets/js/client-actions.js"></script>
+    <script src="./assets/js/horaires-public.js"></script>
 </body>
 </html>

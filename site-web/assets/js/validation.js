@@ -1,9 +1,3 @@
-/* Vite et Gourmand - validation.js
-   Les parties de ce fichier sont regroupées par fonctionnalité. */
-
-
-// ===== Validation frontend =====
-
 /* Vérification des dates et des montants */
 
 const VF = {

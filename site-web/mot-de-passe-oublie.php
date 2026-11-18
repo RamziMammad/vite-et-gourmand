@@ -9,10 +9,11 @@ $message = '';
 $email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    if (!isset($_POST['csrf_token']) || !is_string($_POST['csrf_token']) ||
+        !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $message = 'Le formulaire a expiré. Veuillez actualiser la page.';
     } else {
-        $email = trim($_POST['email'] ?? '');
+        $email = isset($_POST['email']) && is_string($_POST['email']) ? trim($_POST['email']) : '';
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 190) {
             $message = 'Veuillez saisir une adresse mail valide.';
@@ -31,12 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $requete = $pdo->prepare('INSERT INTO reinitialisations_mdp (utilisateur_id, jeton_hash, date_expiration) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 HOUR))');
                     $requete->execute([$compte['id'], $jeton_hash]);
 
-                    // Adresse locale pour les tests avec XAMPP : à adapter au déploiement.
-                    $lien = 'http://localhost/vite-et-gourmand/site-web/reinitialiser-mot-de-passe.php?jeton=' . $jeton;
+                    require __DIR__ . '/php/parametres-site.php';
+                    $lien = rtrim($url_site, '/') . '/reinitialiser-mot-de-passe.php?jeton=' . $jeton;
                     $texte = "Bonjour,\n\nPour choisir un nouveau mot de passe Vite & Gourmand, ouvrez ce lien :\n" . $lien . "\n\nCe lien expire dans une heure et ne peut servir qu'une fois.\nSi vous n'avez rien demandé, ignorez ce message.";
-                    $entetes = "From: Vite et Gourmand <noreply@vite-et-gourmand.test>\r\nContent-Type: text/plain; charset=UTF-8";
+                    $entetes = "From: Vite et Gourmand <" . $email_expediteur . ">\r\nContent-Type: text/plain; charset=UTF-8";
 
-                    if (mail($email, 'Vite et Gourmand - Nouveau mot de passe', $texte, $entetes)) {
+                    if ($url_site !== '' && filter_var($email_expediteur, FILTER_VALIDATE_EMAIL) &&
+                        strpbrk($email_expediteur, "\r\n") === false &&
+                        mail($email, 'Vite et Gourmand - Nouveau mot de passe', $texte, $entetes)) {
                         $requete = $pdo->prepare('UPDATE reinitialisations_mdp SET date_utilisation = NOW() WHERE utilisateur_id = ? AND jeton_hash <> ? AND date_utilisation IS NULL');
                         $requete->execute([$compte['id'], $jeton_hash]);
                     } else {
@@ -72,16 +75,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
     <header>
-        <a href="index.html">
+        <a href="index.php">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="menus.php">Tous les menus</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
 
@@ -90,10 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <nav aria-label="Navigation mobile">
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="menus.php">Tous les menus</a></li>
                     <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
         </details>
@@ -183,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 
     <script src="./assets/js/donnees.js"></script>
-    <script src="./assets/js/donnees-exemples.js"></script>
     <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/horaires-public.js"></script>
 </body>
 </html>

@@ -1,9 +1,3 @@
-/* Vite et Gourmand - menus.js
-   Les parties de ce fichier sont regroupées par fonctionnalité. */
-
-
-// ===== Menus =====
-
 /* Filtre les cartes selon les critères du visiteur. */
 
 const champPrixMax = document.getElementById("prix-max");
@@ -98,16 +92,14 @@ function filtrerMenus() {
     }
 }
 
-
-// ===== Cartes menus =====
-
 /* Construit les cartes et leurs liens dans Tous les menus. */
 
 if (document.body.getAttribute("class") === "page-menus") {
     const zone = document.querySelector(".cartes-menus");
+    zone.textContent = "";
 
-    for (const code in menusDemo) {
-        const menu = menusDemo[code];
+    for (const code in menusCatalogue) {
+        const menu = menusCatalogue[code];
 
         let carte = document.getElementById("menu-" + code);
 
@@ -158,14 +150,11 @@ if (document.body.getAttribute("class") === "page-menus") {
         );
 
         carte.querySelector(".bouton-menu").href =
-            "detail-menu.html?menu=" + code;
+            "detail-menu.php?menu=" + code;
     }
 
     filtrerMenus();
 }
-
-
-// ===== Evenements filtres =====
 
 /* Met à jour les cartes quand un filtre change. */
 

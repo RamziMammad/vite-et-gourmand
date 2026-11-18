@@ -1,9 +1,3 @@
-/* Vite et Gourmand - detail-menu.js
-   Les parties de ce fichier sont regroupées par fonctionnalité. */
-
-
-// ===== Detail informations =====
-
 /* Remplit la présentation d'un menu à partir des données. */
 function afficherInformationsDetail(menu, code) {
     document.title = menu.nom + " - Vite & Gourmand";
@@ -35,9 +29,6 @@ function afficherInformationsDetail(menu, code) {
         "Réservation : au moins " + menu.delaiHeures + " h à l'avance.");
     texteMenu(".condition-complementaire span", menu.conditions);
 }
-
-
-// ===== Detail composition =====
 
 /* Affiche l'entrée, le plat et le dessert du menu. */
 function afficherCompositionDetail(menu) {
@@ -87,9 +78,6 @@ function afficherCompositionDetail(menu) {
     }
 }
 
-
-// ===== Detail galerie =====
-
 /* Trois photos fixes de la galerie du menu sélectionné. */
 function afficherGalerieDetail(menu) {
     const galerie = document.querySelector(".galerie-photos");
@@ -105,10 +93,6 @@ function afficherGalerieDetail(menu) {
     }
 }
 
-
-// ===== Detail menu =====
-
-/* Choisit le menu demandé dans l'adresse de la page. */
 let codeDetail = "classique";
 const adresseDetail = window.location.search;
 
@@ -132,8 +116,8 @@ if (!menuDetail) {
     afficherGalerieDetail(menuDetail);
 
     if (VG.menuDisponible(codeDetail)) {
-        boutonDetail.href = "connexion.php?menu=" + codeDetail;
-        boutonDetail.textContent = "Se connecter pour commander";
+        boutonDetail.href = "commande.php?menu=" + encodeURIComponent(codeDetail);
+        boutonDetail.textContent = "Commander";
         boutonDetail.removeAttribute("aria-disabled");
     } else {
         boutonDetail.removeAttribute("href");

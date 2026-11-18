@@ -1,4 +1,4 @@
-/* Liens de deconnexion et information sur les espaces de demonstration. */
+/* Liens de déconnexion. */
 .lien-deconnexion {
     color: #FFFFFF;
     background: transparent;
@@ -11,16 +11,6 @@
 .lien-deconnexion:hover,
 .lien-deconnexion:focus-visible {
     text-decoration: underline;
-}
-
-.bandeau-demonstration {
-    background: #FFF8ED;
-    color: #2B1B0F;
-    padding: 12px 16px;
-    margin: 16px auto;
-    border-radius: 8px;
-    max-width: 1100px;
-    line-height: 1.5;
 }
 
 @media screen and (max-width: 768px) {

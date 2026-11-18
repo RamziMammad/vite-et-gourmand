@@ -138,6 +138,34 @@ body.page-commande {
     cursor: pointer;
 }
 
+/* Message d'erreur lors de la validation de la commande */
+.alerte-validation-commande[hidden] {
+    display: none;
+}
+
+.alerte-validation-commande {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1px solid #B3261E;
+    border-left: 4px solid #B3261E;
+    border-radius: 8px;
+    background-color: #FFF0EF;
+    color: #85221C;
+}
+
+.alerte-validation-commande strong {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.recapitulatif-commande .alerte-validation-commande p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
 /* Version mobile ou tablette */
 @media screen and (max-width: 768px) {
 

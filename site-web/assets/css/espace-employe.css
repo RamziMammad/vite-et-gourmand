@@ -318,3 +318,48 @@
     align-items: flex-start;
     gap: 8px;
 }
+
+/* Formulaires reliés à MariaDB */
+.page-espace-employe .filtres-employe {
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.page-espace-employe .filtres-employe .bouton-employe {
+    align-self: end;
+}
+
+.page-espace-employe .espacement-employe {
+    margin-top: 22px;
+}
+
+.page-espace-employe .message-retour-employe {
+    background: #F4E8D5;
+    color: #2B1B0F;
+    border-left: 4px solid #C18A13;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 20px;
+}
+
+.page-espace-employe .liste-allergenes-employe {
+    padding: 14px;
+    border: 1px solid #E9DDCC;
+    border-radius: 8px;
+}
+
+.page-espace-employe .liste-allergenes-employe .case-gestion {
+    margin-top: 8px;
+}
+
+.page-espace-employe .actions-avis-employe {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+    .page-espace-employe .filtres-employe .champ-employe {
+        width: 100%;
+    }
+}

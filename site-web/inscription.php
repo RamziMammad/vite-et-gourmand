@@ -7,6 +7,7 @@ if (!isset($_SESSION['csrf_token'])) {
 
 $message = '';
 $compte_cree = false;
+$mail_bienvenue_envoye = false;
 $nom = '';
 $prenom = '';
 $telephone = '';
@@ -14,27 +15,28 @@ $email = '';
 $adresse = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    if (!isset($_POST['csrf_token']) || !is_string($_POST['csrf_token']) ||
+        !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $message = 'Le formulaire a expiré. Veuillez actualiser la page et réessayer.';
     } else {
-        $nom = trim($_POST['nom'] ?? '');
-        $prenom = trim($_POST['prenom'] ?? '');
-        $telephone = trim($_POST['telephone'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $adresse = trim($_POST['adresse'] ?? '');
-        $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+        $nom = isset($_POST['nom']) && is_string($_POST['nom']) ? trim($_POST['nom']) : '';
+        $prenom = isset($_POST['prenom']) && is_string($_POST['prenom']) ? trim($_POST['prenom']) : '';
+        $telephone = isset($_POST['telephone']) && is_string($_POST['telephone']) ? trim($_POST['telephone']) : '';
+        $email = isset($_POST['email']) && is_string($_POST['email']) ? trim($_POST['email']) : '';
+        $adresse = isset($_POST['adresse']) && is_string($_POST['adresse']) ? trim($_POST['adresse']) : '';
+        $mot_de_passe_client = isset($_POST['mot_de_passe']) && is_string($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : '';
 
-        if ($nom === '' || $prenom === '' || $telephone === '' || $email === '' || $adresse === '' || $mot_de_passe === '') {
+        if ($nom === '' || $prenom === '' || $telephone === '' || $email === '' || $adresse === '' || $mot_de_passe_client === '') {
             $message = 'Veuillez remplir tous les champs.';
         } elseif (strlen($nom) > 100 || strlen($prenom) > 100 || strlen($telephone) > 30 || strlen($email) > 190 || strlen($adresse) > 255) {
             $message = 'Certains champs sont trop longs.';
         } elseif (!preg_match('/^[^@\s]+@[^@\s]+\.[^@\s]+$/', $email)) {
             $message = 'Veuillez saisir une adresse mail valide.';
-        } elseif (strlen($mot_de_passe) < 10 ||
-            !preg_match('/[a-z]/', $mot_de_passe) ||
-            !preg_match('/[A-Z]/', $mot_de_passe) ||
-            !preg_match('/[0-9]/', $mot_de_passe) ||
-            !preg_match('/[^a-zA-Z0-9]/', $mot_de_passe)) {
+        } elseif (strlen($mot_de_passe_client) < 10 ||
+            !preg_match('/[a-z]/', $mot_de_passe_client) ||
+            !preg_match('/[A-Z]/', $mot_de_passe_client) ||
+            !preg_match('/[0-9]/', $mot_de_passe_client) ||
+            !preg_match('/[^a-zA-Z0-9]/', $mot_de_passe_client)) {
             $message = 'Le mot de passe doit avoir 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.';
         } else {
             require __DIR__ . '/php/connexion.php';
@@ -47,10 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($requete->fetch()) {
                     $message = 'Cette adresse mail est déjà utilisée.';
                 } else {
-                    $mot_de_passe_protege = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+                    $mot_de_passe_protege = password_hash($mot_de_passe_client, PASSWORD_DEFAULT);
                     $requete = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, telephone, email, adresse_postale, mot_de_passe) VALUES (?, ?, ?, ?, ?, ?)');
                     $requete->execute([$nom, $prenom, $telephone, $email, $adresse, $mot_de_passe_protege]);
                     $compte_cree = true;
+                    require __DIR__ . '/php/parametres-site.php';
+                    $texte = "Bonjour " . $prenom . ",\n\nBienvenue chez Vite & Gourmand !\nVotre compte a bien été créé. Vous pouvez maintenant vous connecter et commander nos menus.\n\nVite & Gourmand";
+                    $entetes = "From: " . $email_expediteur . "\r\nContent-Type: text/plain; charset=UTF-8";
+                    $mail_bienvenue_envoye = filter_var($email_expediteur, FILTER_VALIDATE_EMAIL) &&
+                        strpbrk($email_expediteur, "\r\n") === false &&
+                        mail($email, 'Vite et Gourmand - Bienvenue', $texte, $entetes);
                 }
             } catch (PDOException $erreur) {
                 $message = 'L’inscription n’a pas pu être effectuée. Veuillez réessayer plus tard.';
@@ -80,16 +88,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
     <header>
-        <a href="index.html">
+        <a href="index.php">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="menus.php">Tous les menus</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
 
@@ -98,10 +106,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <nav aria-label="Navigation mobile">
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="menus.php">Tous les menus</a></li>
                     <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
         </details>
@@ -176,8 +184,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php } ?>
 
             <p class="message-formulaire" id="message-inscription" aria-live="polite">
-                <?php if ($compte_cree) { ?>
-                    Votre compte a bien été créé. Vous pouvez maintenant vous connecter à votre espace.
+                <?php if ($compte_cree && $mail_bienvenue_envoye) { ?>
+                    Votre compte a été créé. Un e-mail de bienvenue vous a été envoyé.
+                <?php } elseif ($compte_cree) { ?>
+                    Votre compte a été créé, mais l'e-mail de bienvenue n'a pas pu être envoyé. Vous pouvez vous connecter.
                 <?php } else { echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); } ?>
             </p>
 
@@ -233,8 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 
     <script src="./assets/js/donnees.js"></script>
-    <script src="./assets/js/donnees-exemples.js"></script>
     <script src="./assets/js/commun.js"></script>
-    <script src="./assets/js/formulaires.js"></script>
+    <script src="./assets/js/horaires-public.js"></script>
 </body>
 </html>

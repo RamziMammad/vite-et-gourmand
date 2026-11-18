@@ -1,0 +1,5 @@
+Options -Indexes
+
+<FilesMatch "^(config|nosql|contact|parametres-site)\.local\.php$">
+    Require all denied
+</FilesMatch>

@@ -12,13 +12,19 @@ if (!isset($_SESSION['csrf_token'])) {
 
 $message = '';
 $email = '';
+$menu_saisi = $_POST['menu'] ?? ($_GET['menu'] ?? '');
+$menu_demande = is_string($menu_saisi) ? trim($menu_saisi) : '';
+if (!preg_match('/^[a-z0-9_-]{1,50}$/', $menu_demande)) {
+    $menu_demande = '';
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    if (!isset($_POST['csrf_token']) || !is_string($_POST['csrf_token']) ||
+        !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $message = 'Le formulaire a expiré. Veuillez actualiser la page et réessayer.';
     } else {
-        $email = trim($_POST['email'] ?? '');
-        $mot_de_passe_saisi = $_POST['mot_de_passe'] ?? '';
+        $email = isset($_POST['email']) && is_string($_POST['email']) ? trim($_POST['email']) : '';
+        $mot_de_passe_saisi = isset($_POST['mot_de_passe']) && is_string($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : '';
 
         if ($email === '' || $mot_de_passe_saisi === '') {
             $message = 'Veuillez remplir tous les champs.';
@@ -37,7 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['prenom'] = $compte['prenom'];
                     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-                    header('Location: ' . pagePourRole($_SESSION['role_id']));
+                    if ($_SESSION['role_id'] === 1 && $menu_demande !== '') {
+                        header('Location: commande.php?menu=' . urlencode($menu_demande));
+                    } else {
+                        header('Location: ' . pagePourRole($_SESSION['role_id']));
+                    }
                     exit;
                 }
 
@@ -70,16 +80,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <a class="lien-evitement" href="#contenu-principal">Aller au contenu principal</a>
 
     <header>
-        <a href="index.html">
+        <a href="index.php">
             Vite <span class="texte-dore">&amp;</span> Gourmand
         </a>
 
         <nav class="navigation-pc" aria-label="Navigation principale">
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menus.html">Tous les menus</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="menus.php">Tous les menus</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
 
@@ -88,10 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <nav aria-label="Navigation mobile">
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="menus.html">Tous les menus</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="menus.php">Tous les menus</a></li>
                     <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
         </details>
@@ -121,6 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <form class="formulaire-connexion" id="formulaire-connexion" action="connexion.php" method="post">
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="hidden" name="menu" value="<?php echo htmlspecialchars($menu_demande, ENT_QUOTES, 'UTF-8'); ?>">
 
                 <div class="champ-connexion">
                     <label for="email">Adresse mail</label>
@@ -158,7 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
 
             </form>
-
 
             <p class="lien-inscription">
                 Vous n'avez pas de compte ?
@@ -206,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 
     <script src="./assets/js/donnees.js"></script>
-    <script src="./assets/js/donnees-exemples.js"></script>
     <script src="./assets/js/commun.js"></script>
+    <script src="./assets/js/horaires-public.js"></script>
 </body>
 </html>

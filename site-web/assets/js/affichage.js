@@ -1,12 +1,6 @@
-/* Vite et Gourmand - affichage.js
-   Les parties de ce fichier sont regroupées par fonctionnalité. */
-
-
-// ===== Affichage commun =====
-
 /* Réunit les petites fonctions utilisées sur plusieurs pages. */
 
-const menusDemo = VG.menus();
+const menusCatalogue = VG.menus();
 
 function texteMenu(nom, valeur) {
     const element = document.querySelector(nom);

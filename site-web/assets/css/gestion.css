@@ -218,3 +218,22 @@
         align-items: stretch;
     }
 }
+
+.espacement-gestion { margin-top: 28px; border-top: 1px solid #eadfce; padding-top: 20px; }
+.bloc-administration fieldset { border: 1px solid #d8cbb9; border-radius: 8px; padding: 12px; }
+.bloc-administration fieldset .case-gestion { display: flex; flex-direction: row; gap: 9px; margin: 8px 0; }
+.bloc-administration .bouton-secondaire-gestion { margin-left: 0; }
+
+/* Administration : employés et statistiques */
+.sous-titre-administration { margin: 28px 0 12px; }
+.employe-administration { display: flex; gap: 12px; justify-content: space-between; align-items: center; }
+.employe-administration p { margin-top: 6px; }
+.employe-administration .bouton-secondaire-gestion { margin-left: 0; }
+.graphique-ligne { flex-wrap: wrap; }
+.graphique-ligne span { min-width: 100px; text-align: right; }
+.total-administration { margin: 18px 0; font-size: 20px; }
+@media screen and (max-width: 650px) {
+    .employe-administration { flex-direction: column; align-items: stretch; }
+    .graphique-ligne strong { width: 100%; }
+    .graphique-ligne span { text-align: left; }
+}
