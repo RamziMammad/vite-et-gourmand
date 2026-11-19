@@ -1,3 +1,4 @@
+
 <?php
 require __DIR__ . '/php/connexion.php';
 require __DIR__ . '/php/catalogue-public.php';
@@ -79,7 +80,7 @@ $catalogue_public = chargerCataloguePublic($pdo);
                     </div>
 
                     <div class="champ-filtre">
-                        <label for="prix-min">Fourchette de prix</label>
+                        <label for="prix-min">Prix minimum de la fourchette</label>
 
                         <div class="fourchette-prix">
 
@@ -145,6 +146,8 @@ $catalogue_public = chargerCataloguePublic($pdo);
             <section class="resultats-menus">
 
                 <h2>Nos menus disponibles</h2>
+
+                <p id="resultats-accessibles" role="status" aria-live="polite"></p>
 
                 <div class="cartes-menus">
                 </div>

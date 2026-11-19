@@ -1,3 +1,4 @@
+
 /* Filtre les cartes selon les critères du visiteur. */
 
 const champPrixMax = document.getElementById("prix-max");
@@ -7,6 +8,7 @@ const champTheme = document.getElementById("theme");
 const champRegime = document.getElementById("regime");
 const champPersonnes = document.getElementById("personnes");
 const messageAucunMenu = document.getElementById("aucun-menu");
+const messageResultats = document.getElementById("resultats-accessibles");
 const formulaireFiltres = document.getElementById("formulaire-filtres");
 
 function filtrerMenus() {
@@ -85,6 +87,12 @@ function filtrerMenus() {
             "Aucun menu ne correspond à votre recherche.";
     }
 
+    if (nombre === 1) {
+        messageResultats.textContent = "1 menu affiché.";
+    } else {
+        messageResultats.textContent = nombre + " menus affichés.";
+    }
+
     if (nombre > 0) {
         messageAucunMenu.classList.add("menu-cache");
     } else {
@@ -151,6 +159,11 @@ if (document.body.getAttribute("class") === "page-menus") {
 
         carte.querySelector(".bouton-menu").href =
             "detail-menu.php?menu=" + code;
+
+        carte.querySelector(".bouton-menu").setAttribute(
+            "aria-label",
+            "Voir le menu " + menu.nom
+        );
     }
 
     filtrerMenus();
