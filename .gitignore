@@ -10,3 +10,7 @@ site-web/php/config.local.php
 
 # Journaux d'erreurs
 *.log
+site-web/php/nosql.local.php
+site-web/php/contact.local.php
+site-web/php/parametres-site.local.php
+documentation/*.pdf
