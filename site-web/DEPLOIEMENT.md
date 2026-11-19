@@ -1,31 +1,37 @@
-# Préparer la mise en ligne de Vite & Gourmand — étape 12
+# Guide de déploiement de Vite & Gourmand
 
-Ce guide explique le déploiement ; il ne signifie pas que le site est déjà en ligne.
+Ce document présente l'installation en local et les préparatifs d'une future mise en ligne. À ce jour, le site a été testé en local ; il n'est pas encore accessible sur une adresse publique.
 
 ## Environnement local
 
-1. Placer `vite-et-gourmand` dans `C:\xampp\htdocs\`. Conserver le dossier `base-de-donnees` et le dossier `.git` d'origine.
-2. Démarrer Apache et MySQL dans XAMPP. Créer `vite_et_gourmand` puis exécuter les fichiers `base-de-donnees/01_creation.sql` et `02_donnees.sql` dans cet ordre (sur une base de test VIDE ; faire une sauvegarde avant toute importation).
-3. Dans `site-web/php`, copier `config.local.exemple.php` vers `config.local.php`, puis remplir les identifiants MariaDB. Ne jamais partager le fichier local.
-4. Démarrer CouchDB sur `127.0.0.1:5984`. Copier `nosql.local.exemple.php` en `nosql.local.php` et renseigner les identifiants administrateur. La base `vite_gourmand_stats` est créée lors de l'ouverture de l'espace administrateur.
-5. Démarrer Mailpit (port SMTP 1025 et interface 8025), puis configurer l'envoi de PHP par SMTP local dans `php.ini` si nécessaire. Redémarrer Apache après modification.
-6. Accéder à `http://localhost/vite-et-gourmand/site-web/index.php`.
+1. Placer le projet `vite-et-gourmand` dans `C:\xampp\htdocs\`, avec les dossiers `base-de-donnees`, `site-web` et `documentation`. Le dossier `.git` n'est utile que pour travailler avec Git ; il n'est pas nécessaire au fonctionnement du site.
+2. Démarrer Apache et MySQL dans XAMPP. Créer la base `vite_et_gourmand`, puis exécuter `base-de-donnees/01_creation.sql` et `base-de-donnees/02_donnees.sql` dans cet ordre, **uniquement sur une base de test vide**. Sauvegarder toute base existante avant une importation.
+3. Dans `site-web/php`, copier `config.local.exemple.php` en `config.local.php`, puis saisir les paramètres MariaDB propres à l'environnement local. Ne pas partager ce fichier.
+4. Démarrer CouchDB sur `127.0.0.1:5984`. Copier `nosql.local.exemple.php` en `nosql.local.php` et renseigner ses identifiants. La base `vite_gourmand_stats` est initialisée lors de l'accès aux statistiques de l'espace administrateur.
+5. Démarrer Mailpit (port SMTP `1025`, interface `http://localhost:8025`). Configurer l'envoi de PHP via le serveur SMTP local dans `php.ini` si nécessaire, puis redémarrer Apache après toute modification.
+6. Ouvrir `http://localhost/vite-et-gourmand/site-web/index.php` et vérifier les principaux parcours (inscription, connexion, menus, commandes, espaces réservés et e-mails).
 
-## Mise en ligne : les prérequis
+Les scripts SQL installent la structure et des données de départ. Les comptes de démonstration utilisés pour les trois rôles doivent être créés et vérifiés séparément. Le manuel avec leurs identifiants est réservé à la remise privée et **ne doit pas être publié sur GitHub**.
 
-1. Choisir un hébergeur prenant en charge PHP, MariaDB et Apache, et rendre CouchDB accessible uniquement depuis le serveur applicatif via une connexion protégée. Conserver une sauvegarde des bases. Ne pas exposer CouchDB directement sur Internet.
-2. Importer les fichiers SQL sur une base neuve ; protéger les identifiants SQL et CouchDB. Vérifier la version de PHP et ses extensions PDO MySQL et HTTPS.
-3. Sous `site-web/php`, créer les fichiers PRIVÉS `config.local.php`, `nosql.local.php`, `parametres-site.local.php` et `contact.local.php` à partir des exemples. Dans `parametres-site.local.php`, remplacer `https://votre-domaine.fr` par la véritable URL du dossier contenant `index.php`, et définir une vraie adresse d'expédition. Dans `contact.local.php`, définir le destinataire et l'expéditeur réels. Ne pas conserver les domaines `.test` en production.
-4. Configurer l'envoi SMTP réellement utilisable sur l'hébergement. La fonction PHP `mail()` peut nécessiter un relais SMTP du fournisseur. La réception des messages doit être testée avant publication.
-5. Configurer HTTPS, les accès à la base, les sauvegardes, les permissions et les fichiers `.htaccess`. Vérifier que les fichiers de configuration privés ne sont pas accessibles par HTTP et qu'aucun fichier `.local.php` n'est commité.
-6. Créer le compte administrateur de façon sécurisée à partir des données prévues dans la base. L'application ne propose volontairement pas d'inscription administrateur.
-7. Effectuer tous les parcours réels : inscription avec mail de bienvenue, connexion, réinitialisation, commande, suivi, employé, administration, contact, graphiques, droits d'accès. Consigner les résultats.
-8. Vérifier l'accessibilité conformément au RGAA, les mentions légales, les CGV, la protection des données et l'hébergeur. Ces informations réelles ne doivent pas être inventées.
+## Mise en ligne : préparatifs
 
-## Important
+La mise en ligne sera réalisée séparément après le choix d'un hébergement adapté. Elle exigera notamment :
 
-- Le projet local fonctionne avec `localhost`, mais ce nom est inaccessible à un visiteur extérieur : il faut un hébergeur et une URL publique.
-- Les fichiers PHP de configuration du dossier `php` sont protégés par `.htaccess` sur Apache, mais doivent également rester hors des archives publiques et de Git.
-- Le ZIP de livraison ne contient **aucun** mot de passe ; conserver les fichiers locaux existants lors de la fusion sous Windows.
-- Sans hébergeur retenu, URL publique et boîte e-mail réelles, une mise en ligne fonctionnelle à 100 % ne peut pas être certifiée.
-- Le manuel utilisateur, la charte graphique, les maquettes et les documents technique et de gestion de projet sont dans `documentation/`. La copie ECF Word/Excel et le lien du tableau de suivi restent à finaliser. Le manuel doit encore être complété avec des comptes de démonstration réellement testés.
+1. Un hébergement compatible avec PHP et MariaDB, et une connexion CouchDB sécurisée accessible au serveur applicatif, sans exposer directement CouchDB au public.
+2. L'importation des scripts SQL sur une nouvelle base, la configuration des extensions PHP nécessaires (dont PDO MySQL) et la protection des identifiants SQL et NoSQL.
+3. La création des fichiers locaux `config.local.php`, `nosql.local.php`, `parametres-site.local.php` et `contact.local.php` à partir des exemples ; les paramètres de domaine et de courrier électronique devront être adaptés à l'hébergement réel.
+4. Un service d'envoi d'e-mails fonctionnel, la configuration HTTPS, des sauvegardes, les permissions et la protection des fichiers sensibles par le serveur web.
+5. La création sécurisée du compte administrateur, qui ne peut pas être créé via l'inscription publique.
+6. Des tests sur l'adresse publique : inscription, e-mails, commandes, suivi, espace employé, espace administrateur, statistiques, contrôles d'accès et affichage mobile.
+7. Une vérification de l'accessibilité (RGAA), des mentions légales, des CGV et de l'information sur les données personnelles, en tenant compte des coordonnées et de l'hébergeur réels.
+
+## Suivi du projet et documents
+
+- Dépôt GitHub : https://github.com/RamziMammad/vite-et-gourmand
+- Tableau de suivi GitHub Projects (public) : https://github.com/users/RamziMammad/projects/1
+- Les maquettes, la charte graphique et les documents techniques se trouvent dans `documentation/`.
+- Les comptes de démonstration ont été préparés et documentés dans un manuel séparé réservé à la remise privée. Aucun mot de passe de démonstration ne doit être ajouté aux fichiers publiés sur GitHub.
+- L'énoncé Studi mentionne une copie à rendre au format Word ou Excel. Elle devra être récupérée auprès de Studi si elle n'apparaît pas dans l'espace ECF, puis remplie avec les liens réels.
+- Une archive créée par `git archive` contient les fichiers suivis par Git, et non les configurations locales ignorées. **Vérifier toutefois son contenu avant de la partager** : les fichiers déjà enregistrés dans Git sont inclus, même s'ils contiennent des données sensibles.
+
+**État actuel :** les vérifications ont été effectuées en local. L'hébergement et l'adresse publique restent à déterminer ; ce guide ne prétend pas que le site est déjà en ligne.
