@@ -6,51 +6,65 @@ Projet réalisé pour l'ECF du titre professionnel Développeur Web et Web Mobil
 
 Vite & Gourmand est une application web de traiteur située dans le contexte fictif de Bordeaux. Elle présente les menus et permet de passer une commande, de la suivre et de donner un avis. Elle prévoit trois types de comptes : client, employé et administrateur.
 
+**Site en ligne :** https://vitegourmandecf2027.alwaysdata.net/
+
 ## Fonctionnalités
 
 - **Visiteur** : consulter les menus, utiliser cinq filtres dynamiques, lire le détail des menus et contacter l'entreprise.
-- **Client** : s'inscrire, se connecter, réinitialiser son mot de passe, commander, consulter et modifier ses commandes autorisées, les annuler et déposer un avis après leur achèvement.
+- **Client** : s'inscrire, se connecter, réinitialiser son mot de passe, commander, consulter et modifier ses commandes lorsque leur statut le permet, les annuler et déposer un avis après leur achèvement.
 - **Employé** : consulter et filtrer les commandes, mettre à jour leur statut, gérer menus, plats et horaires, et modérer les avis.
 - **Administrateur** : gérer les comptes employés, accéder aux fonctions de gestion et consulter des statistiques par menu.
 
-Les parcours principaux ont été testés localement avec XAMPP, Brave et Mailpit. Ces tests ne remplacent pas un contrôle complet en hébergement public.
+Les principaux parcours ont été testés en local avec XAMPP, Brave et Mailpit, puis sur le site hébergé. En ligne, les essais ont notamment confirmé l'inscription et la connexion, les e-mails de commande et de réinitialisation, les changements de statut d'une commande jusqu'à « Terminée », le dépôt et la validation d'un avis ainsi que les statistiques administrateur. Lors du test, celles-ci affichaient une commande et 250 € de chiffre d'affaires après livraison.
 
 ## Technologies
 
-HTML5, CSS3, JavaScript, PHP, PDO, MariaDB (SQL) et Apache CouchDB (NoSQL). Le projet est développé en local avec XAMPP ; Mailpit sert à recevoir les e-mails de test.
+- **Front-end** : HTML5, CSS3 et JavaScript.
+- **Back-end** : PHP et PDO.
+- **Base SQL** : MariaDB, pour les comptes, menus, commandes, historiques et avis.
+- **Base NoSQL** : Apache CouchDB en local et IBM Cloudant (compatible avec l'API CouchDB) en ligne, pour les statistiques administrateur.
+- **Développement** : Visual Studio Code, XAMPP et Mailpit pour les courriels de test.
+- **Hébergement** : alwaysdata pour PHP, MariaDB et les courriels du site ; IBM Cloudant Lite pour les données statistiques.
+- **Versionnement** : Git et GitHub.
 
 ## Installer le projet en local
 
-1. Installer **XAMPP** et placer ce dépôt dans `C:\xampp\htdocs\vite-et-gourmand`.
-2. Dans XAMPP, démarrer **Apache** et **MySQL** (MariaDB).
-3. Ouvrir `http://localhost/phpmyadmin`. Sur une installation neuve uniquement, exécuter `base-de-donnees/01_creation.sql`, puis `base-de-donnees/02_donnees.sql`. **Ne pas réimporter ces scripts sur une base déjà utilisée**, pour ne pas écraser ou dupliquer les données.
-4. Dans `site-web/php/`, copier `config.local.exemple.php` vers `config.local.php`, puis renseigner les paramètres de la base SQL locale.
-5. Installer et démarrer **Apache CouchDB**. Copier `nosql.local.exemple.php` en `nosql.local.php` et renseigner la connexion CouchDB. Les statistiques de l'administrateur utilisent cette base NoSQL.
-6. Pour les e-mails de test, démarrer **Mailpit** (SMTP 1025, interface `http://localhost:8025`) et configurer l'envoi des e-mails de PHP vers ce service selon l'environnement XAMPP.
-7. Si nécessaire, créer `parametres-site.local.php` et `contact.local.php` à partir de leurs fichiers `.exemple.php`, dans `site-web/php/`, en conservant des coordonnées de test adaptées à l'environnement local.
+1. Installer **XAMPP** et placer le dépôt dans `C:\xampp\htdocs\vite-et-gourmand`.
+2. Démarrer **Apache** et **MySQL** (MariaDB) depuis XAMPP.
+3. Sur une base de test vide, exécuter `base-de-donnees/01_creation.sql`, puis `base-de-donnees/02_donnees.sql`. **Ne pas réimporter ces scripts dans une base contenant déjà des données.**
+4. Dans `site-web/php/`, copier `config.local.exemple.php` vers `config.local.php` et renseigner les paramètres SQL locaux.
+5. Installer et démarrer **Apache CouchDB**. Copier `nosql.local.exemple.php` vers `nosql.local.php` et renseigner l'adresse et les identifiants locaux ; les statistiques utilisent la base `vite_gourmand_stats`.
+6. Démarrer **Mailpit** si l'on souhaite contrôler les courriels de test (SMTP `1025`, interface `http://localhost:8025`) et configurer l'envoi de PHP vers ce service.
+7. Si nécessaire, créer `parametres-site.local.php` et `contact.local.php` à partir de leurs fichiers d'exemple, avec des valeurs adaptées à l'environnement local.
 8. Ouvrir `http://localhost/vite-et-gourmand/site-web/index.php`.
 
-Un compte client peut être créé depuis l'interface. Le compte administrateur initial doit être mis en place de façon sécurisée dans la base : l'application **ne permet pas** l'inscription publique d'un administrateur. Aucun identifiant administrateur réel ou mot de passe n'est fourni dans ce dépôt.
+Un compte client peut être créé depuis le formulaire d'inscription. Le compte administrateur initial ne peut pas être créé par l'inscription publique.
 
 ## Organisation
 
-- `site-web/` : pages publiques et espaces privés PHP, CSS, JavaScript et images.
-- `site-web/php/` : connexion aux bases, contrôles d'accès et traitement des actions côté serveur.
-- `base-de-donnees/01_creation.sql` : structure relationnelle.
-- `base-de-donnees/02_donnees.sql` : données de départ.
-- `site-web/DEPLOIEMENT.md` : prérequis et procédure de déploiement.
+- `site-web/` : pages du site, styles, scripts et images.
+- `site-web/php/` : traitements serveur, contrôles d'accès et accès aux bases.
+- `base-de-donnees/01_creation.sql` et `base-de-donnees/02_donnees.sql` : structure SQL et données initiales.
+- `site-web/DEPLOIEMENT.md` : procédure et environnement de déploiement.
 - `site-web/VERIFICATIONS_FINALES.md` : points de contrôle.
+- `documentation/maquettes/` : maquettes du projet ; les PDF de remise contenant des accès de démonstration sont conservés séparément et transmis de manière privée à Studi.
 
 ## Sécurité
 
-La connexion utilise des sessions PHP et des mots de passe hachés. L'accès aux espaces dépend du rôle. Les données SQL sont traitées avec PDO et des requêtes préparées ; les formulaires sensibles utilisent des contrôles côté serveur. Les fichiers `*.local.php` contiennent des paramètres **privés** : ils ne doivent être ni committés ni publiés.
+Les mots de passe des utilisateurs sont hachés, les accès sont contrôlés selon les rôles et les requêtes SQL utilisent PDO et des requêtes préparées. Les actions sensibles emploient des jetons CSRF. Les paramètres de connexion privés (`*.local.php`) ne doivent pas être publiés sur GitHub ni placés dans les archives de code accessibles publiquement. Le site est accessible en HTTPS ; cela ne remplace pas un audit complet de sécurité ou d'accessibilité.
 
-## État de la livraison
+## Déploiement et état des vérifications
 
-Le projet fonctionne en local sur la configuration de développement testée. **La mise en ligne publique n'est pas encore attestée**, et les mentions légales, les CGV, l'accessibilité RGAA et les paramètres d'envoi de courriels devront être validés dans l'environnement de déploiement. Aucune donnée de contact ou d'entreprise non confirmée ne doit être inventée.
+Le site est accessible publiquement sur **alwaysdata**, avec sa base MariaDB en ligne. Les statistiques utilisent **IBM Cloudant**, via une connexion HTTPS configurée côté serveur. Un contrôle en production a confirmé le fonctionnement des graphiques et du chiffre d'affaires. Les résultats des essais connus sont consignés dans les documents de gestion de projet remis avec l'ECF. Les calculs particuliers, l'accessibilité et les autres points réglementaires restent à examiner séparément lorsqu'ils n'ont pas fait l'objet d'une vérification complète.
 
-Les livrables complémentaires demandés par l'ECF (manuel utilisateur PDF, charte graphique PDF et maquettes, documentation technique, gestion du projet, diagrammes, lien du projet déployé et lien de l'outil de suivi) sont à joindre au dossier de remise.
+## Livrables et suivi
+
+- **Dépôt GitHub** : https://github.com/RamziMammad/vite-et-gourmand
+- **Tableau GitHub Projects** : https://github.com/users/RamziMammad/projects/1
+- **Site déployé** : https://vitegourmandecf2027.alwaysdata.net/
+
+Le manuel utilisateur, la documentation technique, la gestion du projet, les maquettes et les autres pièces demandées par l'ECF sont destinés au dossier de remise. Les documents contenant des identifiants ne doivent pas être publiés dans le dépôt GitHub.
 
 ## Git
 
-Les développements sont intégrés sur `develop`, puis réunis dans `main` après vérification. Les fichiers de configuration locale sont exclus du suivi Git.
+Le travail est intégré sur `develop`, puis réuni dans `main` après vérification. Les paramètres propres aux environnements sont conservés hors du dépôt public.
