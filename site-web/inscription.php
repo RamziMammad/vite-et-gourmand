@@ -176,6 +176,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </p>
                 </div>
 
+                <p class="information-donnees">
+                    Les informations saisies servent à créer votre compte et à gérer vos commandes.
+                    Consultez les <a href="mentions-legales.html">mentions légales</a>
+                    pour connaître l'utilisation de vos données et vos droits.
+                </p>
+
                 <button type="submit" class="bouton-inscription">
                     Créer mon compte
                 </button>

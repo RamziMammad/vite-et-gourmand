@@ -530,6 +530,12 @@ if ($message === 'La date de livraison sélectionnée est déjà passée. Veuill
                     <span id="prix-total">250,00 €</span>
                 </p>
 
+                <p class="information-commande">
+                    Les informations de cette commande servent à son organisation et à son suivi.
+                    Consultez les <a href="mentions-legales.html">mentions légales</a>
+                    pour connaître l'utilisation de vos données et vos droits.
+                </p>
+
                 <button
                     id="bouton-valider-commande"
                     type="submit"

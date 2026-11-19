@@ -169,6 +169,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ><?php echo htmlspecialchars($description, ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
 
+                <p class="information-donnees">
+                    Votre adresse e-mail et votre message servent à traiter votre demande.
+                    Pour en savoir plus, consultez les
+                    <a href="mentions-legales.html">mentions légales</a>.
+                </p>
+
                 <button type="submit" class="bouton-contact">
                     Envoyer le message
                 </button>
