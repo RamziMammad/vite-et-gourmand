@@ -4,7 +4,7 @@ Projet réalisé pour l'ECF du titre professionnel Développeur Web et Web Mobil
 
 ## Présentation
 
-Vite & Gourmand est une application web de traiteur située dans le contexte fictif de Bordeaux. Elle présente les menus et permet de passer une commande, de la suivre et de donner un avis. Elle prévoit trois types de comptes : client, employé et administrateur.
+Vite & Gourmand est une application web conçue pour un traiteur fictif à Bordeaux. Elle présente les menus et permet de passer une commande, de la suivre et de donner un avis. Elle prévoit trois types de comptes : client, employé et administrateur.
 
 **Site en ligne :** https://vitegourmandecf2027.alwaysdata.net/
 
@@ -47,7 +47,7 @@ Un compte client peut être créé depuis le formulaire d'inscription. Le compte
 - `base-de-donnees/01_creation.sql` et `base-de-donnees/02_donnees.sql` : structure SQL et données initiales.
 - `site-web/DEPLOIEMENT.md` : procédure et environnement de déploiement.
 - `site-web/VERIFICATIONS_FINALES.md` : points de contrôle.
-- `documentation/maquettes/` : maquettes du projet ; les PDF de remise contenant des accès de démonstration sont conservés séparément et transmis de manière privée à Studi.
+- `documentation/` : manuel public, documentation technique, gestion de projet, charte graphique et maquettes.
 
 ## Sécurité
 
@@ -63,7 +63,7 @@ Le site est accessible publiquement sur **alwaysdata**, avec sa base MariaDB en 
 - **Tableau GitHub Projects** : https://github.com/users/RamziMammad/projects/1
 - **Site déployé** : https://vitegourmandecf2027.alwaysdata.net/
 
-Le manuel utilisateur, la documentation technique, la gestion du projet, les maquettes et les autres pièces demandées par l'ECF sont destinés au dossier de remise. Les documents contenant des identifiants ne doivent pas être publiés dans le dépôt GitHub.
+Les PDF publics et les maquettes sont disponibles dans le dépôt GitHub. Les identifiants des comptes de démonstration figurent dans la copie Word remise à Studi.
 
 ## Git
 

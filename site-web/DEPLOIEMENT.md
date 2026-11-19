@@ -55,6 +55,6 @@ Ces essais ne signifient pas que tous les cas particuliers ont été audités : 
 - **Tableau GitHub Projects** : https://github.com/users/RamziMammad/projects/1
 - **Site en ligne** : https://vitegourmandecf2027.alwaysdata.net/
 
-Les PDF (manuel utilisateur, documentation technique et gestion de projet) sont conservés pour la **remise privée** à Studi, notamment lorsque des identifiants de démonstration y figurent. Ils ne doivent pas être réintroduits dans le dépôt GitHub. Vérifier les documents et formats exigés directement dans l'énoncé avant l'envoi final.
+Les trois PDF publics sont dans le dossier documentation du dépôt GitHub. Les identifiants de démonstration sont transmis dans la copie Word déposée sur Studi.
 
 Une archive Git ne comprend que les fichiers suivis : les configurations et documents exclus du suivi doivent être ajoutés uniquement à la remise privée lorsqu'ils sont réellement nécessaires et sans exposer les accès de production.

@@ -33,4 +33,4 @@ Ne pas ouvrir directement les anciens fichiers `.html` pour tester les données 
 
 Ne jamais publier les fichiers `config.local.php`, `nosql.local.php`, `contact.local.php` ou `parametres-site.local.php`. Les e-mails reçus dans Mailpit sont des tests locaux, pas une preuve d'envoi réel sur un hébergement public.
 
-Les tests locaux ont couvert les parcours principaux, mais le déploiement public, les données légales réelles et le contrôle RGAA doivent encore être validés avant une livraison annoncée comme entièrement opérationnelle.
+Les principaux parcours ont été testés en local, puis sur alwaysdata. Les contrôles RGAA complets et les cas particuliers restent à approfondir.

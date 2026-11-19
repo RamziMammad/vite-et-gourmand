@@ -59,4 +59,4 @@ Les prix sont enregistrés avec `DECIMAL(10,2)` pour avoir des montants précis 
 
 ## État actuel
 
-Les pages et formulaires sont reliés à MariaDB par PHP et PDO. Le site utilise CouchDB pour les statistiques de l'administrateur (et non MongoDB). Les fichiers locaux de configuration sont exclus de Git. Le projet a été testé sur la configuration locale XAMPP ; le déploiement public sera vérifié séparément.
+Les pages et formulaires sont reliés à MariaDB par PHP et PDO. Le site utilise CouchDB pour les statistiques de l'administrateur (et non MongoDB). Les fichiers locaux de configuration sont exclus de Git. Le projet a été testé sur la configuration locale XAMPP ; le site a également été mis en ligne sur alwaysdata, avec IBM Cloudant pour les statistiques.
